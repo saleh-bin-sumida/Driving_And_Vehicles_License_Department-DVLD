@@ -1,0 +1,78 @@
+﻿using System;
+using DVLD_BusinessLayer;
+using System.Windows.Forms;
+
+namespace DVLD
+{
+    public partial class frmNew_LDL_Application : Form
+    {
+        enum Mode { Addnew = 1, Update =2};
+        Mode mode;
+
+        cls_LDL_Application _LDLapp;
+
+        int _LDLappID;
+        public frmNew_LDL_Application(int LDLapp)
+        {
+            InitializeComponent();
+
+            this._LDLappID = LDLapp;
+
+            if (this._LDLappID == -1)
+            {
+                mode = Mode.Addnew;
+            }
+            else
+            {
+                mode = Mode.Update;
+            }
+
+        }
+
+        private void frmNewLocalDL_Load(object sender, EventArgs e)
+        {
+            cbxLicenseClasses.DataSource = clsLicenseClass.GetAllLicenseClasses();
+            cbxLicenseClasses.DisplayMember = "ClassName";
+
+            if (mode == Mode.Addnew)
+            {
+                 _LDLapp = new cls_LDL_Application();
+                cbxLicenseClasses.SelectedIndex = _LDLapp.LicenseClassID ;
+
+            }
+            else
+            {
+                lblHeading.Text = "Update Local Drving License Application";
+                ctrlPersonCardwithFilter1._LoadPersonCardwithFilterData(_LDLapp.ApplicantPersonID);
+                _LDLapp = cls_LDL_Application.Find(_LDLappID);
+                cbxLicenseClasses.SelectedIndex = _LDLapp.LicenseClassID + 1;
+                
+            }
+
+            ApplicationDate.Text = _LDLapp.ApplicationDate.ToString();
+            ApplicationFees.Text = _LDLapp.PaidFees.ToString();
+            CreatedBy.Text = clsUser.GetUserFullNameByID(_LDLapp.CreatedByUserID);
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            _LDLapp.ApplicantPersonID = int.Parse(ctrlPersonCardwithFilter1.PersonID);
+            _LDLapp.LicenseClassID = cbxLicenseClasses.SelectedIndex +1;
+
+            if (_LDLapp.Save())
+            {
+                lblHeading.Text = "Update Local Drving License Application"; 
+                MessageBox.Show("The Application Saved Succesfully", "saving application");
+                return;
+            }
+            MessageBox.Show("faild to save the Application!", "saving application",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+        }
+    }
+}
