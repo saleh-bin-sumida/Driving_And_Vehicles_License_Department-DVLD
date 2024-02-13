@@ -1,4 +1,4 @@
-DBLD system offers many services like 
+DVLD system offers many services like 
 1. application for new local license
 2. application for renew licens
 3. applicatinn for lost or damanged license
