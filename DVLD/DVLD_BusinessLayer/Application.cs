@@ -8,8 +8,8 @@ namespace DVLD_BusinessLayer
 {
     public class clsApplication
     {
-        public  enum Mode { addnew= 1, update = 2};
-        public Mode mode;
+        protected  enum Mode { addnew= 1, update = 2};
+        protected Mode mode;
         public int ApplicationID { get; set; }
         public int ApplicantPersonID { get; set; }
         public DateTime ApplicationDate { get; set; }
@@ -47,9 +47,9 @@ namespace DVLD_BusinessLayer
             this.ApplicationDate = ApplicationDate;
             this.ApplicationTypeID = ApplicationTypeID;
             this.ApplicationStatus = ApplicationStatus;
-            this.CreatedByUserID = CreatedByUserID;
             this.LastStatusDate = LastStatusDate;
             this.PaidFees = PaidFees;
+            this.CreatedByUserID = CreatedByUserID;
         }
 
 
@@ -71,7 +71,7 @@ namespace DVLD_BusinessLayer
             LDL_ApplicationID = -1;
             base.ApplicationTypeID = 1;
             base.PaidFees = clsApplicationType.GetApplicationTypeFees(base.ApplicationTypeID);
-            this.LicenseClassID = 0;
+            this.LicenseClassID = 1;
         }
 
         public cls_LDL_Application(int lDL_ApplicationID,int ApplicationID,int ApplicantPersonID,DateTime ApplicationDate,int ApplicationTypeID,
@@ -85,13 +85,13 @@ namespace DVLD_BusinessLayer
 
         private bool _AddNew()
         {
-            this.LDL_ApplicationID = clsLDL_Applications_Data.AddNew_LDL_Application(this.ApplicantPersonID, ApplicationDate,
+            this.LDL_ApplicationID = cls_LDL_Applications_Data.AddNew_LDL_Application(this.ApplicantPersonID, ApplicationDate,
                 ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID, LicenseClassID);
             return this.LDL_ApplicationID != -1;
         }
 
         private bool _Update() =>
-            clsLDL_Applications_Data.Update_LDL_Application(this.LDL_ApplicationID, ApplicationID, ApplicantPersonID, ApplicationDate,
+            cls_LDL_Applications_Data.Update_LDL_Application(this.LDL_ApplicationID, ApplicationID, ApplicantPersonID, ApplicationDate,
                 ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID, LicenseClassID);
 
 
@@ -103,7 +103,7 @@ namespace DVLD_BusinessLayer
             DateTime ApplicationDate = DateTime.Now, LastStatusDate = DateTime.Now;
 
 
-            if (clsLDL_Applications_Data.Get_LDL_ApplicationInfoByID(LDL_ApplicationID,ref ApplicationID,ref ApplicantPersonID,ref ApplicationDate,
+            if (cls_LDL_Applications_Data.Get_LDL_ApplicationInfoByID(LDL_ApplicationID,ref ApplicationID,ref ApplicantPersonID,ref ApplicationDate,
                 ref ApplicationTypeID,ref ApplicationStatus,ref LastStatusDate,ref PaidFees,ref CreatedByUserID, ref LicenseClassID))
             {
                 return new cls_LDL_Application(LDL_ApplicationID, ApplicationID, ApplicantPersonID, ApplicationDate,
@@ -112,7 +112,11 @@ namespace DVLD_BusinessLayer
             return null;
         }
 
-        // will change the mode after saving
+
+        public static DataTable GetAll_LDL_Applications() => cls_LDL_Applications_Data.GetAll_LDL_Applications();
+
+
+
         public bool Save()
         {
             switch (mode)

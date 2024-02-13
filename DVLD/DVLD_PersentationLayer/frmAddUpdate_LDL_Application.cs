@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace DVLD
 {
-    public partial class frmNew_LDL_Application : Form
+    public partial class frmAddUpdate_LDL_Application : Form
     {
         enum Mode { Addnew = 1, Update =2};
         Mode mode;
@@ -12,7 +12,7 @@ namespace DVLD
         cls_LDL_Application _LDLapp;
 
         int _LDLappID;
-        public frmNew_LDL_Application(int LDLapp)
+        public frmAddUpdate_LDL_Application(int LDLapp)
         {
             InitializeComponent();
 

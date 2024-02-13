@@ -4,7 +4,7 @@ using DVLD_DataAccessLayer;
 
 namespace DVLD_BusinessLayer
 {
-    public   class clsApplicationType
+    public class clsApplicationType
     {
 
         public  int ApplicationTypeID { get;}  
@@ -33,6 +33,7 @@ namespace DVLD_BusinessLayer
 
         }
 
+        // this method is referenced by dynamic object
         public bool Update()  => clsApplicationTypes_Data.UpdateApplicationType(ApplicationTypeID,ApplicationTypeTitle,ApplicationTypeFees);
 
         public static decimal GetApplicationTypeFees(int ApplicationTypeID) => clsApplicationTypes_Data.GetApplicationTypeFees(ApplicationTypeID);

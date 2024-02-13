@@ -21,7 +21,7 @@ namespace DVLD
      
         private void tsmNewLocalLicense_Click(object sender, EventArgs e)
         {
-            frmNew_LDL_Application frm = new frmNew_LDL_Application(-1);
+            frmAddUpdate_LDL_Application frm = new frmAddUpdate_LDL_Application(-1);
             frm.ShowDialog();
         }
         private void tsmInternationalLicense_Click(object sender, EventArgs e)
@@ -80,14 +80,18 @@ namespace DVLD
 
         private void toolStripDetainLicense_Click(object sender, EventArgs e)
         {
-            Form1 frm = new Form1();
-            frm.ShowDialog();
+
         }
 
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageApplicationTypes f = new frmManageApplicationTypes();
-            f.ShowDialog(); 
+ 
+        }
+
+        private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManage_LDL_Applications frm = new frmManage_LDL_Applications();
+            frm.ShowDialog();
         }
     }
 }

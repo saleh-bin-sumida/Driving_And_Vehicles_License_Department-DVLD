@@ -4,7 +4,7 @@ using System.Data;
 
 namespace DVLD_DataAccessLayer
 {
-    public static class clsLDL_Applications_Data
+    public static class cls_LDL_Applications_Data
     {
 
         public static DataTable GetAll_LDL_Applications()
@@ -19,8 +19,13 @@ namespace DVLD_DataAccessLayer
 	                , [National No.] = People.NationalNo
 	                , [Full Name] = People.FirstName + ' ' + People.SecondName + ' ' + People.ThirdName + ' ' + People.LastName
 	                , [Application Date] = Applications.ApplicationDate
-	                , [Status] = Applications.ApplicationStatus
-	                , [Passed Test] = (select count(*) from  
+					, case
+					when Applications.ApplicationStatus = 1 then 'New'
+					when Applications.ApplicationStatus = 2 then 'Canceled'
+					when Applications.ApplicationStatus = 3 then 'Completed'
+					end as 
+					[Status] 
+	                ,[Passed Test] = (select count(*) from  
 						                ( 
 						                select  Tests.TestResult from Tests 
 						                inner join TestAppointments on  Tests.TestAppointmentID = TestAppointments.TestAppointmentID
@@ -31,8 +36,7 @@ namespace DVLD_DataAccessLayer
                 FROM     Applications INNER JOIN
                                   LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN
                                   People ON Applications.ApplicantPersonID = People.PersonID INNER JOIN
-                                  LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID
-				where LocalDrivingLicenseApplicationID = 30;";
+                                  LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -67,9 +71,14 @@ namespace DVLD_DataAccessLayer
 
 
 
+
         public static int AddNew_LDL_Application(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
             int ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int LicenseClassID)
         {
+
+            if (PersonHasValidApplication(ApplicantPersonID,ApplicationTypeID))
+                return -1;
+
             int LDL_ApplicationsID = -1;
 
 
@@ -234,7 +243,8 @@ namespace DVLD_DataAccessLayer
 
             bool isFound = false;
 
-            clsApplications_Data.GetApplicationInfoByID(ApplicationID,ref ApplicantPersonID,ref ApplicationDate,ref ApplicationTypeID,ref ApplicationStatus,ref LastStatusDate,ref PaidFees,ref CreatedByUserID);
+            clsApplications_Data.GetApplicationInfoByID(ApplicationID,ref ApplicantPersonID,
+            ref ApplicationDate,ref ApplicationTypeID,ref ApplicationStatus,ref LastStatusDate,ref PaidFees,ref CreatedByUserID);
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
@@ -242,6 +252,8 @@ namespace DVLD_DataAccessLayer
                     where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 
             SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
 
 
@@ -254,7 +266,6 @@ namespace DVLD_DataAccessLayer
                 {
                     isFound = true;
 
-                    LocalDrivingLicenseApplicationID = (int)reader["LocalDrivingLicenseApplicationID"];
                     LicenseClassID = (int)reader["LicenseClassID"];
 
                 }
@@ -272,6 +283,40 @@ namespace DVLD_DataAccessLayer
         }
 
 
+        public static bool PersonHasValidApplication(int ApplicantPersonID, int ApplicationTypeID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select ApplicationID from Applications where ApplicantPersonID =@ApplicantPersonID
+            and ApplicationTypeID = @ApplicationTypeID and ApplicationStatus = 1";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    isFound = true;
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return isFound;
+        }
 
 
     }

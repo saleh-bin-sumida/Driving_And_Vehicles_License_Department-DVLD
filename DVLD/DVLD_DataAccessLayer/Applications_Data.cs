@@ -165,8 +165,8 @@ namespace DVLD_DataAccessLayer
 
 
         public static bool GetApplicationInfoByID( int ApplicationID,
-       ref int ApplicantPersonID,ref  DateTime ApplicationDate,ref int ApplicationTypeID,
-      ref short ApplicationStatus, ref DateTime LastStatusDate, ref decimal PaidFees, ref int CreatedByUserID)
+        ref int ApplicantPersonID,ref  DateTime ApplicationDate,ref int ApplicationTypeID,
+        ref short ApplicationStatus, ref DateTime LastStatusDate, ref decimal PaidFees, ref int CreatedByUserID)
         {
 
             bool isFound = false;
