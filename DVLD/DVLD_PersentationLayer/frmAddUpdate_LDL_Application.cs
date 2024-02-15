@@ -21,10 +21,12 @@ namespace DVLD
             if (this._LDLappID == -1)
             {
                 mode = Mode.Addnew;
+                _LDLapp = new cls_LDL_Application();
             }
             else
             {
                 mode = Mode.Update;
+                _LDLapp = cls_LDL_Application.Find(this._LDLappID);
             }
 
         }
@@ -67,6 +69,8 @@ namespace DVLD
                 MessageBox.Show("plese, fill all the feilds.");
                 return;
             }
+
+
             _LDLapp.ApplicantPersonID = int.Parse(ctrlPersonCardwithFilter1.PersonID);
             _LDLapp.LicenseClassID = cbxLicenseClasses.SelectedIndex +1;
 

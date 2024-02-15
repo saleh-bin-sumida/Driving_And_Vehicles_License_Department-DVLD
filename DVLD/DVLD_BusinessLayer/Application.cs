@@ -31,7 +31,7 @@ namespace DVLD_BusinessLayer
             this.ApplicantPersonID = 0;
             this.ApplicationDate = DateTime.Now;
             this.ApplicationTypeID = 0;
-            this.ApplicationStatus = 0;
+            this.ApplicationStatus = 1; // means app is new
             this.LastStatusDate = DateTime.Now;
             this.PaidFees = 0;
             this.CreatedByUserID = GlobalSettings.CurrentUser.UserID;

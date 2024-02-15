@@ -76,7 +76,7 @@ namespace DVLD_DataAccessLayer
             int ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int LicenseClassID)
         {
 
-            if (PersonHasValidApplication(ApplicantPersonID,ApplicationTypeID))
+            if (PersonHasValidNew_LDL_Application(ApplicantPersonID,LicenseClassID))
                 return -1;
 
             int LDL_ApplicationsID = -1;
@@ -283,19 +283,23 @@ namespace DVLD_DataAccessLayer
         }
 
 
-        public static bool PersonHasValidApplication(int ApplicantPersonID, int ApplicationTypeID)
+        public static bool PersonHasValidNew_LDL_Application(int ApplicantPersonID ,int LicenseClassID)
         {
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"select ApplicationID from Applications where ApplicantPersonID =@ApplicantPersonID
-            and ApplicationTypeID = @ApplicationTypeID and ApplicationStatus = 1";
+            string query = @"
+				  select Found = 1 from Applications
+				  inner join LocalDrivingLicenseApplications on 
+				  Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID where ApplicantPersonID = 2040
+				  and Applications.ApplicationTypeID = 1 and LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID and Applications.ApplicationStatus =1
+";
 
             SqlCommand command = new SqlCommand(@query, connection);
 
             command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
 
             try
             {
