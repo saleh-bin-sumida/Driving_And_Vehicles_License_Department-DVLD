@@ -6,7 +6,15 @@ namespace DVLD
 {
     public partial class ctrlPersonCardwithFilter : UserControl
     {
-
+        public event Action<int> OnPersonSelected;
+        protected virtual void PersonSelected(int PersonID)
+        {
+            Action<int> handler = OnPersonSelected;
+            if (handler != null) 
+            {
+                handler(PersonID);
+            }
+        }
         public string PersonID { get { return ctrlPersonCard1.PersonID; } }
 
 
@@ -65,6 +73,9 @@ namespace DVLD
 
 
             ctrlPersonCard1.LoadData(Person);
+
+            OnPersonSelected.Invoke(Person.PersonID);
+
 
         }
 

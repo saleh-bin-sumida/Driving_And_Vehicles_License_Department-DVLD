@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
+            this.ctrlPersonCardwithFilter1 = new DVLD.ctrlPersonCardwithFilter();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cbxLicenseClasses = new System.Windows.Forms.ComboBox();
             this.CreatedBy = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.lblHeading = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlPersonCardwithFilter1 = new DVLD.ctrlPersonCardwithFilter();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -64,8 +64,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.ctrlPersonCardwithFilter1);
             this.tabPage1.Controls.Add(this.btnNext);
+            this.tabPage1.Controls.Add(this.ctrlPersonCardwithFilter1);
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -76,14 +76,23 @@
             // 
             // btnNext
             // 
+            this.btnNext.Enabled = false;
             this.btnNext.Font = new System.Drawing.Font("Yu Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(887, 483);
+            this.btnNext.Location = new System.Drawing.Point(887, 480);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(110, 38);
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // ctrlPersonCardwithFilter1
+            // 
+            this.ctrlPersonCardwithFilter1.Location = new System.Drawing.Point(4, 9);
+            this.ctrlPersonCardwithFilter1.Name = "ctrlPersonCardwithFilter1";
+            this.ctrlPersonCardwithFilter1.Size = new System.Drawing.Size(993, 476);
+            this.ctrlPersonCardwithFilter1.TabIndex = 1;
+            this.ctrlPersonCardwithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonCardwithFilter1_OnPersonSelected);
             // 
             // tabPage2
             // 
@@ -112,7 +121,7 @@
             this.cbxLicenseClasses.Location = new System.Drawing.Point(299, 189);
             this.cbxLicenseClasses.Name = "cbxLicenseClasses";
             this.cbxLicenseClasses.Size = new System.Drawing.Size(344, 33);
-            this.cbxLicenseClasses.TabIndex = 11;
+            this.cbxLicenseClasses.TabIndex = 3;
             // 
             // CreatedBy
             // 
@@ -220,7 +229,7 @@
             this.btnSave.Location = new System.Drawing.Point(924, 619);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 38);
-            this.btnSave.TabIndex = 3;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -231,18 +240,11 @@
             this.btnClose.Location = new System.Drawing.Point(808, 619);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(110, 38);
-            this.btnClose.TabIndex = 4;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // ctrlPersonCardwithFilter1
-            // 
-            this.ctrlPersonCardwithFilter1.Location = new System.Drawing.Point(4, 9);
-            this.ctrlPersonCardwithFilter1.Name = "ctrlPersonCardwithFilter1";
-            this.ctrlPersonCardwithFilter1.Size = new System.Drawing.Size(993, 474);
-            this.ctrlPersonCardwithFilter1.TabIndex = 4;
-            // 
-            // frmNew_LDL_Application
+            // frmAddUpdate_LDL_Application
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -251,7 +253,7 @@
             this.Controls.Add(this.lblHeading);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tabControl1);
-            this.Name = "frmNew_LDL_Application";
+            this.Name = "frmAddUpdate_LDL_Application";
             this.Text = "frmNewLocalDL";
             this.Load += new System.EventHandler(this.frmNewLocalDL_Load);
             this.tabControl1.ResumeLayout(false);

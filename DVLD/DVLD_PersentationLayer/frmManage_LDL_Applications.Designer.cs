@@ -30,36 +30,27 @@
         {
             this.SuspendLayout();
             // 
-            // cbxExpressions
-            // 
             // cbxFilter
             // 
-            this.cbxFilter.Location = new System.Drawing.Point(136, 231);
+            this.cbxFilter.SelectedIndexChanged += new System.EventHandler(this.cbxFilter_SelectedIndexChanged);
             // 
             // txtFilterExpressions
             // 
-            this.txtFilterExpressions.Location = new System.Drawing.Point(391, 231);
+            this.txtFilterExpressions.TextChanged += new System.EventHandler(this.txtFilterExpressions_TextChanged);
+            this.txtFilterExpressions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterExpressions_KeyPress);
             // 
-            // label2
+            // button1
             // 
-            this.label2.Location = new System.Drawing.Point(25, 232);
-            // 
-            // lblTotalMembers
-            // 
-            this.lblTotalMembers.Location = new System.Drawing.Point(136, 621);
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(53, 619);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(1060, 609);
+            this.button1.Click += new System.EventHandler(this.btnClose_click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(1026, 225);
+            this.btnAdd.Text = "Add LDL app";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lblHeading
+            // 
+            this.lblHeading.Location = new System.Drawing.Point(347, 9);
             // 
             // frmManage_LDL_Applications
             // 

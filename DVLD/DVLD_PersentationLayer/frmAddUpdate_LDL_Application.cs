@@ -62,6 +62,11 @@ namespace DVLD
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (ctrlPersonCardwithFilter1.PersonID == "" || !btnNext.Enabled)
+            {
+                MessageBox.Show("plese, fill all the feilds.");
+                return;
+            }
             _LDLapp.ApplicantPersonID = int.Parse(ctrlPersonCardwithFilter1.PersonID);
             _LDLapp.LicenseClassID = cbxLicenseClasses.SelectedIndex +1;
 
@@ -70,9 +75,15 @@ namespace DVLD
                 lblHeading.Text = "Update Local Drving License Application"; 
                 MessageBox.Show("The Application Saved Succesfully", "saving application");
                 return;
-            }
-            MessageBox.Show("faild to save the Application!", "saving application",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
+            }
+            MessageBox.Show("this person already has uncompleted application from this type", "Faild to save application",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+        }
+
+        private void ctrlPersonCardwithFilter1_OnPersonSelected(int obj)
+        {
+            btnNext.Enabled = true;
         }
     }
 }

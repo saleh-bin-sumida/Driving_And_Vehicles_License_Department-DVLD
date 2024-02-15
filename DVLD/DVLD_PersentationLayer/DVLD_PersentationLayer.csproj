@@ -58,12 +58,6 @@
     <Compile Include="ctrlPersonCardwithFilter.Designer.cs">
       <DependentUpon>ctrlPersonCardwithFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmAddUpdatePerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +93,12 @@
     </Compile>
     <Compile Include="frmAddUpdate_LDL_Application.Designer.cs">
       <DependentUpon>frmAddUpdate_LDL_Application.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageScreen.Designer.cs">
+      <DependentUpon>frmManageScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManage_LDL_Applications.cs">
       <SubType>Form</SubType>
@@ -150,9 +150,6 @@
     <EmbeddedResource Include="ctrlPersonCardwithFilter.resx">
       <DependentUpon>ctrlPersonCardwithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmAddUpdatePerson.resx">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddUpdate_LDL_Application.resx">
       <DependentUpon>frmAddUpdate_LDL_Application.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageScreen.resx">
+      <DependentUpon>frmManageScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManage_LDL_Applications.resx">
       <DependentUpon>frmManage_LDL_Applications.cs</DependentUpon>
