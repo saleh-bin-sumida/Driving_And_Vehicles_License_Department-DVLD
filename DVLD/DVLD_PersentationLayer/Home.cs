@@ -90,7 +90,7 @@ namespace DVLD
 
         private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManage_LDL_Applications frm = new frmManage_LDL_Applications();
+            frmManage_NewLDLApplications frm = new frmManage_NewLDLApplications();
             frm.ShowDialog();
         }
     }

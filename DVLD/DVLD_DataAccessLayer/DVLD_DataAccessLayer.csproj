@@ -41,15 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Applications_Data.cs" />
-    <Compile Include="clsApplicationTypes_Data.cs" />
+    <Compile Include="Applications_Data\Applications_Data.cs" />
+    <Compile Include="Applications_Data\clsApplicationTypes_Data.cs" />
     <Compile Include="Countries_Data.cs" />
-    <Compile Include="LDL_Applications_Data.cs" />
+    <Compile Include="Applications_Data\New_LDLApplications_Data.cs" />
     <Compile Include="LicenseClasses_Data.cs" />
     <Compile Include="Person_Data.cs" />
     <Compile Include="DataAccessSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests_Data.cs" />
+    <Compile Include="Tests_Data\Tests_Data.cs" />
     <Compile Include="User_Data.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

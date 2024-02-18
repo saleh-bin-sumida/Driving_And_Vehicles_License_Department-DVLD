@@ -84,6 +84,8 @@ namespace DVLD
 
         private bool _isPersonLikedwithUser()
         {
+            if (mode == Mode.Update && int.Parse(ctrlPersonCardwithFilter1.PersonID) == _User._person.PersonID)
+                return false;
             return clsPerson.IsPersonLikedWithUser(int.Parse(ctrlPersonCardwithFilter1.PersonID));
         }
 

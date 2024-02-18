@@ -4,10 +4,10 @@ using System.Data;
 
 namespace DVLD_DataAccessLayer
 {
-    public static class cls_LDL_Applications_Data
+    public static class cls_NewLDLApplications_Data
     {
 
-        public static DataTable GetAll_LDL_Applications()
+        public static DataTable GetAll_NewLDLApplications()
         {
 
             DataTable dt = new DataTable();
@@ -72,11 +72,11 @@ namespace DVLD_DataAccessLayer
 
 
 
-        public static int AddNew_LDL_Application(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
+        public static int Add_NewLDLApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
             int ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int LicenseClassID)
         {
 
-            if (PersonHasValidNew_LDL_Application(ApplicantPersonID,LicenseClassID))
+            if (PersonHasValid_NewLDLApplication(ApplicantPersonID,LicenseClassID))
                 return -1;
 
             int LDL_ApplicationsID = -1;
@@ -137,7 +137,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-        public static bool Update_LDL_Application(int LocalDrivingLicenseApplicationID,int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
+        public static bool Update_NewLDLApplication(int LocalDrivingLicenseApplicationID,int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
             int ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int LicenseClassID)
         {
 
@@ -189,7 +189,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-        public static bool Delete_LDL_Application(int LocalDrivingLicenseApplicationID)
+        public static bool Delete_NewLDLApplication(int LocalDrivingLicenseApplicationID)
         {
 
             int rowsAffected = 0;
@@ -236,7 +236,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-        public static bool Get_LDL_ApplicationInfoByID(int LocalDrivingLicenseApplicationID,ref int ApplicationID,
+        public static bool Get_NewLDLApplicationInfoByID(int LocalDrivingLicenseApplicationID,ref int ApplicationID,
             ref int ApplicantPersonID,ref  DateTime ApplicationDate, ref int ApplicationTypeID,
            ref  short ApplicationStatus,ref  DateTime LastStatusDate,ref  decimal PaidFees, ref int CreatedByUserID, ref int LicenseClassID)
         {
@@ -283,7 +283,7 @@ namespace DVLD_DataAccessLayer
         }
 
 
-        public static bool PersonHasValidNew_LDL_Application(int ApplicantPersonID ,int LicenseClassID)
+        public static bool PersonHasValid_NewLDLApplication(int ApplicantPersonID ,int LicenseClassID)
         {
             bool isFound = false;
 

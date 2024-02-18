@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Data;
-using DVLD_BusinessLayer;
+using DVLD_BusinessLayer.Application;
 using System.Windows.Forms;
 
 namespace DVLD
 {
-    public partial class frmManage_LDL_Applications : frmManageScreen
+    public partial class frmManage_NewLDLApplications : frmManageScreen
     {
         private DataTable _dt;
-        public frmManage_LDL_Applications() : base()
+        public frmManage_NewLDLApplications() : base()
         {
   
             InitializeComponent();
@@ -21,8 +21,7 @@ namespace DVLD
             cbxFilter.DataSource = new string[] { "None", "LDL app ID", "National No." };
             cbxFilter.SelectedIndex = 0;
 
-            lblHeading.Text = "Manage Local Driving License Applications";
-            _dt = cls_LDL_Application.GetAll_LDL_Applications();
+            _dt = cls_NewLDLApplication.GetAll_NewLDLApplications();
 
             _RefreshDataGridView();
 
@@ -30,7 +29,7 @@ namespace DVLD
 
         private void _RefreshDataGridView()
         {
-            _dt = cls_LDL_Application.GetAll_LDL_Applications();
+            _dt = cls_NewLDLApplication.GetAll_NewLDLApplications();
             DataGridView.DataSource = _dt;
             lblTotalMembers.Text = DataGridView.Rows.Count.ToString();
         }
@@ -45,14 +44,13 @@ namespace DVLD
 
         private void btnClose_click(object sender, EventArgs e)
         {
-            Close();
+           // Close();
         }
 
         private void cbxFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _ = (cbxFilter.SelectedItem.ToString() == "None") ? txtFilterExpressions.Visible = false : txtFilterExpressions.Visible = true;
-            txtFilterExpressions.Text = "";
 
+            base.cbxFilter_SelectedIndexChanged();
 
         }
 

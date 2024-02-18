@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblTotalMembers = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblHeading = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
@@ -103,16 +103,17 @@
             this.label3.TabIndex = 17;
             this.label3.Text = "#Records : ";
             // 
-            // button1
+            // btnClose
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Font = new System.Drawing.Font("Yu Gothic", 10F);
-            this.button1.Location = new System.Drawing.Point(1065, 610);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 36);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Close";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnClose.Font = new System.Drawing.Font("Yu Gothic", 10F);
+            this.btnClose.Location = new System.Drawing.Point(1065, 610);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 36);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAdd
             // 
@@ -146,7 +147,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTotalMembers);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblHeading);
             this.Name = "frmManageScreen";
@@ -165,7 +166,7 @@
         protected System.Windows.Forms.Label label2;
         protected System.Windows.Forms.Label lblTotalMembers;
         protected System.Windows.Forms.Label label3;
-        protected System.Windows.Forms.Button button1;
+        protected System.Windows.Forms.Button btnClose;
         protected System.Windows.Forms.Button btnAdd;
         protected System.Windows.Forms.Label lblHeading;
     }

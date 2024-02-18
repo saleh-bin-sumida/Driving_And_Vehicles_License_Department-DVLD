@@ -1,6 +1,6 @@
 ﻿namespace DVLD
 {
-    partial class frmManage_LDL_Applications
+    partial class frmManage_NewLDLApplications
     {
         /// <summary>
         /// Required designer variable.
@@ -39,9 +39,9 @@
             this.txtFilterExpressions.TextChanged += new System.EventHandler(this.txtFilterExpressions_TextChanged);
             this.txtFilterExpressions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterExpressions_KeyPress);
             // 
-            // button1
+            // btnClose
             // 
-            this.button1.Click += new System.EventHandler(this.btnClose_click);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_click);
             // 
             // btnAdd
             // 
@@ -50,7 +50,9 @@
             // 
             // lblHeading
             // 
-            this.lblHeading.Location = new System.Drawing.Point(347, 9);
+            this.lblHeading.Location = new System.Drawing.Point(258, 27);
+            this.lblHeading.Size = new System.Drawing.Size(673, 43);
+            this.lblHeading.Text = "Manage Local Driving License Applications";
             // 
             // frmManage_LDL_Applications
             // 

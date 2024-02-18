@@ -1,5 +1,6 @@
 ﻿using System;
 using DVLD_BusinessLayer;
+using DVLD_BusinessLayer.Application;
 using System.Windows.Forms;
 
 namespace DVLD
@@ -9,7 +10,7 @@ namespace DVLD
         enum Mode { Addnew = 1, Update =2};
         Mode mode;
 
-        cls_LDL_Application _LDLapp;
+        cls_NewLDLApplication _LDLapp;
 
         int _LDLappID;
         public frmAddUpdate_LDL_Application(int LDLapp)
@@ -21,12 +22,12 @@ namespace DVLD
             if (this._LDLappID == -1)
             {
                 mode = Mode.Addnew;
-                _LDLapp = new cls_LDL_Application();
+                _LDLapp = new cls_NewLDLApplication();
             }
             else
             {
                 mode = Mode.Update;
-                _LDLapp = cls_LDL_Application.Find(this._LDLappID);
+                _LDLapp = cls_NewLDLApplication.Find(this._LDLappID);
             }
 
         }
@@ -38,7 +39,7 @@ namespace DVLD
 
             if (mode == Mode.Addnew)
             {
-                 _LDLapp = new cls_LDL_Application();
+                 _LDLapp = new cls_NewLDLApplication();
                 cbxLicenseClasses.SelectedIndex = _LDLapp.LicenseClassID ;
 
             }
@@ -46,7 +47,7 @@ namespace DVLD
             {
                 lblHeading.Text = "Update Local Drving License Application";
                 ctrlPersonCardwithFilter1._LoadPersonCardwithFilterData(_LDLapp.ApplicantPersonID);
-                _LDLapp = cls_LDL_Application.Find(_LDLappID);
+                _LDLapp = cls_NewLDLApplication.Find(_LDLappID);
                 cbxLicenseClasses.SelectedIndex = _LDLapp.LicenseClassID + 1;
                 
             }
