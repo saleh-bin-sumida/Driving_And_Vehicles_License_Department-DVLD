@@ -94,11 +94,23 @@
     <Compile Include="frmAddUpdate_NewLDLApplication.Designer.cs">
       <DependentUpon>frmAddUpdate_NewLDLApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManagePeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManagePeople.Designer.cs">
+      <DependentUpon>frmManagePeople.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmManageScreen.Designer.cs">
       <DependentUpon>frmManageScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageUsers.Designer.cs">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManage_NewLDLApplications.cs">
       <SubType>Form</SubType>
@@ -129,12 +141,6 @@
     </Compile>
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmManagePeopleUsers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmManagePeopleUsers.Designer.cs">
-      <DependentUpon>frmManagePeopleUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,8 +174,14 @@
     <EmbeddedResource Include="frmAddUpdate_NewLDLApplication.resx">
       <DependentUpon>frmAddUpdate_NewLDLApplication.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmManagePeople.resx">
+      <DependentUpon>frmManagePeople.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmManageScreen.resx">
       <DependentUpon>frmManageScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageUsers.resx">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManage_NewLDLApplications.resx">
       <DependentUpon>frmManage_NewLDLApplications.cs</DependentUpon>
@@ -185,9 +197,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmManagePeopleUsers.resx">
-      <DependentUpon>frmManagePeopleUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

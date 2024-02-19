@@ -61,7 +61,6 @@
             this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Name = "frmManage_LDL_Applications";
             this.Text = "frmManage_LDL_Applications";
-            this.Load += new System.EventHandler(this.frmManage_LDL_Applications_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

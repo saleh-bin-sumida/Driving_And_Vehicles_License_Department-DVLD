@@ -6,8 +6,8 @@ namespace DVLD_BusinessLayer
 {
     public class clsPerson
     {
-        public enum Mode { AddNew = 0, Update = 1 }
-        public Mode mode;
+        protected enum Mode { AddNew = 0, Update = 1 }
+        protected Mode mode;
         public int PersonID { get; set; }
         public string NationalNo { get; set; }
         public string FirstName { get; set; }

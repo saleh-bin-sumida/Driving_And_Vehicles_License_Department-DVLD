@@ -29,13 +29,7 @@ namespace DVLD
 
         }
 
-        private void tsmManagePeople_Click(object sender, EventArgs e)
-        {
-
-            frmManagePeopleUsers frm = new frmManagePeopleUsers(((ToolStripMenuItem)sender).Text);
-            frm.ShowDialog();
-
-        }
+      
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -85,12 +79,26 @@ namespace DVLD
 
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
- 
+            frmManagePeople f = new frmManagePeople();
+            f.ShowDialog();
         }
 
         private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManage_NewLDLApplications frm = new frmManage_NewLDLApplications();
+            frm.ShowDialog();
+        }
+
+        private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManagePeople frm = new frmManagePeople();
+            frm.ShowDialog();
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            frmManageUsers frm = new frmManageUsers();
             frm.ShowDialog();
         }
     }

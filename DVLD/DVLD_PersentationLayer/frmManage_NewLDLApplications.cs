@@ -7,7 +7,7 @@ namespace DVLD
 {
     public partial class frmManage_NewLDLApplications : frmManageScreen
     {
-        private DataTable _dt;
+       // private DataTable _dt;
         public frmManage_NewLDLApplications() : base()
         {
   

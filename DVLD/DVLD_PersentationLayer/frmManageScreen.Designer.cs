@@ -53,6 +53,7 @@
             this.DataGridView.RowTemplate.Height = 26;
             this.DataGridView.Size = new System.Drawing.Size(1148, 377);
             this.DataGridView.TabIndex = 23;
+            this.DataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView_CellMouseClick);
             // 
             // cbxFilter
             // 
@@ -72,6 +73,7 @@
             this.txtFilterExpressions.Name = "txtFilterExpressions";
             this.txtFilterExpressions.Size = new System.Drawing.Size(226, 28);
             this.txtFilterExpressions.TabIndex = 2;
+            this.txtFilterExpressions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterExpressions_KeyPress);
             // 
             // label2
             // 

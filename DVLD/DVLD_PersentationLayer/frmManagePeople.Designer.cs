@@ -1,0 +1,195 @@
+﻿namespace DVLD
+{
+    partial class frmManagePeople
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.cbxExpressions = new System.Windows.Forms.ComboBox();
+            this.cmsManagePeople = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmShowDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmAddPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmEditPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDeletePerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmMakeCall = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmSendEmail = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsManagePeople.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // cbxFilter
+            // 
+            this.cbxFilter.Items.AddRange(new object[] {
+            "None",
+            "PersonID",
+            "NationalNo",
+            "FirstName",
+            "SecondName",
+            "ThridName",
+            "LastName",
+            "Gender",
+            "CountryName",
+            "Address"});
+            this.cbxFilter.SelectedIndexChanged += new System.EventHandler(this.cbxFilter_SelectedIndexChanged);
+            // 
+            // txtFilterExpressions
+            // 
+            this.txtFilterExpressions.TextChanged += new System.EventHandler(this.txtFilterExpressions_TextChanged);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lblHeading
+            // 
+            this.lblHeading.Location = new System.Drawing.Point(446, 30);
+            this.lblHeading.Size = new System.Drawing.Size(253, 43);
+            this.lblHeading.Text = "Manage People";
+            // 
+            // cbxExpressions
+            // 
+            this.cbxExpressions.Font = new System.Drawing.Font("Tahoma", 10.8F);
+            this.cbxExpressions.FormattingEnabled = true;
+            this.cbxExpressions.Items.AddRange(new object[] {
+            "All",
+            "Male",
+            "Female"});
+            this.cbxExpressions.Location = new System.Drawing.Point(400, 182);
+            this.cbxExpressions.Name = "cbxExpressions";
+            this.cbxExpressions.Size = new System.Drawing.Size(249, 30);
+            this.cbxExpressions.TabIndex = 24;
+            this.cbxExpressions.Visible = false;
+            this.cbxExpressions.SelectedIndexChanged += new System.EventHandler(this.cbxExpressions_SelectedIndexChanged);
+            // 
+            // cmsManagePeople
+            // 
+            this.cmsManagePeople.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsManagePeople.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmShowDetails,
+            this.toolStripSeparator1,
+            this.tsmAddPerson,
+            this.tsmEditPerson,
+            this.tsmDeletePerson,
+            this.toolStripSeparator2,
+            this.tsmMakeCall,
+            this.tsmSendEmail});
+            this.cmsManagePeople.Name = "cmsManagePeople";
+            this.cmsManagePeople.Size = new System.Drawing.Size(165, 160);
+            // 
+            // tsmShowDetails
+            // 
+            this.tsmShowDetails.Name = "tsmShowDetails";
+            this.tsmShowDetails.Size = new System.Drawing.Size(164, 24);
+            this.tsmShowDetails.Text = "Show Details";
+            this.tsmShowDetails.Click += new System.EventHandler(this.tsmShowDetails_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
+            // 
+            // tsmAddPerson
+            // 
+            this.tsmAddPerson.Name = "tsmAddPerson";
+            this.tsmAddPerson.Size = new System.Drawing.Size(164, 24);
+            this.tsmAddPerson.Text = "Add Person";
+            this.tsmAddPerson.Click += new System.EventHandler(this.tsmAddPerson_Click);
+            // 
+            // tsmEditPerson
+            // 
+            this.tsmEditPerson.Name = "tsmEditPerson";
+            this.tsmEditPerson.Size = new System.Drawing.Size(164, 24);
+            this.tsmEditPerson.Text = "Edit";
+            this.tsmEditPerson.Click += new System.EventHandler(this.tsmEditPerson_Click);
+            // 
+            // tsmDeletePerson
+            // 
+            this.tsmDeletePerson.Name = "tsmDeletePerson";
+            this.tsmDeletePerson.Size = new System.Drawing.Size(164, 24);
+            this.tsmDeletePerson.Text = "Delete";
+            this.tsmDeletePerson.Click += new System.EventHandler(this.tsmDeletePerson_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
+            // 
+            // tsmMakeCall
+            // 
+            this.tsmMakeCall.Name = "tsmMakeCall";
+            this.tsmMakeCall.Size = new System.Drawing.Size(164, 24);
+            this.tsmMakeCall.Text = "Make Call";
+            // 
+            // tsmSendEmail
+            // 
+            this.tsmSendEmail.Name = "tsmSendEmail";
+            this.tsmSendEmail.Size = new System.Drawing.Size(164, 24);
+            this.tsmSendEmail.Text = "Send Email";
+            // 
+            // frmManagePeople
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.Controls.Add(this.cbxExpressions);
+            this.Name = "frmManagePeople";
+            this.Text = "frmManagePeople";
+            this.Load += new System.EventHandler(this.frmManagePeople_Load_2);
+            this.Controls.SetChildIndex(this.lblHeading, 0);
+            this.Controls.SetChildIndex(this.btnAdd, 0);
+            this.Controls.SetChildIndex(this.btnClose, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.lblTotalMembers, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.txtFilterExpressions, 0);
+            this.Controls.SetChildIndex(this.cbxFilter, 0);
+            this.Controls.SetChildIndex(this.cbxExpressions, 0);
+            this.cmsManagePeople.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.ComboBox cbxExpressions;
+        private System.Windows.Forms.ContextMenuStrip cmsManagePeople;
+        private System.Windows.Forms.ToolStripMenuItem tsmShowDetails;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tsmAddPerson;
+        private System.Windows.Forms.ToolStripMenuItem tsmEditPerson;
+        private System.Windows.Forms.ToolStripMenuItem tsmDeletePerson;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem tsmMakeCall;
+        private System.Windows.Forms.ToolStripMenuItem tsmSendEmail;
+    }
+}
