@@ -137,37 +137,25 @@ namespace DVLD_DataAccessLayer
 
 
 
-        public static bool Update_NewLDLApplication(int LocalDrivingLicenseApplicationID,int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
-            int ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int LicenseClassID)
+        public static bool Update_NewLDLApplication(int LocalDrivingLicenseApplicationID,int ApplicationPesonID, int LicenseClassID)
         {
 
             int rowsAffected = 0;
 
-            if (!clsApplications_Data.UpdateApplication(ApplicationID,ApplicantPersonID,ApplicationDate,ApplicationTypeID,
-                ApplicationStatus,LastStatusDate,PaidFees,CreatedByUserID))
-            {
+            if (PersonHasValid_NewLDLApplication(ApplicationPesonID,LicenseClassID))
                 return false;
-            }
+
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"UPDATE [dbo].[LocalDrivingLicenseApplications]
-                           SET [ApplicationID] = @ApplicationID
-                              ,[LicenseClassID] = @LicenseClassID
-                          WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID";
+                           SET [LicenseClassID] = @LicenseClassID
+                          WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-
-
-
-
-
-
-
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
 
             try
             {
@@ -292,7 +280,7 @@ namespace DVLD_DataAccessLayer
             string query = @"
 				  select Found = 1 from Applications
 				  inner join LocalDrivingLicenseApplications on 
-				  Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID where ApplicantPersonID = 2040
+				  Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID where ApplicantPersonID = @ApplicantPersonID
 				  and Applications.ApplicationTypeID = 1 and LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID and Applications.ApplicationStatus =1
 ";
 

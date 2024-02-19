@@ -36,9 +36,7 @@ namespace DVLD_BusinessLayer.Application
             return this.LDL_ApplicationID != -1;
         }
 
-        private bool _Update() =>
-            cls_NewLDLApplications_Data.Update_NewLDLApplication(this.LDL_ApplicationID, ApplicationID, ApplicantPersonID, ApplicationDate,
-                ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID, LicenseClassID);
+        private bool _Update() => cls_NewLDLApplications_Data.Update_NewLDLApplication(this.LDL_ApplicationID,ApplicantPersonID, LicenseClassID);
 
 
         public static cls_NewLDLApplication Find(int LDL_ApplicationID)

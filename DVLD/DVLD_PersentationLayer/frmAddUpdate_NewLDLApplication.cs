@@ -28,6 +28,7 @@ namespace DVLD
             {
                 mode = Mode.Update;
                 _LDLapp = cls_NewLDLApplication.Find(this._LDLappID);
+                
             }
 
         }
@@ -77,7 +78,8 @@ namespace DVLD
 
             if (_LDLapp.Save())
             {
-                lblHeading.Text = "Update Local Drving License Application"; 
+                lblHeading.Text = "Update Local Drving License Application";
+                ctrlPersonCardwithFilter1.HideFilter();
                 MessageBox.Show("The Application Saved Succesfully", "saving application");
                 return;
 

@@ -88,11 +88,11 @@
     <Compile Include="frmManageApplicationsAndTests.Designer.cs">
       <DependentUpon>frmManageApplicationsAndTests.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddUpdate_LDL_Application.cs">
+    <Compile Include="frmAddUpdate_NewLDLApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddUpdate_LDL_Application.Designer.cs">
-      <DependentUpon>frmAddUpdate_LDL_Application.cs</DependentUpon>
+    <Compile Include="frmAddUpdate_NewLDLApplication.Designer.cs">
+      <DependentUpon>frmAddUpdate_NewLDLApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManageScreen.cs">
       <SubType>Form</SubType>
@@ -165,8 +165,8 @@
     <EmbeddedResource Include="frmManageApplicationsAndTests.resx">
       <DependentUpon>frmManageApplicationsAndTests.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddUpdate_LDL_Application.resx">
-      <DependentUpon>frmAddUpdate_LDL_Application.cs</DependentUpon>
+    <EmbeddedResource Include="frmAddUpdate_NewLDLApplication.resx">
+      <DependentUpon>frmAddUpdate_NewLDLApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageScreen.resx">
       <DependentUpon>frmManageScreen.cs</DependentUpon>

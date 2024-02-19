@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbxUsersFilter = new System.Windows.Forms.GroupBox();
+            this.gbxPersonFilter = new System.Windows.Forms.GroupBox();
             this.btnSelect = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.txtFilterExpressions = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbxFilter = new System.Windows.Forms.ComboBox();
             this.ctrlPersonCard1 = new DVLD.ctrlPersonCard();
-            this.gbxUsersFilter.SuspendLayout();
+            this.gbxPersonFilter.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gbxUsersFilter
+            // gbxPersonFilter
             // 
-            this.gbxUsersFilter.Controls.Add(this.btnSelect);
-            this.gbxUsersFilter.Controls.Add(this.button2);
-            this.gbxUsersFilter.Controls.Add(this.txtFilterExpressions);
-            this.gbxUsersFilter.Controls.Add(this.label2);
-            this.gbxUsersFilter.Controls.Add(this.cbxFilter);
-            this.gbxUsersFilter.Location = new System.Drawing.Point(3, 3);
-            this.gbxUsersFilter.Name = "gbxUsersFilter";
-            this.gbxUsersFilter.Size = new System.Drawing.Size(985, 74);
-            this.gbxUsersFilter.TabIndex = 10;
-            this.gbxUsersFilter.TabStop = false;
-            this.gbxUsersFilter.Text = "Filter";
+            this.gbxPersonFilter.Controls.Add(this.btnSelect);
+            this.gbxPersonFilter.Controls.Add(this.button2);
+            this.gbxPersonFilter.Controls.Add(this.txtFilterExpressions);
+            this.gbxPersonFilter.Controls.Add(this.label2);
+            this.gbxPersonFilter.Controls.Add(this.cbxFilter);
+            this.gbxPersonFilter.Location = new System.Drawing.Point(3, 3);
+            this.gbxPersonFilter.Name = "gbxPersonFilter";
+            this.gbxPersonFilter.Size = new System.Drawing.Size(985, 74);
+            this.gbxPersonFilter.TabIndex = 10;
+            this.gbxPersonFilter.TabStop = false;
+            this.gbxPersonFilter.Text = "Filter";
             // 
             // btnSelect
             // 
@@ -116,19 +116,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ctrlPersonCard1);
-            this.Controls.Add(this.gbxUsersFilter);
+            this.Controls.Add(this.gbxPersonFilter);
             this.Name = "ctrlPersonCardwithFilter";
             this.Size = new System.Drawing.Size(993, 446);
             this.Load += new System.EventHandler(this.ctrlPersonCardwithFilter_Load);
-            this.gbxUsersFilter.ResumeLayout(false);
-            this.gbxUsersFilter.PerformLayout();
+            this.gbxPersonFilter.ResumeLayout(false);
+            this.gbxPersonFilter.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gbxUsersFilter;
+        private System.Windows.Forms.GroupBox gbxPersonFilter;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtFilterExpressions;

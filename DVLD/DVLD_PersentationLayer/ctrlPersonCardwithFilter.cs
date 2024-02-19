@@ -15,6 +15,7 @@ namespace DVLD
                 handler(PersonID);
             }
         }
+
         public string PersonID { get { return ctrlPersonCard1.PersonID; } }
 
 
@@ -25,6 +26,10 @@ namespace DVLD
         }
 
      
+        public void HideFilter()
+        {
+            gbxPersonFilter.Hide();
+        }
 
         private void AddnewPerson_Click(object sender, EventArgs e)
         {
