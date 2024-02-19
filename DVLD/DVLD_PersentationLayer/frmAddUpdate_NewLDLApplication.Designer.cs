@@ -1,6 +1,6 @@
 ﻿namespace DVLD
 {
-    partial class frmAddUpdate_LDL_Application
+    partial class frmAddUpdate_NewLDLApplication
     {
         /// <summary>
         /// Required designer variable.

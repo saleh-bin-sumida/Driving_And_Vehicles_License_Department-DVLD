@@ -21,7 +21,7 @@ namespace DVLD
      
         private void tsmNewLocalLicense_Click(object sender, EventArgs e)
         {
-            frmAddUpdate_LDL_Application frm = new frmAddUpdate_LDL_Application(-1);
+            frmAddUpdate_NewLDLApplication frm = new frmAddUpdate_NewLDLApplication(-1);
             frm.ShowDialog();
         }
         private void tsmInternationalLicense_Click(object sender, EventArgs e)
