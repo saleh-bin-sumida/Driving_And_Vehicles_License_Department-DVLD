@@ -53,7 +53,6 @@
             this.DataGridView.RowTemplate.Height = 26;
             this.DataGridView.Size = new System.Drawing.Size(1148, 377);
             this.DataGridView.TabIndex = 23;
-            this.DataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView_CellMouseClick);
             // 
             // cbxFilter
             // 
@@ -162,7 +161,7 @@
 
         #endregion
 
-          protected System.Windows.Forms.DataGridView DataGridView;
+        protected System.Windows.Forms.DataGridView DataGridView;
         protected System.Windows.Forms.ComboBox cbxFilter;
         protected System.Windows.Forms.TextBox txtFilterExpressions;
         protected System.Windows.Forms.Label label2;

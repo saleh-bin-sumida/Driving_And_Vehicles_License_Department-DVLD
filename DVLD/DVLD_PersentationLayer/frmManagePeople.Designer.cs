@@ -1,4 +1,6 @@
-﻿namespace DVLD
+﻿using System.Threading;
+
+namespace DVLD
 {
     partial class frmManagePeople
     {
@@ -33,9 +35,9 @@
             this.cmsManagePeople = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmShowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmAddPerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEditPerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmDeletePerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmMakeCall = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSendEmail = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,12 +63,9 @@
             // 
             this.txtFilterExpressions.TextChanged += new System.EventHandler(this.txtFilterExpressions_TextChanged);
             // 
-            // btnClose
-            // 
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // btnAdd
             // 
+            this.btnAdd.Text = "Add Person";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblHeading
@@ -96,9 +95,9 @@
             this.cmsManagePeople.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmShowDetails,
             this.toolStripSeparator1,
-            this.tsmAddPerson,
-            this.tsmEditPerson,
-            this.tsmDeletePerson,
+            this.tsmAdd,
+            this.tsmEdit,
+            this.tsmDelete,
             this.toolStripSeparator2,
             this.tsmMakeCall,
             this.tsmSendEmail});
@@ -108,35 +107,35 @@
             // tsmShowDetails
             // 
             this.tsmShowDetails.Name = "tsmShowDetails";
-            this.tsmShowDetails.Size = new System.Drawing.Size(164, 24);
+            this.tsmShowDetails.Size = new System.Drawing.Size(210, 24);
             this.tsmShowDetails.Text = "Show Details";
-            this.tsmShowDetails.Click += new System.EventHandler(this.tsmShowDetails_Click);
+            this.tsmShowDetails.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
             // 
-            // tsmAddPerson
+            // tsmAdd
             // 
-            this.tsmAddPerson.Name = "tsmAddPerson";
-            this.tsmAddPerson.Size = new System.Drawing.Size(164, 24);
-            this.tsmAddPerson.Text = "Add Person";
-            this.tsmAddPerson.Click += new System.EventHandler(this.tsmAddPerson_Click);
+            this.tsmAdd.Name = "tsmAdd";
+            this.tsmAdd.Size = new System.Drawing.Size(210, 24);
+            this.tsmAdd.Text = "Add Person";
+            this.tsmAdd.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
-            // tsmEditPerson
+            // tsmEdit
             // 
-            this.tsmEditPerson.Name = "tsmEditPerson";
-            this.tsmEditPerson.Size = new System.Drawing.Size(164, 24);
-            this.tsmEditPerson.Text = "Edit";
-            this.tsmEditPerson.Click += new System.EventHandler(this.tsmEditPerson_Click);
+            this.tsmEdit.Name = "tsmEdit";
+            this.tsmEdit.Size = new System.Drawing.Size(210, 24);
+            this.tsmEdit.Text = "Edit";
+            this.tsmEdit.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
-            // tsmDeletePerson
+            // tsmDelete
             // 
-            this.tsmDeletePerson.Name = "tsmDeletePerson";
-            this.tsmDeletePerson.Size = new System.Drawing.Size(164, 24);
-            this.tsmDeletePerson.Text = "Delete";
-            this.tsmDeletePerson.Click += new System.EventHandler(this.tsmDeletePerson_Click);
+            this.tsmDelete.Name = "tsmDelete";
+            this.tsmDelete.Size = new System.Drawing.Size(210, 24);
+            this.tsmDelete.Text = "Delete";
+            this.tsmDelete.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // toolStripSeparator2
             // 
@@ -146,14 +145,16 @@
             // tsmMakeCall
             // 
             this.tsmMakeCall.Name = "tsmMakeCall";
-            this.tsmMakeCall.Size = new System.Drawing.Size(164, 24);
+            this.tsmMakeCall.Size = new System.Drawing.Size(210, 24);
             this.tsmMakeCall.Text = "Make Call";
+            this.tsmMakeCall.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // tsmSendEmail
             // 
             this.tsmSendEmail.Name = "tsmSendEmail";
             this.tsmSendEmail.Size = new System.Drawing.Size(164, 24);
             this.tsmSendEmail.Text = "Send Email";
+            this.tsmSendEmail.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // frmManagePeople
             // 
@@ -185,9 +186,9 @@
         private System.Windows.Forms.ContextMenuStrip cmsManagePeople;
         private System.Windows.Forms.ToolStripMenuItem tsmShowDetails;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem tsmAddPerson;
-        private System.Windows.Forms.ToolStripMenuItem tsmEditPerson;
-        private System.Windows.Forms.ToolStripMenuItem tsmDeletePerson;
+        private System.Windows.Forms.ToolStripMenuItem tsmAdd;
+        private System.Windows.Forms.ToolStripMenuItem tsmEdit;
+        private System.Windows.Forms.ToolStripMenuItem tsmDelete;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmMakeCall;
         private System.Windows.Forms.ToolStripMenuItem tsmSendEmail;

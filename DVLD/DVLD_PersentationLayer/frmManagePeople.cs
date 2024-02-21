@@ -1,6 +1,7 @@
 ﻿
 using DVLD_BusinessLayer;
 using System;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Windows.Forms;
 
@@ -11,6 +12,7 @@ namespace DVLD
         public frmManagePeople() : base()
         {
             InitializeComponent();
+            base.DataGridView.CellMouseClick += CellMouseClick_dataGridVeiew; 
         }
 
 
@@ -61,62 +63,20 @@ namespace DVLD
             
         }
 
-     
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void CellMouseClick_dataGridVeiew(object sender, DataGridViewCellMouseEventArgs e)
         {
-            this.Close();
-        }
-
-        private void frmManagePeople_Load(object sender, EventArgs e)
-        {
-            _RefreshDataGridView();
-
-        }
-
-        private void tsmShowDetails_Click(object sender, EventArgs e)
-        {
-            int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-            
-            frmShowPersonInfo frmShowPersonInfo = new frmShowPersonInfo(ID);
-            frmShowPersonInfo.ShowDialog();
-
-            _RefreshDataGridView();
-        }
-
-        private void tsmAddPerson_Click(object sender, EventArgs e)
-        {
-            btnAdd_Click(sender, e);
-
-        }
-
-        private void tsmEditPerson_Click(object sender, EventArgs e)
-        {
-            int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-            
-            frmAddUpdatePerson frmPeople = new frmAddUpdatePerson(ID);
-            frmPeople.ShowDialog();
-
-            _RefreshDataGridView();
-        }
-
-        private void tsmDeletePerson_Click(object sender, EventArgs e)
-        {
-            int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-
-            if (MessageBox.Show($"Do you want to delete the Person with ID {ID} ?", "Deleting Person",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (e.Button == MouseButtons.Right)
             {
-              
-                if (clsPerson.DeletePerson(ID))
-                    MessageBox.Show($"person with ID {ID} deleted succesfully");
-                else
-                    MessageBox.Show($"person with ID {ID} falid to delete, cuz referneced in other data");
+                DataGridView.ClearSelection();
+                DataGridView.Rows[e.RowIndex].Selected = true;
+                this.cmsManagePeople.Show(DataGridView, e.Location);
+
+
             }
-            _RefreshDataGridView();
         }
 
-   
+
 
         private void frmManagePeople_Load_2(object sender, EventArgs e)
         {
@@ -145,5 +105,45 @@ namespace DVLD
 
             dv.RowFilter = $"{_selectedFilter} LIKE '%{txtFilterExpressions.Text}%'";
         }
+
+        
+
+        
+        private void toolStripMeune_Clicked(object sender, EventArgs e)
+        {
+            int ID = (int) DataGridView.CurrentRow.Cells[0].Value;
+            
+
+            switch ( ((ToolStripMenuItem)sender).Name.ToString() )
+            {
+                case "tsmShowDetails":
+                    frmShowPersonInfo ShowForm = new frmShowPersonInfo(ID);
+                    ShowForm.ShowDialog();
+                    break;
+
+                case "tsmAdd":
+                    btnAdd_Click(sender, e);
+                    break;
+
+                case "tsmEdit":
+                    frmAddUpdatePerson EditForm = new frmAddUpdatePerson(ID);
+                    EditForm.ShowDialog();
+                    break;
+
+                case "tsmDelete":
+
+                    if (MessageBox.Show("R U sure To delete this Person?", "Deleting Person", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        if (clsPerson.DeletePerson(ID))
+                            MessageBox.Show("Person Deleted Succesfully");
+                        else
+                            MessageBox.Show("this Person Liked with application on this system, Cant be deleted");
+                    }
+                    break;
+            }
+
+            _RefreshDataGridView();
+        }
+
     }
 }

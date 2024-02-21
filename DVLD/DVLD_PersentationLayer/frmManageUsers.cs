@@ -11,6 +11,8 @@ namespace DVLD
         public frmManageUsers(): base() 
         {
             InitializeComponent();
+            base.DataGridView.CellMouseClick += CellMouseClick_dataGridVeiew;
+
         }
 
 
@@ -19,6 +21,7 @@ namespace DVLD
             this._dt = clsUser.GetAllUsers();
             DataGridView.DataSource = _dt;
             lblTotalMembers.Text = DataGridView.Rows.Count.ToString();
+            
         }
 
         private void cbxFilter_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -50,7 +53,6 @@ namespace DVLD
             
         }
 
-    
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -60,57 +62,18 @@ namespace DVLD
             _RefreshDataGridView();
         }
 
-        private void frmManageUsers_Load(object sender, EventArgs e)
+
+        private void CellMouseClick_dataGridVeiew(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //cbxFilter.DataSource = new object[] { "None", "UserID", "PersonID", "Full Name", "Username", "Active" };
-            //cbxExpressions.DataSource = new object[] { "All", "Active", "Not Active" };
-            _RefreshDataGridView();
-        }
-
-        private void tsmShowDetails_Click(object sender, EventArgs e)
-        {
-            int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-       
-            frmShowUserInfo frm = new frmShowUserInfo(ID);
-            frm.ShowDialog();
-            
-
-            _RefreshDataGridView();
-        }
-
-        private void tsmAddUser_Click(object sender, EventArgs e)
-        {
-           btnAdd_Click(sender, e); 
-        }
-
-        private void tsmEditUser_Click(object sender, EventArgs e)
-        {
-            int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-    
-            frmAddUpdateUser frmUsers = new frmAddUpdateUser(ID);
-            frmUsers.ShowDialog();
-           
-
-            _RefreshDataGridView();
-        }
-
-        private void tsmDeleteUser_Click(object sender, EventArgs e)
-        {
-            int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-
-
-            if (MessageBox.Show($"Do you want to delete the User with ID {ID} ?", "Deleting User",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (e.Button == MouseButtons.Right)
             {
-                if (clsUser.DeleteUser(ID))
-                    MessageBox.Show($"user with ID {ID} deleted succesfully");
-                else
-                    MessageBox.Show($"user with ID {ID} falid to delete, cuz referneced in other data");
+                DataGridView.ClearSelection();
+                DataGridView.Rows[e.RowIndex].Selected = true;
+                this.cmsManageUsers.Show(DataGridView, e.Location);
+
+
             }
-
-            _RefreshDataGridView();
         }
-
   
 
         private void frmManageUsers_Load_2(object sender, EventArgs e)
@@ -140,5 +103,41 @@ namespace DVLD
 
             dv.RowFilter = $"{_selectedFilter} LIKE '%{txtFilterExpressions.Text}%'";
         }
+
+        private void toolStripMeune_Clicked(object sender, EventArgs e)
+        {
+            int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
+
+
+            switch (((ToolStripMenuItem)sender).Name.ToString())
+            {
+                case "tsmShowDetails":
+                    frmShowUserInfo ShowForm = new frmShowUserInfo(ID);
+                    ShowForm.ShowDialog();
+                    break;
+
+                case "tsmAdd":
+                    btnAdd_Click(sender, e);
+                    break;
+
+                case "tsmEdit":
+                    frmAddUpdateUser EditForm = new frmAddUpdateUser(ID);
+                    EditForm.ShowDialog();
+                    break;
+
+                case "tsmDelete":
+
+                    if (MessageBox.Show("R U sure To delete this User?", "Deleting User", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        if (clsPerson.DeletePerson(ID))
+                            MessageBox.Show("User Deleted Succesfully");
+                        else
+                            MessageBox.Show("this User Liked with application on this system, Cant be deleted");
+                    }
+                    break;
+            }
+
+            _RefreshDataGridView();
+        }   
     }
 }

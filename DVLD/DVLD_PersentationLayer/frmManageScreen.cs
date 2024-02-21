@@ -40,15 +40,5 @@ namespace DVLD
             }
         }
 
-        private void DataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                DataGridView.ClearSelection();
-                DataGridView.Rows[e.RowIndex].Selected = true;
-                //contextMenueStrip.Show(DataGridView, e.Location);
-
-            }
-        }
     }
 }
