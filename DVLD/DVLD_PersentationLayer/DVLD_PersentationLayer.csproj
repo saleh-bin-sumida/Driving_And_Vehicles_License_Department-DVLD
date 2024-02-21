@@ -82,40 +82,46 @@
     <Compile Include="frmLoginPage.Designer.cs">
       <DependentUpon>frmLoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmManageApplicationsAndTests.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmManageApplicationsAndTests.Designer.cs">
-      <DependentUpon>frmManageApplicationsAndTests.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmAddUpdate_NewLDLApplication.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAddUpdate_NewLDLApplication.Designer.cs">
       <DependentUpon>frmAddUpdate_NewLDLApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmManagePeople.cs">
+    <Compile Include="ManageScreens\frmManageTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManagePeople.Designer.cs">
+    <Compile Include="ManageScreens\frmManageTestTypes.Designer.cs">
+      <DependentUpon>frmManageTestTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageScreens\frmManageApplicationTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageScreens\frmManageApplicationTypes.Designer.cs">
+      <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageScreens\frmManagePeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageScreens\frmManagePeople.Designer.cs">
       <DependentUpon>frmManagePeople.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmManageScreen.cs">
+    <Compile Include="ManageScreens\frmManageScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManageScreen.Designer.cs">
+    <Compile Include="ManageScreens\frmManageScreen.Designer.cs">
       <DependentUpon>frmManageScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmManageUsers.cs">
+    <Compile Include="ManageScreens\frmManageUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManageUsers.Designer.cs">
+    <Compile Include="ManageScreens\frmManageUsers.Designer.cs">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmManage_NewLDLApplications.cs">
+    <Compile Include="ManageScreens\frmManage_NewLDLApplications.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManage_NewLDLApplications.Designer.cs">
+    <Compile Include="ManageScreens\frmManage_NewLDLApplications.Designer.cs">
       <DependentUpon>frmManage_NewLDLApplications.cs</DependentUpon>
     </Compile>
     <Compile Include="frmShowPersonInfo.cs">
@@ -168,22 +174,25 @@
     <EmbeddedResource Include="frmLoginPage.resx">
       <DependentUpon>frmLoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManageApplicationsAndTests.resx">
-      <DependentUpon>frmManageApplicationsAndTests.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmAddUpdate_NewLDLApplication.resx">
       <DependentUpon>frmAddUpdate_NewLDLApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManagePeople.resx">
+    <EmbeddedResource Include="ManageScreens\frmManageTestTypes.resx">
+      <DependentUpon>frmManageTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageScreens\frmManageApplicationTypes.resx">
+      <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageScreens\frmManagePeople.resx">
       <DependentUpon>frmManagePeople.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManageScreen.resx">
+    <EmbeddedResource Include="ManageScreens\frmManageScreen.resx">
       <DependentUpon>frmManageScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManageUsers.resx">
+    <EmbeddedResource Include="ManageScreens\frmManageUsers.resx">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManage_NewLDLApplications.resx">
+    <EmbeddedResource Include="ManageScreens\frmManage_NewLDLApplications.resx">
       <DependentUpon>frmManage_NewLDLApplications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmShowPersonInfo.resx">

@@ -62,13 +62,13 @@ namespace DVLD
 
         private void tsmManageApplicationTypes_Click(object sender, EventArgs e)
         {
-            frmManageApplicationsAndTests frm = new frmManageApplicationsAndTests("ManageApplicationsTypes");
+            frmManageApplicationTypes frm = new frmManageApplicationTypes();
             frm.ShowDialog();
         }
 
         private void tsmManageTestsTypes_Click(object sender, EventArgs e)
         {
-            frmManageApplicationsAndTests frm = new frmManageApplicationsAndTests("ManageTestsTypes");
+            frmManageTestTypes frm = new frmManageTestTypes();
             frm.ShowDialog();
         }
 

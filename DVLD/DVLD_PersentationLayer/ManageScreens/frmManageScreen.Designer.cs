@@ -31,7 +31,7 @@
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.cbxFilter = new System.Windows.Forms.ComboBox();
             this.txtFilterExpressions = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblFilterBy = new System.Windows.Forms.Label();
             this.lblTotalMembers = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -74,16 +74,16 @@
             this.txtFilterExpressions.TabIndex = 2;
             this.txtFilterExpressions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterExpressions_KeyPress);
             // 
-            // label2
+            // lblFilterBy
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 182);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 26);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Filter by : ";
+            this.lblFilterBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblFilterBy.AutoSize = true;
+            this.lblFilterBy.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFilterBy.Location = new System.Drawing.Point(34, 182);
+            this.lblFilterBy.Name = "lblFilterBy";
+            this.lblFilterBy.Size = new System.Drawing.Size(105, 26);
+            this.lblFilterBy.TabIndex = 20;
+            this.lblFilterBy.Text = "Filter by : ";
             // 
             // lblTotalMembers
             // 
@@ -145,7 +145,7 @@
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.cbxFilter);
             this.Controls.Add(this.txtFilterExpressions);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblFilterBy);
             this.Controls.Add(this.lblTotalMembers);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnClose);
@@ -164,7 +164,7 @@
         protected System.Windows.Forms.DataGridView DataGridView;
         protected System.Windows.Forms.ComboBox cbxFilter;
         protected System.Windows.Forms.TextBox txtFilterExpressions;
-        protected System.Windows.Forms.Label label2;
+        protected System.Windows.Forms.Label lblFilterBy;
         protected System.Windows.Forms.Label lblTotalMembers;
         protected System.Windows.Forms.Label label3;
         protected System.Windows.Forms.Button btnClose;
