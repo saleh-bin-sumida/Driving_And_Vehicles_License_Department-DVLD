@@ -15,6 +15,9 @@ namespace DVLD
         public frmManageScreen()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            cbxFilter.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 

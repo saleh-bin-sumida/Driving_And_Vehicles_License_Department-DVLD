@@ -11,6 +11,9 @@ namespace DVLD
         {
             InitializeComponent();
             _UserID = UserID;
+
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
         }
 
         private void frmShowUserInfo_Load(object sender, System.EventArgs e)

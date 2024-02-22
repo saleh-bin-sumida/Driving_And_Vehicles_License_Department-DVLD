@@ -16,6 +16,8 @@ namespace DVLD
         public Home()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
         }
 
      

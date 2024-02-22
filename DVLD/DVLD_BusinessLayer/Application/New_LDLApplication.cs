@@ -28,7 +28,7 @@ namespace DVLD_BusinessLayer.Application
 
 
         public cls_NewLDLApplication(int lDL_ApplicationID, int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
-            short ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int licenseClassID)
+            byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int licenseClassID)
             : base(ApplicationID, ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID)
         {
 
@@ -48,11 +48,11 @@ namespace DVLD_BusinessLayer.Application
 
 
 
-
-
         private bool _Update() => cls_NewLDLApplications_Data.Update_NewLDLApplication(this.LDL_ApplicationID,ApplicantPersonID, LicenseClassID);
 
+        public bool IsNew() => this.ApplicationStatus == 1;
 
+        public static bool Cancel(int LDLappID) => cls_NewLDLApplications_Data.Cancel_NewLDLApplication(LDLappID);
 
 
 
@@ -60,7 +60,7 @@ namespace DVLD_BusinessLayer.Application
         public static cls_NewLDLApplication Find(int LDL_ApplicationID)
         {
             int ApplicationID = 0, ApplicantPersonID = 0, ApplicationTypeID = 0, CreatedByUserID = 0, LicenseClassID = 0;
-            short ApplicationStatus = 0;
+            byte ApplicationStatus = 0;
             decimal PaidFees = 0;
             DateTime ApplicationDate = DateTime.Now, LastStatusDate = DateTime.Now;
 
@@ -90,11 +90,13 @@ namespace DVLD_BusinessLayer.Application
         {
             switch (mode)
             {
-                case Mode.addnew:
-                    mode = Mode.update;
+                case Mode.Addnew:
+                    mode = Mode.Update;
                     return _AddNew();
-                case Mode.update:
+
+                case Mode.Update:   
                     return _Update();
+
                 default:
                     break;
             }

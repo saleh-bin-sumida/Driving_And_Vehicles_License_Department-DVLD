@@ -33,11 +33,16 @@ namespace DVLD
 
         private void CellMouseClick_dataGridVeiew(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right) // Check if right mouse button is clicked
             {
-                DataGridView.ClearSelection();
-                DataGridView.Rows[e.RowIndex].Selected = true;
-                this.cmsManageTestTypes.Show(DataGridView, e.Location);
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a cell is clicked
+                {
+                    DataGridView.CurrentCell = DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex]; // Select the cell that was right-clicked
+                    DataGridView.Rows[e.RowIndex].Selected = true;
+
+                    // Display the context menu strip at the mouse pointer position
+                    cmsManageTestTypes.Show(Cursor.Position);
+                }
             }
         }
 

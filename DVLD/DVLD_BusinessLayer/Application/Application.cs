@@ -5,14 +5,14 @@ namespace DVLD_BusinessLayer
 {
     public class clsApplication
     {
-        protected  enum Mode { addnew= 1, update = 2};
+        protected  enum Mode { Addnew= 1, Update = 2};
         protected Mode mode;
         public int ApplicationID { get; set; }
         public int ApplicantPersonID { get; set; }
         public DateTime ApplicationDate { get; set; }
         public int ApplicationTypeID { get; set; }   
 
-        public short ApplicationStatus { get; set; }
+        public byte ApplicationStatus { get; set; }
 
         public DateTime LastStatusDate { get; set; }
         public decimal PaidFees { get; set; }
@@ -22,7 +22,7 @@ namespace DVLD_BusinessLayer
         
         public clsApplication()
         {
-            mode = Mode.addnew;
+            mode = Mode.Addnew;
 
             this.ApplicationID = -1;
             this.ApplicantPersonID = 0;
@@ -35,9 +35,9 @@ namespace DVLD_BusinessLayer
         }
 
         public clsApplication( int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
-         short ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
+         byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
         {
-            this.mode = Mode.update;
+            this.mode = Mode.Update;
 
             this.ApplicationID = ApplicationID;
             this.ApplicantPersonID = ApplicantPersonID;

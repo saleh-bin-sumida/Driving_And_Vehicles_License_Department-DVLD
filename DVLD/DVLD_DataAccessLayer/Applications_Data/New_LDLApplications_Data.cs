@@ -141,6 +141,7 @@ namespace DVLD_DataAccessLayer
         {
 
             int rowsAffected = 0;
+            // fix bug here
 
             if (PersonHasValidorCompleted_NewLDLApplication(ApplicationPesonID,LicenseClassID))
                 return false;
@@ -149,13 +150,14 @@ namespace DVLD_DataAccessLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"UPDATE [dbo].[LocalDrivingLicenseApplications]
-                           SET [LicenseClassID] = @LicenseClassID
-                          WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+                   SET [LicenseClassID] = @LicenseClassID
+                 WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
             command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
 
             try
             {
@@ -174,6 +176,48 @@ namespace DVLD_DataAccessLayer
 
             return (rowsAffected > 0);
         }
+
+
+
+
+        public static bool Cancel_NewLDLApplication(int LocalDrivingLicenseApplicationID)
+        {
+
+            int rowsAffected = 0;
+
+           
+
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"
+            Update Applications
+            set ApplicationStatus = 2 from Applications
+            inner join LocalDrivingLicenseApplications on Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
+            where LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return (rowsAffected > 0);
+        }
+
 
 
 
@@ -223,21 +267,19 @@ namespace DVLD_DataAccessLayer
         }
 
 
-
         public static bool Get_NewLDLApplicationInfoByID(int LocalDrivingLicenseApplicationID,ref int ApplicationID,
             ref int ApplicantPersonID,ref  DateTime ApplicationDate, ref int ApplicationTypeID,
-           ref  short ApplicationStatus,ref  DateTime LastStatusDate,ref  decimal PaidFees, ref int CreatedByUserID, ref int LicenseClassID)
+           ref byte ApplicationStatus,ref  DateTime LastStatusDate,ref  decimal PaidFees, ref int CreatedByUserID, ref int LicenseClassID)
         {
 
             bool isFound = false;
 
-            clsApplications_Data.GetApplicationInfoByID(ApplicationID,ref ApplicantPersonID,
-            ref ApplicationDate,ref ApplicationTypeID,ref ApplicationStatus,ref LastStatusDate,ref PaidFees,ref CreatedByUserID);
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"select * from LocalDrivingLicenseApplications 
-                    where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+            string query = @"select * from LocalDrivingLicenseApplications inner join Applications
+            on LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID
+            where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -253,10 +295,18 @@ namespace DVLD_DataAccessLayer
                 if (reader.Read())
                 {
                     isFound = true;
-
+                    ApplicationID = (int)reader["ApplicationID"];
+                    ApplicantPersonID = (int)reader["ApplicantPersonID"];
+                    ApplicationDate = (DateTime)reader["ApplicationDate"];
+                    ApplicationStatus = (byte)reader["ApplicationStatus"];
+                    LastStatusDate = (DateTime)reader["LastStatusDate"];
+                    PaidFees = (int)reader["PaidFees"];
+                    ApplicationTypeID = (int)reader["ApplicationTypeID"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
                     LicenseClassID = (int)reader["LicenseClassID"];
 
                 }
+
 
             }
             catch (Exception)

@@ -10,8 +10,9 @@ namespace DVLD
        // private DataTable _dt;
         public frmManage_NewLDLApplications() : base()
         {
-  
             InitializeComponent();
+            base.DataGridView.CellMouseClick += CellMouseClick_dataGridVeiew;
+
         }
 
         private void frmManage_NewLDLApplications_Load(object sender, EventArgs e)
@@ -40,7 +41,40 @@ namespace DVLD
             base.cbxFilter_SelectedIndexChanged();
         }
 
+        private void tsmCancel_Click(object sender, EventArgs e)
+        {
+            int ID = (int) DataGridView.CurrentRow.Cells[0].Value;
+            cls_NewLDLApplication.Cancel(ID);
 
-       
+            RefreshDataGridView();
+
+        }
+
+        private void CellMouseClick_dataGridVeiew(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            if (e.Button == MouseButtons.Right) // Check if right mouse button is clicked
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a cell is clicked
+                {
+                    DataGridView.CurrentCell = DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex]; // Select the cell that was right-clicked
+                    DataGridView.Rows[e.RowIndex].Selected = true;
+
+                    // Display the context menu strip at the mouse pointer position
+                    cmsManageLDLApplications.Show(Cursor.Position);
+
+                    int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
+                    cls_NewLDLApplication lDLApplication = cls_NewLDLApplication.Find(ID);
+
+
+
+                    if (lDLApplication.IsNew())
+                        tsmCancel.Enabled = true;
+                    else
+                        tsmCancel.Enabled = false;
+                }
+            }
+        }
+
     }
 }

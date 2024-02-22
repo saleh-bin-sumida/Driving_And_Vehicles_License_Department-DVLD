@@ -10,6 +10,8 @@ namespace DVLD
         public frmLoginPage()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

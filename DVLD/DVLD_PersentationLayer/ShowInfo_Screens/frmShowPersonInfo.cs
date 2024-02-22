@@ -13,6 +13,9 @@ namespace DVLD
         {
             InitializeComponent();
             this._personID = personID;
+
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
         }
 
         private void frmShowPersonInfo_Load(object sender, EventArgs e)
