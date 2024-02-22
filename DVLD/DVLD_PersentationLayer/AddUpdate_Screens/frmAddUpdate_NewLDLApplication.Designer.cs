@@ -243,8 +243,9 @@
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // frmAddUpdate_LDL_Application
+            // frmAddUpdate_NewLDLApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -253,7 +254,7 @@
             this.Controls.Add(this.lblHeading);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tabControl1);
-            this.Name = "frmAddUpdate_LDL_Application";
+            this.Name = "frmAddUpdate_NewLDLApplication";
             this.Text = "frmNewLocalDL";
             this.Load += new System.EventHandler(this.frmNewLocalDL_Load);
             this.tabControl1.ResumeLayout(false);

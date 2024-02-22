@@ -27,7 +27,7 @@ namespace DVLD_BusinessLayer
             this.ApplicationID = -1;
             this.ApplicantPersonID = 0;
             this.ApplicationDate = DateTime.Now;
-            this.ApplicationTypeID = 0;
+            this.ApplicationTypeID = 1;
             this.ApplicationStatus = 1; // means app is new
             this.LastStatusDate = DateTime.Now;
             this.PaidFees = 0;

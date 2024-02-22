@@ -72,11 +72,11 @@ namespace DVLD_DataAccessLayer
 
 
 
-        public static int Add_NewLDLApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
+        public static int Add_NewLDLApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID ,
             int ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int LicenseClassID)
         {
 
-            if (PersonHasValid_NewLDLApplication(ApplicantPersonID,LicenseClassID))
+            if (PersonHasValidorCompleted_NewLDLApplication(ApplicantPersonID,LicenseClassID))
                 return -1;
 
             int LDL_ApplicationsID = -1;
@@ -142,7 +142,7 @@ namespace DVLD_DataAccessLayer
 
             int rowsAffected = 0;
 
-            if (PersonHasValid_NewLDLApplication(ApplicationPesonID,LicenseClassID))
+            if (PersonHasValidorCompleted_NewLDLApplication(ApplicationPesonID,LicenseClassID))
                 return false;
 
 
@@ -271,7 +271,7 @@ namespace DVLD_DataAccessLayer
         }
 
 
-        public static bool PersonHasValid_NewLDLApplication(int ApplicantPersonID ,int LicenseClassID)
+        public static bool PersonHasValidorCompleted_NewLDLApplication(int ApplicantPersonID ,int LicenseClassID)
         {
             bool isFound = false;
 
@@ -281,8 +281,8 @@ namespace DVLD_DataAccessLayer
 				  select Found = 1 from Applications
 				  inner join LocalDrivingLicenseApplications on 
 				  Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID where ApplicantPersonID = @ApplicantPersonID
-				  and Applications.ApplicationTypeID = 1 and LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID and Applications.ApplicationStatus =1
-";
+				  and Applications.ApplicationTypeID = 1 and LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID 
+                  and (Applications.ApplicationStatus =1 or Applications.ApplicationStatus =3)";
 
             SqlCommand command = new SqlCommand(@query, connection);
 

@@ -11,14 +11,21 @@ namespace DVLD_BusinessLayer.Application
         public int LicenseClassID { get; set; }
 
 
+
+
+
         public cls_NewLDLApplication() : base()
         {
 
             LDL_ApplicationID = -1;
             base.ApplicationTypeID = 1;
             base.PaidFees = clsApplicationType.GetApplicationTypeFees(base.ApplicationTypeID);
-            this.LicenseClassID = 1;
+            this.LicenseClassID = 3;
         }
+
+
+
+
 
         public cls_NewLDLApplication(int lDL_ApplicationID, int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
             short ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int licenseClassID)
@@ -29,6 +36,9 @@ namespace DVLD_BusinessLayer.Application
             this.LicenseClassID = licenseClassID;
         }
 
+
+
+
         private bool _AddNew()
         {
             this.LDL_ApplicationID = cls_NewLDLApplications_Data.Add_NewLDLApplication(this.ApplicantPersonID, ApplicationDate,
@@ -36,7 +46,15 @@ namespace DVLD_BusinessLayer.Application
             return this.LDL_ApplicationID != -1;
         }
 
+
+
+
+
         private bool _Update() => cls_NewLDLApplications_Data.Update_NewLDLApplication(this.LDL_ApplicationID,ApplicantPersonID, LicenseClassID);
+
+
+
+
 
 
         public static cls_NewLDLApplication Find(int LDL_ApplicationID)
@@ -57,7 +75,14 @@ namespace DVLD_BusinessLayer.Application
         }
 
 
+
+
+
         public static DataTable GetAll_NewLDLApplications() => cls_NewLDLApplications_Data.GetAll_NewLDLApplications();
+
+
+
+
 
 
 

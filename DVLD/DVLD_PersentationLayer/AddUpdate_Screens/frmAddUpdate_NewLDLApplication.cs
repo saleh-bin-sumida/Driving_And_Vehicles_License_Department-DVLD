@@ -37,21 +37,15 @@ namespace DVLD
         {
             cbxLicenseClasses.DataSource = clsLicenseClass.GetAllLicenseClasses();
             cbxLicenseClasses.DisplayMember = "ClassName";
+            cbxLicenseClasses.SelectedIndex = _LDLapp.LicenseClassID -1 ;
 
-            if (mode == Mode.Addnew)
-            {
-                 _LDLapp = new cls_NewLDLApplication();
-                cbxLicenseClasses.SelectedIndex = _LDLapp.LicenseClassID ;
-
-            }
-            else
+            if (mode == Mode.Update)
             {
                 lblHeading.Text = "Update Local Drving License Application";
                 ctrlPersonCardwithFilter1._LoadPersonCardwithFilterData(_LDLapp.ApplicantPersonID);
-                _LDLapp = cls_NewLDLApplication.Find(_LDLappID);
-                cbxLicenseClasses.SelectedIndex = _LDLapp.LicenseClassID + 1;
-                
+
             }
+ 
 
             ApplicationDate.Text = _LDLapp.ApplicationDate.ToString();
             ApplicationFees.Text = _LDLapp.PaidFees.ToString();
@@ -78,19 +72,27 @@ namespace DVLD
 
             if (_LDLapp.Save())
             {
+        
                 lblHeading.Text = "Update Local Drving License Application";
                 ctrlPersonCardwithFilter1.HideFilter();
-                MessageBox.Show("The Application Saved Succesfully", "saving application");
+                MessageBox.Show("The Application Saved Succesfully", "Saving application");
+
                 return;
 
             }
-            MessageBox.Show("this person already has uncompleted application from this type", "Faild to save application",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            MessageBox.Show("this person already has completed or new  application from this License Type, " +
+                "Choose aother License type", "Faild to save application",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
         }
 
         private void ctrlPersonCardwithFilter1_OnPersonSelected(int obj)
         {
             btnNext.Enabled = true;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
