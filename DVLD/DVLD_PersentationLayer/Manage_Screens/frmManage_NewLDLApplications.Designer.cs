@@ -32,16 +32,14 @@
             // 
             // cbxFilter
             // 
+            this.cbxFilter.Items.AddRange(new object[] {
+            "None",
+            "LDL app ID",
+            "National No."});
             this.cbxFilter.SelectedIndexChanged += new System.EventHandler(this.cbxFilter_SelectedIndexChanged);
             // 
             // txtFilterExpressions
             // 
-            this.txtFilterExpressions.TextChanged += new System.EventHandler(this.txtFilterExpressions_TextChanged);
-            this.txtFilterExpressions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterExpressions_KeyPress);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Click += new System.EventHandler(this.btnClose_click);
             // 
             // btnAdd
             // 
@@ -54,13 +52,14 @@
             this.lblHeading.Size = new System.Drawing.Size(673, 43);
             this.lblHeading.Text = "Manage Local Driving License Applications";
             // 
-            // frmManage_LDL_Applications
+            // frmManage_NewLDLApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 653);
-            this.Name = "frmManage_LDL_Applications";
+            this.Name = "frmManage_NewLDLApplications";
             this.Text = "frmManage_LDL_Applications";
+            this.Load += new System.EventHandler(this.frmManage_NewLDLApplications_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

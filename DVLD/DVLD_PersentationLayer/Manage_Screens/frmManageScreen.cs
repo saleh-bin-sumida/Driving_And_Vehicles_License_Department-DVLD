@@ -18,9 +18,20 @@ namespace DVLD
 
         }
 
+
+        protected virtual void RefreshDataGridView()
+        {
+            DataGridView.DataSource = _dt;  
+            lblTotalMembers.Text = DataGridView.Rows.Count.ToString();
+        }
+
+
         protected void cbxFilter_SelectedIndexChanged()
         {
+            _selectedFilter = cbxFilter.Text;
+            txtFilterExpressions.Text = "";
             _ = (_selectedFilter == "None") ? txtFilterExpressions.Visible = false : txtFilterExpressions.Visible = true;
+            RefreshDataGridView();
         }
 
 
@@ -31,7 +42,7 @@ namespace DVLD
 
         private void txtFilterExpressions_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_selectedFilter == "PersonID" || _selectedFilter == "UserID" || _selectedFilter == "Gender")
+            if (_selectedFilter == "PersonID" || _selectedFilter == "UserID" || _selectedFilter == "Gender" || _selectedFilter == "LDL app ID")
             {
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 {
@@ -40,5 +51,22 @@ namespace DVLD
             }
         }
 
+   
+
+        private void txtFilterExpressions_TextChanged(object sender, System.EventArgs e)
+        {
+            if (txtFilterExpressions.Text == "")
+            {
+                RefreshDataGridView();
+                return;
+            }
+            DataView dataView = _dt.DefaultView;
+            if (_selectedFilter == "PersonID" || _selectedFilter == "UserID" || _selectedFilter == "LDL app ID")
+            {
+                dataView.RowFilter = $"[{cbxFilter.Text}] = '{txtFilterExpressions.Text}'";
+                return;
+            }
+            dataView.RowFilter = $"[{cbxFilter.Text}] LIKE '%{txtFilterExpressions.Text}%'";
+        }
     }
 }

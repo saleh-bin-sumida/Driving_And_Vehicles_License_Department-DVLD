@@ -14,73 +14,33 @@ namespace DVLD
             InitializeComponent();
         }
 
-        private void frmManage_LDL_Applications_Load(object sender, EventArgs e)
+        private void frmManage_NewLDLApplications_Load(object sender, EventArgs e)
         {
-
-            txtFilterExpressions.Visible = false;
-            cbxFilter.DataSource = new string[] { "None", "LDL app ID", "National No." };
             cbxFilter.SelectedIndex = 0;
-
-            _dt = cls_NewLDLApplication.GetAll_NewLDLApplications();
-
-            _RefreshDataGridView();
-
+            RefreshDataGridView();
+            
         }
 
-        private void _RefreshDataGridView()
+        protected override void RefreshDataGridView()
         {
             _dt = cls_NewLDLApplication.GetAll_NewLDLApplications();
-            DataGridView.DataSource = _dt;
-            lblTotalMembers.Text = DataGridView.Rows.Count.ToString();
+            base.RefreshDataGridView();
         }
-
+  
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmAddUpdate_NewLDLApplication frm = new frmAddUpdate_NewLDLApplication(-1);
             frm.ShowDialog();
 
-            _RefreshDataGridView();
-        }
-
-        private void btnClose_click(object sender, EventArgs e)
-        {
-           // Close();
+            RefreshDataGridView();
         }
 
         private void cbxFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        { 
             base.cbxFilter_SelectedIndexChanged();
-
         }
 
-        private void txtFilterExpressions_TextChanged(object sender, EventArgs e)
-        {
-            if (txtFilterExpressions.Text == "")
-            {
-                _RefreshDataGridView();
-                return;
-            }
-            DataView dataView = _dt.DefaultView;
-            if (cbxFilter.SelectedItem.ToString() == "LDL app ID")
-            {
-                dataView.RowFilter = $"[LDL app ID] = '{txtFilterExpressions.Text}'";
-                return;
-            }
-            dataView.RowFilter = $"[National No.] LIKE '%{txtFilterExpressions.Text}%'";
-        }
 
-        private void txtFilterExpressions_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (cbxFilter.SelectedItem.ToString() == "LDL app ID")
-            {
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
-
-        }        
+       
     }
 }

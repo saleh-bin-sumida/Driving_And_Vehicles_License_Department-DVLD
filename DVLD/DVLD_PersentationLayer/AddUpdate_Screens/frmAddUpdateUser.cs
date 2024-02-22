@@ -69,11 +69,6 @@ namespace DVLD
         }
 
 
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-        }
-
-
         private bool _IsAllFieldValid()
         {
             if (txtConfirmPassword.Text == "" || txtPassword.Text == "" ||

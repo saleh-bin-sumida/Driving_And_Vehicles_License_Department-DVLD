@@ -50,12 +50,11 @@
             "UserID",
             "Username",
             "FullName",
-            "IsActive"});
+            "Is Active"});
             this.cbxFilter.SelectedIndexChanged += new System.EventHandler(this.cbxFilter_SelectedIndexChanged);
             // 
             // txtFilterExpressions
             // 
-            this.txtFilterExpressions.TextChanged += new System.EventHandler(this.txtFilterExpressions_TextChanged);
             // 
             // btnAdd
             // 
@@ -64,7 +63,7 @@
             // 
             // lblHeading
             // 
-            this.lblHeading.Location = new System.Drawing.Point(461, 18);
+            this.lblHeading.Location = new System.Drawing.Point(460, 35);
             this.lblHeading.Size = new System.Drawing.Size(237, 43);
             this.lblHeading.Text = "Manage Users";
             // 

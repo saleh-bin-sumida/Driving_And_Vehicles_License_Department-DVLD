@@ -19,14 +19,13 @@ namespace DVLD
         }
         private void frmManageApplicationTypes_Load(object sender, System.EventArgs e)
         {
-            _RefreshDataGridView();
+            RefreshDataGridView();
         }
 
-        private void _RefreshDataGridView()
+        protected override void RefreshDataGridView()
         {
             this._dt = clsApplicationType.GetAllApplicationsTypes();
-            DataGridView.DataSource = _dt;
-            lblTotalMembers.Text = DataGridView.Rows.Count.ToString();
+            base.RefreshDataGridView();
 
         }
 
@@ -47,7 +46,7 @@ namespace DVLD
             frmUpdateApplicationTest frm = new frmUpdateApplicationTest("UpdatApplicationType", ID);
             frm.ShowDialog();
 
-            _RefreshDataGridView();
+            RefreshDataGridView();
         }
     }
 }

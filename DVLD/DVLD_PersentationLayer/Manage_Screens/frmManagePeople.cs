@@ -17,12 +17,18 @@ namespace DVLD
 
 
 
-        private void _RefreshDataGridView()
+        protected override void RefreshDataGridView()
         {
             this._dt = clsPerson.GetAllPersons();
-            DataGridView.DataSource = _dt;
-            lblTotalMembers.Text = DataGridView.Rows.Count.ToString();
+            base.RefreshDataGridView();
 
+        }
+
+        private void frmManagePeople_Load_2(object sender, EventArgs e)
+        {
+            cbxFilter.SelectedIndex = 0;
+            cbxExpressions.SelectedIndex = 0;
+            RefreshDataGridView();
         }
 
 
@@ -31,13 +37,12 @@ namespace DVLD
             frmAddUpdatePerson frm = new frmAddUpdatePerson(-1);
             frm.ShowDialog();
 
-            _RefreshDataGridView();
+            RefreshDataGridView();
         }
 
         private void cbxFilter_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            _selectedFilter = cbxFilter.SelectedItem.ToString();
-            txtFilterExpressions.Text = "";
+           
 
             base.cbxFilter_SelectedIndexChanged();
 
@@ -46,7 +51,6 @@ namespace DVLD
             else
                 cbxExpressions.Visible = false;
 
-            _RefreshDataGridView();
         }
 
         private void cbxExpressions_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -58,7 +62,7 @@ namespace DVLD
             else if (cbxExpressions.SelectedItem.ToString() == "Female")
                 dataView.RowFilter = $"Gender = '0'";
             else
-                _RefreshDataGridView();
+                RefreshDataGridView();
         
             
         }
@@ -75,38 +79,6 @@ namespace DVLD
 
             }
         }
-
-
-
-        private void frmManagePeople_Load_2(object sender, EventArgs e)
-        {
-            _RefreshDataGridView();
-            cbxFilter.SelectedIndex = 0;
-            cbxExpressions.SelectedIndex = 0;
-        }
-
-        private void txtFilterExpressions_TextChanged(object sender, EventArgs e)
-        {
-            DataView dv = _dt.DefaultView;
-
-            if (txtFilterExpressions.Text == "" || txtFilterExpressions.Text == String.Empty || _selectedFilter == "None")
-            {
-                _RefreshDataGridView();
-                return;
-
-            }
-            if (_selectedFilter == "PersonID")
-            {
-                dv.RowFilter = $"{_selectedFilter} = '{txtFilterExpressions.Text}'";
-                return;
-            }
-
-
-
-            dv.RowFilter = $"{_selectedFilter} LIKE '%{txtFilterExpressions.Text}%'";
-        }
-
-        
 
         
         private void toolStripMeune_Clicked(object sender, EventArgs e)
@@ -142,7 +114,7 @@ namespace DVLD
                     break;
             }
 
-            _RefreshDataGridView();
+            RefreshDataGridView();
         }
 
     }

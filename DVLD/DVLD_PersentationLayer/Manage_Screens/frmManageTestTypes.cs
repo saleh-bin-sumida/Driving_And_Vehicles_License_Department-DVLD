@@ -21,14 +21,13 @@ namespace DVLD
       
         private void frmManageTestTypes_Load(object sender, System.EventArgs e)
         {
-            _RefreshDataGridView();
+            RefreshDataGridView();
         }
 
-        private void _RefreshDataGridView()
+        protected override void RefreshDataGridView()
         {
             this._dt = clsTestType.GetAllTestTypes();
-            DataGridView.DataSource = _dt;
-            lblTotalMembers.Text = DataGridView.Rows.Count.ToString();
+            base.RefreshDataGridView();
 
         }
 
@@ -48,7 +47,7 @@ namespace DVLD
             frmUpdateApplicationTest frm = new frmUpdateApplicationTest("UpdatTestType", ID);
             frm.ShowDialog();
 
-            _RefreshDataGridView();
+            RefreshDataGridView();
         }
     }
 }

@@ -37,8 +37,8 @@
             // lblHeading
             // 
             this.lblHeading.Location = new System.Drawing.Point(435, 31);
-            this.lblHeading.Size = new System.Drawing.Size(293, 43);
-            this.lblHeading.Text = "Mange Test Types";
+            this.lblHeading.Size = new System.Drawing.Size(181, 43);
+            this.lblHeading.Text = "Test Types";
             // 
             // cmsManageTestTypes
             // 
@@ -46,12 +46,12 @@
             this.cmsManageTestTypes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmUpdateTestType});
             this.cmsManageTestTypes.Name = "cmsManageTestTypes";
-            this.cmsManageTestTypes.Size = new System.Drawing.Size(211, 56);
+            this.cmsManageTestTypes.Size = new System.Drawing.Size(193, 28);
             // 
             // tsmUpdateTestType
             // 
             this.tsmUpdateTestType.Name = "tsmUpdateTestType";
-            this.tsmUpdateTestType.Size = new System.Drawing.Size(210, 24);
+            this.tsmUpdateTestType.Size = new System.Drawing.Size(192, 24);
             this.tsmUpdateTestType.Text = "Update Test Type";
             this.tsmUpdateTestType.Click += new System.EventHandler(this.tsmUpdateTestType_Click);
             // 

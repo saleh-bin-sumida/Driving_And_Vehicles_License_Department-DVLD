@@ -61,7 +61,6 @@ namespace DVLD
             // 
             // txtFilterExpressions
             // 
-            this.txtFilterExpressions.TextChanged += new System.EventHandler(this.txtFilterExpressions_TextChanged);
             // 
             // btnAdd
             // 

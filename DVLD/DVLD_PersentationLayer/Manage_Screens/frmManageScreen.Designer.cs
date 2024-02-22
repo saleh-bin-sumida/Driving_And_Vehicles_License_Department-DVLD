@@ -72,6 +72,7 @@
             this.txtFilterExpressions.Name = "txtFilterExpressions";
             this.txtFilterExpressions.Size = new System.Drawing.Size(226, 28);
             this.txtFilterExpressions.TabIndex = 2;
+            this.txtFilterExpressions.TextChanged += new System.EventHandler(this.txtFilterExpressions_TextChanged);
             this.txtFilterExpressions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterExpressions_KeyPress);
             // 
             // lblFilterBy
