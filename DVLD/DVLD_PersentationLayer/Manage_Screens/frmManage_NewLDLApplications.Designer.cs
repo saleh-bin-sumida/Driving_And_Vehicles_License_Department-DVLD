@@ -34,19 +34,19 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmCancel = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmSechduleTests = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmIssueDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmIssueDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmShowLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsManageLDLApplications.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,13 +90,14 @@
             this.toolStripSeparator6,
             this.tsmShowPersonLicenseHistory});
             this.cmsManageLDLApplications.Name = "cmsManagePeople";
-            this.cmsManageLDLApplications.Size = new System.Drawing.Size(293, 232);
+            this.cmsManageLDLApplications.Size = new System.Drawing.Size(293, 260);
             // 
             // tsmShowDetails
             // 
             this.tsmShowDetails.Name = "tsmShowDetails";
             this.tsmShowDetails.Size = new System.Drawing.Size(292, 24);
             this.tsmShowDetails.Text = "Show Application Details";
+            this.tsmShowDetails.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // toolStripSeparator1
             // 
@@ -108,19 +109,26 @@
             this.tsmEdit.Name = "tsmEdit";
             this.tsmEdit.Size = new System.Drawing.Size(292, 24);
             this.tsmEdit.Text = "Edit Application";
+            this.tsmEdit.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // tsmDelete
             // 
             this.tsmDelete.Name = "tsmDelete";
             this.tsmDelete.Size = new System.Drawing.Size(292, 24);
             this.tsmDelete.Text = "Delete Application";
+            this.tsmDelete.Click += new System.EventHandler(this.toolStripMeune_Clicked);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(289, 6);
             // 
             // tsmCancel
             // 
             this.tsmCancel.Name = "tsmCancel";
             this.tsmCancel.Size = new System.Drawing.Size(292, 24);
             this.tsmCancel.Text = "Cancel Application";
-            this.tsmCancel.Click += new System.EventHandler(this.tsmCancel_Click);
+            this.tsmCancel.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // toolStripSeparator2
             // 
@@ -137,21 +145,38 @@
             this.tsmSechduleTests.Size = new System.Drawing.Size(292, 24);
             this.tsmSechduleTests.Text = "Sechdule Tests";
             // 
-            // tsmIssueDrivingLicense
+            // tsmScheduleVisionTest
             // 
-            this.tsmIssueDrivingLicense.Name = "tsmIssueDrivingLicense";
-            this.tsmIssueDrivingLicense.Size = new System.Drawing.Size(292, 24);
-            this.tsmIssueDrivingLicense.Text = "Issue Driving License (First Time)";
+            this.tsmScheduleVisionTest.Name = "tsmScheduleVisionTest";
+            this.tsmScheduleVisionTest.Size = new System.Drawing.Size(235, 26);
+            this.tsmScheduleVisionTest.Text = "Schedule Vision Test";
+            this.tsmScheduleVisionTest.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
-            // toolStripSeparator3
+            // tsmScheduleWrittenTest
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(289, 6);
+            this.tsmScheduleWrittenTest.Name = "tsmScheduleWrittenTest";
+            this.tsmScheduleWrittenTest.Size = new System.Drawing.Size(235, 26);
+            this.tsmScheduleWrittenTest.Text = "Schedule Written Test";
+            this.tsmScheduleWrittenTest.Click += new System.EventHandler(this.toolStripMeune_Clicked);
+            // 
+            // tsmScheduleStreetTest
+            // 
+            this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
+            this.tsmScheduleStreetTest.Size = new System.Drawing.Size(235, 26);
+            this.tsmScheduleStreetTest.Text = "Schedule Street Test";
+            this.tsmScheduleStreetTest.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(289, 6);
+            // 
+            // tsmIssueDrivingLicense
+            // 
+            this.tsmIssueDrivingLicense.Name = "tsmIssueDrivingLicense";
+            this.tsmIssueDrivingLicense.Size = new System.Drawing.Size(292, 24);
+            this.tsmIssueDrivingLicense.Text = "Issue Driving License (First Time)";
+            this.tsmIssueDrivingLicense.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // toolStripSeparator5
             // 
@@ -163,6 +188,7 @@
             this.tsmShowLicense.Name = "tsmShowLicense";
             this.tsmShowLicense.Size = new System.Drawing.Size(292, 24);
             this.tsmShowLicense.Text = "Show License";
+            this.tsmShowLicense.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // toolStripSeparator6
             // 
@@ -174,24 +200,7 @@
             this.tsmShowPersonLicenseHistory.Name = "tsmShowPersonLicenseHistory";
             this.tsmShowPersonLicenseHistory.Size = new System.Drawing.Size(292, 24);
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";
-            // 
-            // tsmScheduleVisionTest
-            // 
-            this.tsmScheduleVisionTest.Name = "tsmScheduleVisionTest";
-            this.tsmScheduleVisionTest.Size = new System.Drawing.Size(235, 26);
-            this.tsmScheduleVisionTest.Text = "Schedule Vision Test";
-            // 
-            // tsmScheduleWrittenTest
-            // 
-            this.tsmScheduleWrittenTest.Name = "tsmScheduleWrittenTest";
-            this.tsmScheduleWrittenTest.Size = new System.Drawing.Size(235, 26);
-            this.tsmScheduleWrittenTest.Text = "Schedule Written Test";
-            // 
-            // tsmScheduleStreetTest
-            // 
-            this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
-            this.tsmScheduleStreetTest.Size = new System.Drawing.Size(235, 26);
-            this.tsmScheduleStreetTest.Text = "Schedule Street Test";
+            this.tsmShowPersonLicenseHistory.Click += new System.EventHandler(this.toolStripMeune_Clicked);
             // 
             // frmManage_NewLDLApplications
             // 

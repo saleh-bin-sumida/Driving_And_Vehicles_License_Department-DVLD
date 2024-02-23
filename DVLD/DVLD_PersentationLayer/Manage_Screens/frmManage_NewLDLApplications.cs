@@ -2,6 +2,8 @@
 using System.Data;
 using DVLD_BusinessLayer.Application;
 using System.Windows.Forms;
+using System.Diagnostics.Eventing.Reader;
+using DVLD_BusinessLayer;
 
 namespace DVLD
 {
@@ -43,8 +45,7 @@ namespace DVLD
 
         private void tsmCancel_Click(object sender, EventArgs e)
         {
-            int ID = (int) DataGridView.CurrentRow.Cells[0].Value;
-            cls_NewLDLApplication.Cancel(ID);
+     
 
             RefreshDataGridView();
 
@@ -61,34 +62,143 @@ namespace DVLD
                     DataGridView.Rows[e.RowIndex].Selected = true;
 
                     // Display the context menu strip at the mouse pointer position
-                    cmsManageLDLApplications.Show(Cursor.Position);
 
                     int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-                    InitializeContextMenueStrip(ID);
+                    cls_NewLDLApplication lDLApplication = cls_NewLDLApplication.Find(ID);
+
+                    ResetToolstripMeuseItems();
+                    InitializeContextMenueStrip(lDLApplication);
+
+                    cmsManageLDLApplications.Show(Cursor.Position);
 
                 }
             }
         }
 
-        private void InitializeContextMenueStrip(int LDLappID)
+        private void ResetToolstripMeuseItems()
         {
-            cls_NewLDLApplication lDLApplication = cls_NewLDLApplication.Find(LDLappID);
+            tsmIssueDrivingLicense.Enabled = true;
+            tsmShowLicense.Enabled = true;
+            tsmShowPersonLicenseHistory.Enabled = true;
+            tsmEdit.Enabled = true;
+            tsmDelete.Enabled = true;
+            tsmCancel.Enabled = true;
+            tsmSechduleTests.Enabled = true;
+            tsmShowPersonLicenseHistory.Enabled = true;
+            tsmIssueDrivingLicense.Enabled = true;
+            tsmScheduleWrittenTest.Enabled = true;
+            tsmScheduleStreetTest.Enabled = true;
+            tsmScheduleVisionTest.Enabled = true;
 
-            if (lDLApplication.IsCompleted())
+        }
+
+
+        private void InitializeScheduleTestContextMenu()
+        {
+            if (((int)DataGridView.CurrentRow.Cells[6].Value) == 0)
             {
-                tsmShowDetails.Enabled = false;
+                tsmScheduleWrittenTest.Enabled = false;
+                tsmScheduleStreetTest.Enabled = false;
+            }
+            else if (((int)DataGridView.CurrentRow.Cells[6].Value) == 1)
+            {
+                tsmScheduleVisionTest.Enabled = false; 
+                tsmScheduleStreetTest.Enabled = false;
+            }
+            else if (((int)DataGridView.CurrentRow.Cells[6].Value) == 2)
+            {
+                tsmScheduleVisionTest.Enabled = false;
+                tsmScheduleWrittenTest.Enabled = false;
+            }
+        }
+
+        private void InitializeContextMenueStrip(cls_NewLDLApplication lDLApplication)
+        {
+
+            if (lDLApplication.IsNew())
+            {
+                tsmIssueDrivingLicense.Enabled = false;
+                tsmShowLicense.Enabled = false;
+                tsmShowPersonLicenseHistory.Enabled = false;
+
+                if ( ((int) DataGridView.CurrentRow.Cells[6].Value) > 0)
+                {
+                    tsmEdit.Enabled = false;
+                    tsmDelete.Enabled = false;
+                }
+                InitializeScheduleTestContextMenu();
+
+
+            }
+            else if (lDLApplication.IsCompleted())
+            {
                 tsmEdit.Enabled = false;
                 tsmDelete.Enabled = false;
                 tsmCancel.Enabled = false;
                 tsmSechduleTests.Enabled = false;
-                tsmIssueDrivingLicense.Enabled = true;
+
+                if (lDLApplication.LikedwithLicense())
+                {
+                    tsmIssueDrivingLicense.Enabled = false;
+                }
+                else
+                {
+                    tsmShowLicense.Enabled = false;
+                    tsmShowPersonLicenseHistory.Enabled = false;
+                }
+            }
+            else
+            {
+                tsmCancel.Enabled = false;
+                tsmIssueDrivingLicense.Enabled = false;
+                tsmEdit.Enabled = false;
+                tsmShowLicense.Enabled = false;
+                tsmSechduleTests.Enabled = false;
+                tsmShowPersonLicenseHistory.Enabled = false;
+
             }
 
-            if (lDLApplication.IsNew())
-                tsmCancel.Enabled = true;
-            else
-                tsmCancel.Enabled = false;
         }
+
+
+
+        private void toolStripMeune_Clicked(object sender, EventArgs e)
+        {
+            int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
+
+
+            switch (((ToolStripMenuItem)sender).Name.ToString())
+            {
+                case "tsmShowDetails":
+                    frmShowPersonInfo ShowForm = new frmShowPersonInfo(ID);
+                    ShowForm.ShowDialog();
+                    break;
+
+                case "tsmCancel":
+                    cls_NewLDLApplication.Cancel(ID);
+                    break;
+
+                case "tsmEdit":
+                    frmAddUpdate_NewLDLApplication EditForm = new frmAddUpdate_NewLDLApplication(ID);
+                    EditForm.ShowDialog();
+                    break;
+
+                case "tsmDelete":
+
+                    if (MessageBox.Show("R U sure To delete this Application?", "Deleting Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        if (cls_NewLDLApplication.DeleteLDLapp(ID))
+                            MessageBox.Show("LDL Application Deleted Succesfully");
+                        else
+                            MessageBox.Show("this Application Liked with License on this system, Cant be deleted");
+                    }
+                    break;
+            }
+
+            RefreshDataGridView();
+        }
+
+
 
     }
 }

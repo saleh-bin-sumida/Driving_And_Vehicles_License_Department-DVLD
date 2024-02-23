@@ -59,7 +59,7 @@ namespace DVLD
                 dateTimePicker.MaxDate =  DateTime.Now.AddYears(-18) ;
                 txtPhone.Text = "";
                 txtEmail.Text = "";
-                cbxCountries.SelectedIndex = _Person.NationalityCountryID;
+                cbxCountries.SelectedIndex = _Person.NationalityCountryID -1;
                 txtAddress.Text = "";
                 _setDefualtImage();
 
@@ -93,7 +93,7 @@ namespace DVLD
 
             txtPhone.Text = _Person.Phone;
             txtEmail.Text = _Person.Email;
-            cbxCountries.SelectedIndex = _Person.NationalityCountryID;
+            cbxCountries.SelectedIndex = _Person.NationalityCountryID -1;
             txtAddress.Text = _Person.Address;
             pictureBox1.Image = _setPersonImage(_Person.ImagePath);
          
@@ -212,7 +212,7 @@ namespace DVLD
             _Person.DateOfBirth = dateTimePicker.Value;
             _Person.Email = txtEmail.Text;
             _Person.Phone = txtPhone.Text;
-            _Person.NationalityCountryID = cbxCountries.SelectedIndex;
+            _Person.NationalityCountryID = cbxCountries.SelectedIndex +1 ;
             if (rdMale.Checked)
                 _Person.Gender = 1;
             else

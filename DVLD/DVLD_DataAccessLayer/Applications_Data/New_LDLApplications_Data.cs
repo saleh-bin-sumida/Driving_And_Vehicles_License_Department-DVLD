@@ -230,26 +230,21 @@ namespace DVLD_DataAccessLayer
             //clsApplicationsData.DeleteApplication(ApplicationID);
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"DELETE FROM [dbo].[LocalDrivingLicenseApplications]
-                         WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID ";
+            string query = @"declare @appID int
+            select @appID = ApplicationID from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+            delete from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+            delete from Applications where ApplicationID = @appID; ";
 
-            SqlCommand queryForApplicationID = new SqlCommand(@"select ApplicationID from LocalDrivingLicenseApplication
-            where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID ",connection);
             SqlCommand command1 = new SqlCommand(query, connection);
 
             command1.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-            queryForApplicationID.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
 
             try
             {
                 connection.Open();
-                // deleting the LDL application
                 rowsAffected = command1.ExecuteNonQuery();
 
-                // deleting the application
-                object obj = queryForApplicationID.ExecuteScalar();
-                clsApplications_Data.DeleteApplication(int.Parse(obj.ToString()));
 
             }
             catch (Exception)
@@ -300,7 +295,7 @@ namespace DVLD_DataAccessLayer
                     ApplicationDate = (DateTime)reader["ApplicationDate"];
                     ApplicationStatus = (byte)reader["ApplicationStatus"];
                     LastStatusDate = (DateTime)reader["LastStatusDate"];
-                    PaidFees = (int)reader["PaidFees"];
+                    PaidFees = (decimal)reader["PaidFees"];
                     ApplicationTypeID = (int)reader["ApplicationTypeID"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                     LicenseClassID = (int)reader["LicenseClassID"];
@@ -359,6 +354,9 @@ namespace DVLD_DataAccessLayer
 
             return isFound;
         }
+
+
+
 
 
     }

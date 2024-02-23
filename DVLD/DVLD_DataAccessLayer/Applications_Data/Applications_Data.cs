@@ -215,5 +215,44 @@ namespace DVLD_DataAccessLayer
         }
 
 
+
+        public static bool ApplicationLikedWithLicense(int ApplicationID)
+        {
+
+            bool isFound = false;
+
+
+
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select found =1 from Licenses where ApplicationID = @ApplicationID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null) { isFound = true; }
+
+            }
+            catch (Exception)
+            {
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+
+
     }
 }

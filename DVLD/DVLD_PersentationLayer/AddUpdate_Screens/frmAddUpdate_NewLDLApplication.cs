@@ -43,6 +43,7 @@ namespace DVLD
             {
                 lblHeading.Text = "Update Local Drving License Application";
                 ctrlPersonCardwithFilter1._LoadPersonCardwithFilterData(_LDLapp.ApplicantPersonID);
+                btnNext.Enabled = true;
 
             }
  

@@ -52,7 +52,7 @@ namespace DVLD_BusinessLayer.Application
 
         public bool IsNew() => this.ApplicationStatus == 1;
 
-     //   public bool HasTest() => ;
+        public  bool LikedwithLicense() => clsApplications_Data.ApplicationLikedWithLicense(this.ApplicationID) ;
 
 
         public bool IsCompleted() => this.ApplicationStatus == 3;
@@ -61,6 +61,8 @@ namespace DVLD_BusinessLayer.Application
         public static bool Cancel(int LDLappID) => cls_NewLDLApplications_Data.Cancel_NewLDLApplication(LDLappID);
 
 
+
+        public static bool DeleteLDLapp(int LDLappID) => cls_NewLDLApplications_Data.Delete_NewLDLApplication(LDLappID);
 
 
         public static cls_NewLDLApplication Find(int LDL_ApplicationID)
