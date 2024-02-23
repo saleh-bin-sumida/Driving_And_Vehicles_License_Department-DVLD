@@ -34,10 +34,19 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmMakeCall = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmSendEmail = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCancel = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmSechduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmIssueDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmShowLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsManageLDLApplications.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +55,9 @@
             this.cbxFilter.Items.AddRange(new object[] {
             "None",
             "LDL app ID",
-            "National No."});
+            "National No.",
+            "Full Name",
+            "Status"});
             this.cbxFilter.SelectedIndexChanged += new System.EventHandler(this.cbxFilter_SelectedIndexChanged);
             // 
             // btnAdd
@@ -68,59 +79,119 @@
             this.toolStripSeparator1,
             this.tsmEdit,
             this.tsmDelete,
+            this.toolStripSeparator3,
             this.tsmCancel,
             this.toolStripSeparator2,
-            this.tsmMakeCall,
-            this.tsmSendEmail});
+            this.tsmSechduleTests,
+            this.toolStripSeparator4,
+            this.tsmIssueDrivingLicense,
+            this.toolStripSeparator5,
+            this.tsmShowLicense,
+            this.toolStripSeparator6,
+            this.tsmShowPersonLicenseHistory});
             this.cmsManageLDLApplications.Name = "cmsManagePeople";
-            this.cmsManageLDLApplications.Size = new System.Drawing.Size(211, 188);
+            this.cmsManageLDLApplications.Size = new System.Drawing.Size(293, 232);
             // 
             // tsmShowDetails
             // 
             this.tsmShowDetails.Name = "tsmShowDetails";
-            this.tsmShowDetails.Size = new System.Drawing.Size(210, 24);
-            this.tsmShowDetails.Text = "Show Details";
+            this.tsmShowDetails.Size = new System.Drawing.Size(292, 24);
+            this.tsmShowDetails.Text = "Show Application Details";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(289, 6);
             // 
             // tsmEdit
             // 
             this.tsmEdit.Name = "tsmEdit";
-            this.tsmEdit.Size = new System.Drawing.Size(210, 24);
-            this.tsmEdit.Text = "Edit";
+            this.tsmEdit.Size = new System.Drawing.Size(292, 24);
+            this.tsmEdit.Text = "Edit Application";
             // 
             // tsmDelete
             // 
             this.tsmDelete.Name = "tsmDelete";
-            this.tsmDelete.Size = new System.Drawing.Size(210, 24);
-            this.tsmDelete.Text = "Delete";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(207, 6);
-            // 
-            // tsmMakeCall
-            // 
-            this.tsmMakeCall.Name = "tsmMakeCall";
-            this.tsmMakeCall.Size = new System.Drawing.Size(210, 24);
-            this.tsmMakeCall.Text = "Make Call";
-            // 
-            // tsmSendEmail
-            // 
-            this.tsmSendEmail.Name = "tsmSendEmail";
-            this.tsmSendEmail.Size = new System.Drawing.Size(210, 24);
-            this.tsmSendEmail.Text = "Send Email";
+            this.tsmDelete.Size = new System.Drawing.Size(292, 24);
+            this.tsmDelete.Text = "Delete Application";
             // 
             // tsmCancel
             // 
             this.tsmCancel.Name = "tsmCancel";
-            this.tsmCancel.Size = new System.Drawing.Size(210, 24);
-            this.tsmCancel.Text = "Cancel";
+            this.tsmCancel.Size = new System.Drawing.Size(292, 24);
+            this.tsmCancel.Text = "Cancel Application";
             this.tsmCancel.Click += new System.EventHandler(this.tsmCancel_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(289, 6);
+            // 
+            // tsmSechduleTests
+            // 
+            this.tsmSechduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmScheduleVisionTest,
+            this.tsmScheduleWrittenTest,
+            this.tsmScheduleStreetTest});
+            this.tsmSechduleTests.Name = "tsmSechduleTests";
+            this.tsmSechduleTests.Size = new System.Drawing.Size(292, 24);
+            this.tsmSechduleTests.Text = "Sechdule Tests";
+            // 
+            // tsmIssueDrivingLicense
+            // 
+            this.tsmIssueDrivingLicense.Name = "tsmIssueDrivingLicense";
+            this.tsmIssueDrivingLicense.Size = new System.Drawing.Size(292, 24);
+            this.tsmIssueDrivingLicense.Text = "Issue Driving License (First Time)";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(289, 6);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(289, 6);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(289, 6);
+            // 
+            // tsmShowLicense
+            // 
+            this.tsmShowLicense.Name = "tsmShowLicense";
+            this.tsmShowLicense.Size = new System.Drawing.Size(292, 24);
+            this.tsmShowLicense.Text = "Show License";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(289, 6);
+            // 
+            // tsmShowPersonLicenseHistory
+            // 
+            this.tsmShowPersonLicenseHistory.Name = "tsmShowPersonLicenseHistory";
+            this.tsmShowPersonLicenseHistory.Size = new System.Drawing.Size(292, 24);
+            this.tsmShowPersonLicenseHistory.Text = "Show Person License History";
+            // 
+            // tsmScheduleVisionTest
+            // 
+            this.tsmScheduleVisionTest.Name = "tsmScheduleVisionTest";
+            this.tsmScheduleVisionTest.Size = new System.Drawing.Size(235, 26);
+            this.tsmScheduleVisionTest.Text = "Schedule Vision Test";
+            // 
+            // tsmScheduleWrittenTest
+            // 
+            this.tsmScheduleWrittenTest.Name = "tsmScheduleWrittenTest";
+            this.tsmScheduleWrittenTest.Size = new System.Drawing.Size(235, 26);
+            this.tsmScheduleWrittenTest.Text = "Schedule Written Test";
+            // 
+            // tsmScheduleStreetTest
+            // 
+            this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
+            this.tsmScheduleStreetTest.Size = new System.Drawing.Size(235, 26);
+            this.tsmScheduleStreetTest.Text = "Schedule Street Test";
             // 
             // frmManage_NewLDLApplications
             // 
@@ -153,7 +224,16 @@
         private System.Windows.Forms.ToolStripMenuItem tsmDelete;
         private System.Windows.Forms.ToolStripMenuItem tsmCancel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem tsmMakeCall;
-        private System.Windows.Forms.ToolStripMenuItem tsmSendEmail;
+        private System.Windows.Forms.ToolStripMenuItem tsmSechduleTests;
+        private System.Windows.Forms.ToolStripMenuItem tsmIssueDrivingLicense;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem tsmShowLicense;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem tsmShowPersonLicenseHistory;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleVisionTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleWrittenTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleStreetTest;
     }
 }

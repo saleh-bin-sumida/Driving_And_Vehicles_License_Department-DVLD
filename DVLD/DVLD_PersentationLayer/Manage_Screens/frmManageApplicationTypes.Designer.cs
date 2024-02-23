@@ -46,7 +46,7 @@
             this.cmsManageApplicationTypes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmUpdateApplicationType});
             this.cmsManageApplicationTypes.Name = "cmsManageApplicationTypes";
-            this.cmsManageApplicationTypes.Size = new System.Drawing.Size(244, 56);
+            this.cmsManageApplicationTypes.Size = new System.Drawing.Size(244, 28);
             // 
             // tsmUpdateApplicationType
             // 

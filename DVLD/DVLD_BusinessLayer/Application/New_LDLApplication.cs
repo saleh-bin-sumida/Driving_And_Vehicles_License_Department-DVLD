@@ -52,6 +52,12 @@ namespace DVLD_BusinessLayer.Application
 
         public bool IsNew() => this.ApplicationStatus == 1;
 
+     //   public bool HasTest() => ;
+
+
+        public bool IsCompleted() => this.ApplicationStatus == 3;
+
+
         public static bool Cancel(int LDLappID) => cls_NewLDLApplications_Data.Cancel_NewLDLApplication(LDLappID);
 
 

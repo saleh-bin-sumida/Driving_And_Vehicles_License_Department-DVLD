@@ -64,16 +64,30 @@ namespace DVLD
                     cmsManageLDLApplications.Show(Cursor.Position);
 
                     int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-                    cls_NewLDLApplication lDLApplication = cls_NewLDLApplication.Find(ID);
+                    InitializeContextMenueStrip(ID);
 
-
-
-                    if (lDLApplication.IsNew())
-                        tsmCancel.Enabled = true;
-                    else
-                        tsmCancel.Enabled = false;
                 }
             }
+        }
+
+        private void InitializeContextMenueStrip(int LDLappID)
+        {
+            cls_NewLDLApplication lDLApplication = cls_NewLDLApplication.Find(LDLappID);
+
+            if (lDLApplication.IsCompleted())
+            {
+                tsmShowDetails.Enabled = false;
+                tsmEdit.Enabled = false;
+                tsmDelete.Enabled = false;
+                tsmCancel.Enabled = false;
+                tsmSechduleTests.Enabled = false;
+                tsmIssueDrivingLicense.Enabled = true;
+            }
+
+            if (lDLApplication.IsNew())
+                tsmCancel.Enabled = true;
+            else
+                tsmCancel.Enabled = false;
         }
 
     }
