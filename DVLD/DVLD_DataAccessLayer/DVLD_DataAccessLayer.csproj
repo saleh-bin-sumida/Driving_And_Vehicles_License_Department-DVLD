@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Applications_Data\Applications_Data.cs" />
-    <Compile Include="Applications_Data\clsApplicationTypes_Data.cs" />
+    <Compile Include="Applications_Data\ApplicationTypes_Data.cs" />
     <Compile Include="Countries_Data.cs" />
     <Compile Include="Applications_Data\New_LDLApplications_Data.cs" />
     <Compile Include="LicenseClasses_Data.cs" />

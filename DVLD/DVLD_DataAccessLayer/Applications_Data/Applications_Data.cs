@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Serialization;
 
 namespace DVLD_DataAccessLayer
 {
@@ -250,6 +251,80 @@ namespace DVLD_DataAccessLayer
             }
 
             return isFound;
+        }
+
+
+        public static string GetApplicationStatus(int ApplicationID)
+        {
+
+            string ApplicationStatus = "";
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select  case
+					when Applications.ApplicationStatus = 1 then 'New'
+					when Applications.ApplicationStatus = 2 then 'Canceled'
+					when Applications.ApplicationStatus = 3 then 'Completed'
+					end as 
+					[Status] from Applications where ApplicationID = @ApplicationID";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    ApplicationStatus = result.ToString();
+                }
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return ApplicationStatus;
+        }
+
+
+        public static string GetApplicantName(int PersonID)
+        {
+
+            string ApplicantName = "";
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select  [Full Name] = People.FirstName + ' ' + People.SecondName + ' ' + People.ThirdName + ' ' + People.LastName
+                            from People where PersonID = @PersonID";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    ApplicantName = result.ToString();
+                }
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return ApplicantName;
         }
 
 

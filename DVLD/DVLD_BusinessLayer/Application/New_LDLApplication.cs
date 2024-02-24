@@ -1,11 +1,12 @@
 ﻿using DVLD_DataAccessLayer;
 using System;
 using System.Data;
+using System.Runtime.CompilerServices;
 
 
 namespace DVLD_BusinessLayer.Application
 {
-    public class cls_NewLDLApplication : clsApplication
+    public class cls_NewLDLApplication : clsApplication //, IApplication
     {
         public int LDL_ApplicationID { get; set; }
         public int LicenseClassID { get; set; }
@@ -16,7 +17,6 @@ namespace DVLD_BusinessLayer.Application
 
         public cls_NewLDLApplication() : base()
         {
-
             LDL_ApplicationID = -1;
             base.ApplicationTypeID = 1;
             base.PaidFees = clsApplicationType.GetApplicationTypeFees(base.ApplicationTypeID);
@@ -39,6 +39,10 @@ namespace DVLD_BusinessLayer.Application
 
 
 
+        public string GetLicenseClassNameByID() => cls_NewLDLApplications_Data.GetLicenseClassNameByID(LicenseClassID);
+
+        public int GetPassedTests() => cls_NewLDLApplications_Data.GetPassedTestsForLDLapp(LDL_ApplicationID);    
+
         private bool _AddNew()
         {
             this.LDL_ApplicationID = cls_NewLDLApplications_Data.Add_NewLDLApplication(this.ApplicantPersonID, ApplicationDate,
@@ -47,22 +51,21 @@ namespace DVLD_BusinessLayer.Application
         }
 
 
-
         private bool _Update() => cls_NewLDLApplications_Data.Update_NewLDLApplication(this.LDL_ApplicationID,ApplicantPersonID, LicenseClassID);
 
-        public bool IsNew() => this.ApplicationStatus == 1;
+        //public bool IsNew() => this.ApplicationStatus == 1;
 
         public  bool LikedwithLicense() => clsApplications_Data.ApplicationLikedWithLicense(this.ApplicationID) ;
 
 
-        public bool IsCompleted() => this.ApplicationStatus == 3;
+        //public bool IsCompleted() => this.ApplicationStatus == 3;
 
 
         public static bool Cancel(int LDLappID) => cls_NewLDLApplications_Data.Cancel_NewLDLApplication(LDLappID);
 
 
 
-        public static bool DeleteLDLapp(int LDLappID) => cls_NewLDLApplications_Data.Delete_NewLDLApplication(LDLappID);
+        public static bool Delete(int LDLappID) => cls_NewLDLApplications_Data.Delete_NewLDLApplication(LDLappID);
 
 
         public static cls_NewLDLApplication Find(int LDL_ApplicationID)

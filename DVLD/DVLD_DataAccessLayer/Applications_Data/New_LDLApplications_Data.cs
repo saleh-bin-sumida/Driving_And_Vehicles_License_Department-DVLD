@@ -356,6 +356,83 @@ namespace DVLD_DataAccessLayer
         }
 
 
+        public static string GetLicenseClassNameByID(int LicenseClassID) 
+        {
+            string LicenseClassName = "";
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select ClassName from LicenseClasses where LicenseClassID = @LicenseClassID";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    LicenseClassName = result.ToString();
+                }
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return LicenseClassName;
+        }
+
+
+        public static byte GetPassedTestsForLDLapp(int LocalDrivingLicenseApplicationID)
+        {
+            byte Passedtests =0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select [Passed Test] = (select count(*) from  
+						    ( 
+						    select  Tests.TestResult from Tests 
+						    inner join TestAppointments on  Tests.TestAppointmentID = TestAppointments.TestAppointmentID
+						    where TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID 
+						    and Tests.TestResult = 1
+						    ) 
+						    r1)
+                FROM     Applications INNER JOIN
+                            LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN
+                            People ON Applications.ApplicantPersonID = People.PersonID INNER JOIN
+                            LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID
+							where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    Passedtests = (byte) result;
+                }
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return Passedtests;
+        }
+
 
 
 

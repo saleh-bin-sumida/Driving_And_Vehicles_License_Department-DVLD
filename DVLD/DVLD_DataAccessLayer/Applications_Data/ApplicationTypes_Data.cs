@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DVLD_DataAccessLayer
 {
-    public static class clsApplicationTypes_Data
+    public static class ApplicationTypes_Data
     {
         public static DataTable GetAllApplicationTypes()
         {
@@ -144,6 +144,36 @@ namespace DVLD_DataAccessLayer
             }
             finally { connection.Close(); }
             return Fees;
+        }
+
+        public static string GetApplicationTypeName(int ApplicationTypeID)
+        {
+            string ApplicationTypeTitle = "";
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select ApplicationTypeTitle from ApplicationTypes where ApplicationTypeID =@ApplicationTypeID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null )
+                {
+                   ApplicationTypeTitle = (string)result;
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally { connection.Close(); }
+            return ApplicationTypeTitle;
         }
 
 

@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyControls\ctrlBasicApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyControls\ctrlBasicApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlBasicApplicationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyControls\ctrl_LDLapplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyControls\ctrl_LDLapplicationInfo.Designer.cs">
+      <DependentUpon>ctrl_LDLapplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyControls\ctrlLoginInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +136,12 @@
     <Compile Include="Manage_Screens\frmManage_NewLDLApplications.Designer.cs">
       <DependentUpon>frmManage_NewLDLApplications.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowInfo_Screens\frmShowApplicationDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowInfo_Screens\frmShowApplicationDetails.Designer.cs">
+      <DependentUpon>frmShowApplicationDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowInfo_Screens\frmShowPersonInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +174,12 @@
     <Compile Include="MyControls\ctrlPersonCard.Designer.cs">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MyControls\ctrlBasicApplicationInfo.resx">
+      <DependentUpon>ctrlBasicApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyControls\ctrl_LDLapplicationInfo.resx">
+      <DependentUpon>ctrl_LDLapplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyControls\ctrlLoginInfo.resx">
       <DependentUpon>ctrlLoginInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Screens\frmManage_NewLDLApplications.resx">
       <DependentUpon>frmManage_NewLDLApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowInfo_Screens\frmShowApplicationDetails.resx">
+      <DependentUpon>frmShowApplicationDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowInfo_Screens\frmShowPersonInfo.resx">
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>

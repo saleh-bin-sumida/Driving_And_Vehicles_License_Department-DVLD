@@ -20,23 +20,23 @@ namespace DVLD_BusinessLayer
 
         }
 
-        public static DataTable GetAllApplicationsTypes() => clsApplicationTypes_Data.GetAllApplicationTypes();
+        public static DataTable GetAllApplicationsTypes() => ApplicationTypes_Data.GetAllApplicationTypes();
 
 
         public static clsApplicationType GetApplicationTypeInfoByID(int ApplicationTypeID)
         {
             string ApplicationTypeTitle ="";
             decimal ApplicationTypeFees = 0.0m;
-            clsApplicationTypes_Data.GetApplicationTypeInfo(ApplicationTypeID, ref ApplicationTypeTitle,ref ApplicationTypeFees);
+            ApplicationTypes_Data.GetApplicationTypeInfo(ApplicationTypeID, ref ApplicationTypeTitle,ref ApplicationTypeFees);
 
             return new clsApplicationType(ApplicationTypeID,ApplicationTypeTitle,ApplicationTypeFees);  
 
         }
 
         // this method is referenced by dynamic object
-        public bool Update()  => clsApplicationTypes_Data.UpdateApplicationType(ApplicationTypeID,ApplicationTypeTitle,ApplicationTypeFees);
+        public bool Update()  => ApplicationTypes_Data.UpdateApplicationType(ApplicationTypeID,ApplicationTypeTitle,ApplicationTypeFees);
 
-        public static decimal GetApplicationTypeFees(int ApplicationTypeID) => clsApplicationTypes_Data.GetApplicationTypeFees(ApplicationTypeID);
+        public static decimal GetApplicationTypeFees(int ApplicationTypeID) => ApplicationTypes_Data.GetApplicationTypeFees(ApplicationTypeID);
 
     }
 }

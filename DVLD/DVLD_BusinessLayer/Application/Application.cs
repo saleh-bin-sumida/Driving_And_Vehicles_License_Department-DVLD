@@ -1,16 +1,34 @@
-﻿using System;
+﻿using DVLD_BusinessLayer;
+using DVLD_BusinessLayer.Application;
+using DVLD_DataAccessLayer;
+using System;
 
 
 namespace DVLD_BusinessLayer
 {
-    public class clsApplication
+
+    interface IApplication
     {
-        protected  enum Mode { Addnew= 1, Update = 2};
+        bool _AddNew();
+        bool _Update();
+        string Status();
+        bool IsNew();
+        bool IsCompleted();
+        bool Cancel(int ID);
+        bool Delete(int ID);
+        bool Save();
+    }
+
+
+
+    public class clsApplication //: IApplication
+    {
+        protected enum Mode { Addnew = 1, Update = 2 };
         protected Mode mode;
         public int ApplicationID { get; set; }
         public int ApplicantPersonID { get; set; }
         public DateTime ApplicationDate { get; set; }
-        public int ApplicationTypeID { get; set; }   
+        public int ApplicationTypeID { get; set; }
 
         public byte ApplicationStatus { get; set; }
 
@@ -19,7 +37,7 @@ namespace DVLD_BusinessLayer
         public int CreatedByUserID { get; set; }
 
 
-        
+
         public clsApplication()
         {
             mode = Mode.Addnew;
@@ -34,7 +52,7 @@ namespace DVLD_BusinessLayer
             this.CreatedByUserID = GlobalSettings.CurrentUser.UserID;
         }
 
-        public clsApplication( int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
+        public clsApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
          byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
         {
             this.mode = Mode.Update;
@@ -47,11 +65,17 @@ namespace DVLD_BusinessLayer
             this.LastStatusDate = LastStatusDate;
             this.PaidFees = PaidFees;
             this.CreatedByUserID = CreatedByUserID;
+
         }
 
 
-      
+        public string ApplicantName() => clsApplications_Data.GetApplicantName(this.ApplicantPersonID);
+
+        public string Status() => clsApplications_Data.GetApplicationStatus(this.ApplicationID);
+
+        public string TypeTitle() => ApplicationTypes_Data.GetApplicationTypeName(ApplicationTypeID);
     }
-
-
 }
+
+
+

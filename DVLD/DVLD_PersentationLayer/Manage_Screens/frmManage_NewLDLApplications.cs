@@ -4,6 +4,7 @@ using DVLD_BusinessLayer.Application;
 using System.Windows.Forms;
 using System.Diagnostics.Eventing.Reader;
 using DVLD_BusinessLayer;
+using DVLD.ShowInfo_Screens;
 
 namespace DVLD
 {
@@ -92,7 +93,6 @@ namespace DVLD
 
         }
 
-
         private void InitializeScheduleTestContextMenu()
         {
             if (((int)DataGridView.CurrentRow.Cells[6].Value) == 0)
@@ -115,7 +115,7 @@ namespace DVLD
         private void InitializeContextMenueStrip(cls_NewLDLApplication lDLApplication)
         {
 
-            if (lDLApplication.IsNew())
+            if (lDLApplication.Status() == "New")
             {
                 tsmIssueDrivingLicense.Enabled = false;
                 tsmShowLicense.Enabled = false;
@@ -130,7 +130,7 @@ namespace DVLD
 
 
             }
-            else if (lDLApplication.IsCompleted())
+            else if (lDLApplication.Status() == "Completed")
             {
                 tsmEdit.Enabled = false;
                 tsmDelete.Enabled = false;
@@ -170,7 +170,7 @@ namespace DVLD
             switch (((ToolStripMenuItem)sender).Name.ToString())
             {
                 case "tsmShowDetails":
-                    frmShowPersonInfo ShowForm = new frmShowPersonInfo(ID);
+                    frmShowApplicationDetails ShowForm = new frmShowApplicationDetails(ID);
                     ShowForm.ShowDialog();
                     break;
 
@@ -187,7 +187,7 @@ namespace DVLD
 
                     if (MessageBox.Show("R U sure To delete this Application?", "Deleting Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
-                        if (cls_NewLDLApplication.DeleteLDLapp(ID))
+                        if (cls_NewLDLApplication.Delete(ID))
                             MessageBox.Show("LDL Application Deleted Succesfully");
                         else
                             MessageBox.Show("this Application Liked with License on this system, Cant be deleted");
