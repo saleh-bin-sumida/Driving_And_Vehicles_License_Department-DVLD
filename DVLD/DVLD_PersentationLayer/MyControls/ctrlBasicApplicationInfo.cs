@@ -6,13 +6,14 @@ namespace DVLD.MyControls
 {
     public partial class ctrlBasicApplicationInfo : UserControl
     {
-        clsApplication App;
 
         public int ID
         {
             get { return int.Parse(lblID.Text); }
             set { lblID.Text = value.ToString(); }
         }
+
+        public int ApplicantPersonID;
 
         public ctrlBasicApplicationInfo( )
         {
@@ -25,6 +26,8 @@ namespace DVLD.MyControls
 
         public void LoadData(clsApplication App)
         {
+            ApplicantPersonID = App.ApplicantPersonID;
+
             ID = App.ApplicationID;
             lblStatus.Text = App.Status();
             lblFees.Text = App.PaidFees.ToString();
@@ -33,6 +36,7 @@ namespace DVLD.MyControls
 
             lblDate.Text = App.ApplicationDate.ToString();
             lblStatusDate.Text = App.LastStatusDate.ToString();
+            lblCreatedBy.Text = App.UserFullName();
         }
 
         private void Clear()
@@ -49,7 +53,7 @@ namespace DVLD.MyControls
 
         private void linkLabelViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmShowPersonInfo frm = new frmShowPersonInfo(App.ApplicantPersonID);
+            frmShowPersonInfo frm = new frmShowPersonInfo(ApplicantPersonID);
             frm.ShowDialog();
 
         }

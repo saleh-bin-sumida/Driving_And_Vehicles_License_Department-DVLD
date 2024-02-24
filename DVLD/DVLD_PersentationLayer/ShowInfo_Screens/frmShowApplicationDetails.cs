@@ -14,14 +14,14 @@ namespace DVLD.ShowInfo_Screens
         {
             InitializeComponent();
             LDLApplication = cls_NewLDLApplication.Find(LDLAppID);
-           // App = clsApplication.Find(LDLApplication.ApplicationID);
+            App = clsApplication.Find(LDLApplication.ApplicationID);
         }
 
 
         private void frmShowApplicationDetails_Load(object sender, EventArgs e)
         {
             this.ctrl_LDLapplicationInfo1.LoadData(LDLApplication);
-        //    this.ctrlBasicApplicationInfo1.LoadData(App);
+            this.ctrlBasicApplicationInfo1.LoadData(App);
         }
 
         private void button1_Click(object sender, EventArgs e)

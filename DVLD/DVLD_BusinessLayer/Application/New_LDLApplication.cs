@@ -68,7 +68,7 @@ namespace DVLD_BusinessLayer.Application
         public static bool Delete(int LDLappID) => cls_NewLDLApplications_Data.Delete_NewLDLApplication(LDLappID);
 
 
-        public static cls_NewLDLApplication Find(int LDL_ApplicationID)
+        public  static  new cls_NewLDLApplication  Find(int LDL_ApplicationID)
         {
             int ApplicationID = 0, ApplicantPersonID = 0, ApplicationTypeID = 0, CreatedByUserID = 0, LicenseClassID = 0;
             byte ApplicationStatus = 0;

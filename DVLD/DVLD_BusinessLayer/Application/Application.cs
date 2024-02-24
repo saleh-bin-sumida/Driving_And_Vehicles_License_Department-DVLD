@@ -74,6 +74,28 @@ namespace DVLD_BusinessLayer
         public string Status() => clsApplications_Data.GetApplicationStatus(this.ApplicationID);
 
         public string TypeTitle() => ApplicationTypes_Data.GetApplicationTypeName(ApplicationTypeID);
+
+        public string UserFullName() => clsUser_Data.GetUserFullNameByID(this.CreatedByUserID);
+
+
+        public static clsApplication Find(int AppID)
+        {
+            int  ApplicantPersonID = 0, ApplicationTypeID = 0, CreatedByUserID = 0;
+            byte ApplicationStatus = 0;
+            decimal PaidFees = 0;
+            DateTime ApplicationDate = DateTime.Now, LastStatusDate = DateTime.Now;
+
+
+            if (clsApplications_Data.GetApplicationInfoByID(AppID, ref ApplicantPersonID, ref ApplicationDate,
+                ref ApplicationTypeID, ref ApplicationStatus, ref LastStatusDate, ref PaidFees, ref CreatedByUserID))
+            {
+                return new clsApplication(AppID, ApplicantPersonID, ApplicationDate,
+                ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
+            }
+            return null;
+        }
+
+
     }
 }
 

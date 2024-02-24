@@ -50,7 +50,7 @@ namespace DVLD
 
             ApplicationDate.Text = _LDLapp.ApplicationDate.ToString();
             ApplicationFees.Text = _LDLapp.PaidFees.ToString();
-            CreatedBy.Text = clsUser.GetUserFullNameByID(_LDLapp.CreatedByUserID);
+            CreatedBy.Text = _LDLapp.UserFullName();  
 
         }
 

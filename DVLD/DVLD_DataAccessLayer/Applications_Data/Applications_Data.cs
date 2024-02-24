@@ -167,7 +167,7 @@ namespace DVLD_DataAccessLayer
 
         public static bool GetApplicationInfoByID( int ApplicationID,
         ref int ApplicantPersonID,ref  DateTime ApplicationDate,ref int ApplicationTypeID,
-        ref int ApplicationStatus, ref DateTime LastStatusDate, ref decimal PaidFees, ref int CreatedByUserID)
+        ref byte ApplicationStatus, ref DateTime LastStatusDate, ref decimal PaidFees, ref int CreatedByUserID)
         {
 
             bool isFound = false;
@@ -196,9 +196,9 @@ namespace DVLD_DataAccessLayer
                     ApplicantPersonID = (int)reader["ApplicantPersonID"];
                     ApplicationDate = (DateTime)reader["ApplicationDate"];
                     ApplicationTypeID = (int)reader["ApplicationTypeID"];
-                    ApplicationStatus = (int)reader["ApplicationStatus"];
+                    ApplicationStatus = (byte)reader["ApplicationStatus"];
                     LastStatusDate = (DateTime)reader["LastStatusDate"];
-                    PaidFees = (int)reader["PaidFees"];
+                    PaidFees = (decimal)reader["PaidFees"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
 
                 }

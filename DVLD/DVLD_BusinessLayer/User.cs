@@ -101,7 +101,6 @@ namespace DVLD_BusinessLayer
             return false;
         }
 
-        public static string GetUserFullNameByID(int UserID) => clsUser_Data.GetUserFullNameByID(UserID);
 
     }
 
