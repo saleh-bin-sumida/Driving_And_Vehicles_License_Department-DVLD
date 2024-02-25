@@ -22,7 +22,7 @@ namespace DVLD_BusinessLayer
 
         }
 
-        public static DataTable GetAllTestTypes() => clsTestsD_ata.GetAllTestTypes();
+        public static DataTable GetAllTestTypes() => clsTests_Data.GetAllTestTypes();
 
 
         public static clsTestType GetTestTypeInfoByID(int TestTypeID)
@@ -30,12 +30,12 @@ namespace DVLD_BusinessLayer
             string TestTypeTitle = "";
             string TestTypeDescription = "";
             decimal TestTypeFees = 0;
-            clsTestsD_ata.GetTestTypeInfo(TestTypeID, ref TestTypeTitle, ref TestTypeDescription, ref TestTypeFees);
+            clsTests_Data.GetTestTypeInfo(TestTypeID, ref TestTypeTitle, ref TestTypeDescription, ref TestTypeFees);
 
             return new clsTestType(TestTypeID, TestTypeTitle,TestTypeDescription, TestTypeFees);
 
         }
 
-        public bool Update() => clsTestsD_ata.UpdateTestType(TestTypeID, TestTypeTitle,TestTypeDescription, TestTypeFees);
+        public bool Update() => clsTests_Data.UpdateTestType(TestTypeID, TestTypeTitle,TestTypeDescription, TestTypeFees);
     }
 }

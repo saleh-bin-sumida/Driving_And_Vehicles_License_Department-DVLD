@@ -182,6 +182,9 @@ namespace DVLD
                     frmAddUpdate_NewLDLApplication EditForm = new frmAddUpdate_NewLDLApplication(ID);
                     EditForm.ShowDialog();
                     break;
+                case "tsmScheduleVisionTest":
+                    //
+                    break;
 
                 case "tsmDelete":
 
