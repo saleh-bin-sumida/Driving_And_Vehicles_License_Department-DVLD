@@ -1,6 +1,5 @@
-﻿using System;
-using System.Data;
-using DVLD_DataAccessLayer;
+﻿using System.Data;
+using DVLD_DataAccessLayer.Tests_Data;
 namespace DVLD_BusinessLayer
 {
     public class clsTestType
@@ -22,7 +21,7 @@ namespace DVLD_BusinessLayer
 
         }
 
-        public static DataTable GetAllTestTypes() => clsTests_Data.GetAllTestTypes();
+        public static DataTable GetAllTestTypes() => clsTestTypes_Data.GetAllTestTypes();
 
 
         public static clsTestType GetTestTypeInfoByID(int TestTypeID)
@@ -31,12 +30,12 @@ namespace DVLD_BusinessLayer
             string TestTypeDescription = "";
             decimal TestTypeFees = 0;
             
-            clsTests_Data.GetTestTypeInfo(TestTypeID, ref TestTypeTitle, ref TestTypeDescription, ref TestTypeFees);
+            clsTestTypes_Data.GetTestTypeInfo(TestTypeID, ref TestTypeTitle, ref TestTypeDescription, ref TestTypeFees);
 
             return new clsTestType(TestTypeID, TestTypeTitle,TestTypeDescription, TestTypeFees);
 
         }
 
-        public bool Update() => clsTests_Data.UpdateTestType(TestTypeID, TestTypeTitle,TestTypeDescription, TestTypeFees);
+        public bool Update() => clsTestTypes_Data.UpdateTestType(TestTypeID, TestTypeTitle,TestTypeDescription, TestTypeFees);
     }
 }

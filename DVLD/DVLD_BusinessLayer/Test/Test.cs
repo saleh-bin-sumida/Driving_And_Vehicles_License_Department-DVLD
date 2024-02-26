@@ -6,5 +6,9 @@ namespace DVLD_BusinessLayer
 {
     public class clsTest
     {
+        int TestID;
+        int TestType;
+        int TestAppointmentID;
+        bool isPassed;
     }
 }

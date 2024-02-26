@@ -121,6 +121,66 @@ namespace DVLD_DataAccessLayer.Tests_Data
         }
 
 
+        public static decimal GetTsetTypeFees(int TestTypeID)
+        {
+            decimal Fees = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select TestTypeFees from TestTypes where TestTypeID = @TestTypeID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null && decimal.TryParse(result.ToString(), out Fees))
+                {
+                    connection.Close();
+                    return Fees;
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally { connection.Close(); }
+            return Fees;
+        }
+
+        public static string GetTestTypeName(int TestTypeID)
+        {
+            string TestTypeTitle = "";
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select TestTypeTitle from TestTypes where TestTypeID = @TestTypeID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null)
+                {
+                    TestTypeTitle = (string)result;
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally { connection.Close(); }
+            return TestTypeTitle;
+        }
 
     }
 }
