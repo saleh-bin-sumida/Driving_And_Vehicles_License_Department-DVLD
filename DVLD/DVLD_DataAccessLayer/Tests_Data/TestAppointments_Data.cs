@@ -1,14 +1,13 @@
-﻿
-
+﻿using System;
 using System.Data.SqlClient;
-using System;
+
 
 namespace DVLD_DataAccessLayer.Tests_Data
 {
-    public static class TestAppointments_Data
+    public class clsTestsAppointments_Data
     {
         public static int AddTestAppointment(int LocalDrivingLicenseApplicationID, int TestTypeID, DateTime AppointmentDate,
-        decimal PaidFees, bool IsLocked, int CreatedByUserID)
+    decimal PaidFees, bool IsLocked, int CreatedByUserID)
         {
             int TestAppointmentID = -1;
 
@@ -71,7 +70,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
 
 
-        public static bool UpdateTestAppointment(int TestAppointmentID,  DateTime AppointmentDate)
+        public static bool UpdateTestAppointment(int TestAppointmentID, DateTime AppointmentDate)
         {
 
             int rowsAffected = 0;
@@ -102,8 +101,6 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
             return (rowsAffected > 0);
         }
-
-
 
 
 
