@@ -49,7 +49,9 @@
     <Compile Include="Person_Data.cs" />
     <Compile Include="DataAccessSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests_Data\TestAppointments_Data.cs" />
     <Compile Include="Tests_Data\Tests_Data.cs" />
+    <Compile Include="Tests_Data\TestTypes_Data.cs" />
     <Compile Include="User_Data.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
