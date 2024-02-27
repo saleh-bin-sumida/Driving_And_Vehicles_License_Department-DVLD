@@ -22,7 +22,7 @@ namespace DVLD_BusinessLayer.Test
             TestTypeID = 1;
             LocalDrivingLicenseApplicationID = 0;
             AppointmentDate = DateTime.Now;
-            PaidFees = clsTestTypes_Data.GetTsetTypeFees(this.TestTypeID);
+            PaidFees = this.Fees();
             CreatedByUserID = GlobalSettings.CurrentUser.UserID;
             IsLocked = false;
 
@@ -41,5 +41,20 @@ namespace DVLD_BusinessLayer.Test
             this.CreatedByUserID = CreatedByUserID;
             this.IsLocked = IsLocked;
         }
+
+        protected string TypeName() => clsTestTypes_Data.GetTestTypeName(this.TestTypeID);
+        protected decimal Fees() => clsTestTypes_Data.GetTestTypeFees(this.TestTypeID);
+
+        public bool _SchduleTestAppointments(ref string ErrorMessage)
+        {
+            
+            if (!clsTestsAppointments_Data.AllowedToCreateAppointment(this.LocalDrivingLicenseApplicationID, TestTypeID, ref ErrorMessage))
+                return false;
+
+            this.TestAppointmentID = clsTestsAppointments_Data.AddTestAppointment(LocalDrivingLicenseApplicationID,
+                TestTypeID, AppointmentDate, PaidFees, IsLocked, CreatedByUserID);
+            return this.TestAppointmentID != -1;
+        }
+
     }
 }

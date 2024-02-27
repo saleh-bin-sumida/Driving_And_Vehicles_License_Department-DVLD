@@ -7,7 +7,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
     public class clsTestsAppointments_Data
     {
         public static int AddTestAppointment(int LocalDrivingLicenseApplicationID, int TestTypeID, DateTime AppointmentDate,
-    decimal PaidFees, bool IsLocked, int CreatedByUserID)
+        decimal PaidFees, bool IsLocked, int CreatedByUserID)
         {
             int TestAppointmentID = -1;
 
@@ -102,6 +102,72 @@ namespace DVLD_DataAccessLayer.Tests_Data
             return (rowsAffected > 0);
         }
 
+
+        public static bool AllowedToCreateAppointment(int LocalDrivingLicenseApplicationID, int TestTypeID, ref string ErroMessage)
+        {
+            bool CreateAppointment = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"
+                    select top 1 TestID, TestAppointments.TestAppointmentID, TestTypeID,LocalDrivingLicenseApplicationID,AppointmentDate,IsLocked,
+                    TestResult from Tests right join TestAppointments on Tests.TestAppointmentID = TestAppointments.TestAppointmentID
+                    where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID  and TestTypeID = @TestTypeID
+                    order by TestAppointments.AppointmentDate desc  ";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+
+                    if (reader["TestAppointmentID"] == DBNull.Value)
+                    {
+
+                        CreateAppointment = true;
+                        connection.Close();
+                        return CreateAppointment;
+                    }
+
+                    if (!(bool)reader["isLocked"])
+                    {
+                        ErroMessage = "this application alredy had active appointment, cant apply for more than one appointment for the same app";
+                        CreateAppointment = false;
+                        connection.Close();
+                        return CreateAppointment;
+
+               
+                    }
+
+                    if ((bool)reader["TestResult"])
+                    {
+                        ErroMessage = "This Test aleady Passed, cant be taken again for this application";
+                        CreateAppointment = false;
+                    }
+                    else
+                    {
+                        CreateAppointment = true;
+                    }
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return CreateAppointment;
+        }
 
 
     }

@@ -53,13 +53,11 @@ namespace DVLD_BusinessLayer.Application
 
         private bool _Update() => cls_NewLDLApplications_Data.Update_NewLDLApplication(this.LDL_ApplicationID,ApplicantPersonID, LicenseClassID);
 
-        //public bool IsNew() => this.ApplicationStatus == 1;
 
         public  bool LikedwithLicense() => clsApplications_Data.ApplicationLikedWithLicense(this.ApplicationID) ;
 
 
-        //public bool IsCompleted() => this.ApplicationStatus == 3;
-
+        public static bool isLDLappHasActiveTestAppointment(int LDLappID, int TestTypeID) => cls_NewLDLApplications_Data.isLDLappHasActiveTestAppointment(LDLappID, TestTypeID);
 
         public static bool Cancel(int LDLappID) => cls_NewLDLApplications_Data.Cancel_NewLDLApplication(LDLappID);
 

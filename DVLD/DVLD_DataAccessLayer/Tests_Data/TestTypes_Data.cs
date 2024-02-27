@@ -121,7 +121,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
         }
 
 
-        public static decimal GetTsetTypeFees(int TestTypeID)
+        public static decimal GetTestTypeFees(int TestTypeID)
         {
             decimal Fees = 0;
 
