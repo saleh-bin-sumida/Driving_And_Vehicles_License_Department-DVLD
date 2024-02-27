@@ -1,10 +1,12 @@
-﻿using DVLD_BusinessLayer.Application;
+﻿using DVLD_BusinessLayer;
+using DVLD_BusinessLayer.Application;
 using System.Windows.Forms;
 
 namespace DVLD
 {
     public partial class ctrl_LDLapplicationInfo : UserControl
     {
+        cls_NewLDLApplication _LDLapp;
         public int DLAppID 
         { 
             get { return int.Parse(lbl_LDLappID.Text); } 
@@ -17,11 +19,17 @@ namespace DVLD
             InitializeComponent();
         }
 
-        public void LoadData(cls_NewLDLApplication LDLapp)
+        public void LoadData(int LDLappID)
         {
-            DLAppID = LDLapp.LDL_ApplicationID;
-            lblAppliedForLicense.Text = LDLapp.GetLicenseClassNameByID();
-            lblPassedTests.Text = LDLapp.GetPassedTests().ToString();
+            _LDLapp = cls_NewLDLApplication.Find(LDLappID);
+
+            if (_LDLapp.LinkedwithLicense())
+            {
+                linkLabelShowLicenseInfo.Enabled = false;
+            }
+            DLAppID = _LDLapp.LDL_ApplicationID;
+            lblAppliedForLicense.Text = _LDLapp.LicenseClassName();
+            lblPassedTests.Text = _LDLapp.GetPassedTests().ToString();
         }
 
     }

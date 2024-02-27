@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manage_Screens\frmManageTestAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Screens\frmManageTestAppointments.Designer.cs">
+      <DependentUpon>frmManageTestAppointments.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyControls\ctrlBasicApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     <Compile Include="MyControls\ctrlPersonCard.Designer.cs">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Manage_Screens\frmManageTestAppointments.resx">
+      <DependentUpon>frmManageTestAppointments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyControls\ctrlBasicApplicationInfo.resx">
       <DependentUpon>ctrlBasicApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>

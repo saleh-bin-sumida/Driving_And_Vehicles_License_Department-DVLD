@@ -1,4 +1,6 @@
-﻿using DVLD_DataAccessLayer;
+﻿using DVLD_BusinessLayer.Test;
+using DVLD_DataAccessLayer;
+using DVLD_DataAccessLayer.Tests_Data;
 using System;
 using System.Data;
 using System.Runtime.CompilerServices;
@@ -12,9 +14,6 @@ namespace DVLD_BusinessLayer.Application
         public int LicenseClassID { get; set; }
 
 
-
-
-
         public cls_NewLDLApplication() : base()
         {
             LDL_ApplicationID = -1;
@@ -22,8 +21,6 @@ namespace DVLD_BusinessLayer.Application
             base.PaidFees = clsApplicationType.GetApplicationTypeFees(base.ApplicationTypeID);
             this.LicenseClassID = 3;
         }
-
-
 
 
 
@@ -39,9 +36,11 @@ namespace DVLD_BusinessLayer.Application
 
 
 
-        public string GetLicenseClassNameByID() => cls_NewLDLApplications_Data.GetLicenseClassNameByID(LicenseClassID);
+        public string LicenseClassName() => cls_NewLDLApplications_Data.GetLicenseClassNameByID(LicenseClassID);
+
 
         public int GetPassedTests() => cls_NewLDLApplications_Data.GetPassedTestsForLDLapp(LDL_ApplicationID);    
+
 
         private bool _AddNew()
         {
@@ -54,10 +53,10 @@ namespace DVLD_BusinessLayer.Application
         private bool _Update() => cls_NewLDLApplications_Data.Update_NewLDLApplication(this.LDL_ApplicationID,ApplicantPersonID, LicenseClassID);
 
 
-        public  bool LikedwithLicense() => clsApplications_Data.ApplicationLikedWithLicense(this.ApplicationID) ;
+        public  bool LinkedwithLicense() => clsApplications_Data.ApplicationLikedWithLicense(this.ApplicationID) ;
 
 
-        public static bool isLDLappHasActiveTestAppointment(int LDLappID, int TestTypeID) => cls_NewLDLApplications_Data.isLDLappHasActiveTestAppointment(LDLappID, TestTypeID);
+        //public static bool isLDLappHasActiveTestAppointment(int LDLappID, int TestTypeID) => cls_NewLDLApplications_Data.isLDLappHasActiveTestAppointment(LDLappID, TestTypeID);
 
         public static bool Cancel(int LDLappID) => cls_NewLDLApplications_Data.Cancel_NewLDLApplication(LDLappID);
 
@@ -84,11 +83,14 @@ namespace DVLD_BusinessLayer.Application
         }
 
 
-
-
-
         public static DataTable GetAll_NewLDLApplications() => cls_NewLDLApplications_Data.GetAll_NewLDLApplications();
 
+        public bool AllowedToCreateAppointment(int TestType, ref string ErrorMessage)
+        {
+
+            return clsTestsAppointments_Data.AllowedToCreateAppointment(LDL_ApplicationID, TestType , ref ErrorMessage);
+
+        }
 
 
 

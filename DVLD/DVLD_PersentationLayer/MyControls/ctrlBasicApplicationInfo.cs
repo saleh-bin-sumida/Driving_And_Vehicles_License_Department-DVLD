@@ -6,14 +6,14 @@ namespace DVLD.MyControls
 {
     public partial class ctrlBasicApplicationInfo : UserControl
     {
-
+        clsApplication _App;
         public int ID
         {
             get { return int.Parse(lblID.Text); }
-            set { lblID.Text = value.ToString(); }
+            private set { lblID.Text = value.ToString(); }
         }
 
-        public int ApplicantPersonID;
+      //  public int ApplicantPersonID;
 
         public ctrlBasicApplicationInfo( )
         {
@@ -24,19 +24,19 @@ namespace DVLD.MyControls
        
       
 
-        public void LoadData(clsApplication App)
+        public void LoadData(int AppID)
         {
-            ApplicantPersonID = App.ApplicantPersonID;
+            _App = clsApplication.Find(AppID);
 
-            ID = App.ApplicationID;
-            lblStatus.Text = App.Status();
-            lblFees.Text = App.PaidFees.ToString();
-            lblType.Text = App.TypeTitle();
-            lblApplicant.Text = App.ApplicantName();
+            ID = _App.ApplicationID;
+            lblStatus.Text = _App.Status();
+            lblFees.Text = _App.PaidFees.ToString();
+            lblType.Text = _App.TypeTitle();
+            lblApplicant.Text = _App.ApplicantName();
 
-            lblDate.Text = App.ApplicationDate.ToString();
-            lblStatusDate.Text = App.LastStatusDate.ToString();
-            lblCreatedBy.Text = App.UserFullName();
+            lblDate.Text = _App.ApplicationDate.ToString();
+            lblStatusDate.Text = _App.LastStatusDate.ToString();
+            lblCreatedBy.Text = _App.UserFullName();
         }
 
         private void Clear()
@@ -53,7 +53,7 @@ namespace DVLD.MyControls
 
         private void linkLabelViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmShowPersonInfo frm = new frmShowPersonInfo(ApplicantPersonID);
+            frmShowPersonInfo frm = new frmShowPersonInfo(_App.ApplicantPersonID);
             frm.ShowDialog();
 
         }

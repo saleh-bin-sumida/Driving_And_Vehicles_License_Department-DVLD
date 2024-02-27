@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Diagnostics.Eventing.Reader;
 using DVLD_BusinessLayer;
 using DVLD.ShowInfo_Screens;
+using DVLD.Manage_Screens;
 
 namespace DVLD
 {
@@ -137,7 +138,7 @@ namespace DVLD
                 tsmCancel.Enabled = false;
                 tsmSechduleTests.Enabled = false;
 
-                if (lDLApplication.LikedwithLicense())
+                if (lDLApplication.LinkedwithLicense())
                 {
                     tsmIssueDrivingLicense.Enabled = false;
                 }
@@ -183,7 +184,18 @@ namespace DVLD
                     EditForm.ShowDialog();
                     break;
                 case "tsmScheduleVisionTest":
-                    //
+                    frmManageTestAppointments VisionTestForm = new frmManageTestAppointments(ID,1);
+                    VisionTestForm.ShowDialog();
+                    break;
+
+                case "tsmScheduleWrittenTest":
+                    frmManageTestAppointments WrittenTestForm = new frmManageTestAppointments(ID, 2);
+                    WrittenTestForm.ShowDialog();
+                    break;
+
+                case "tsmScheduleStreetTest":
+                    frmManageTestAppointments StreetTestForm = new frmManageTestAppointments(ID, 3);
+                    StreetTestForm.ShowDialog();
                     break;
 
                 case "tsmDelete":
