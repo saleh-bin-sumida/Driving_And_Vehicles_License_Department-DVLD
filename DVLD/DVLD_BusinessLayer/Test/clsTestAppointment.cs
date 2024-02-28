@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using DVLD_BusinessLayer.Application;
+using DVLD_DataAccessLayer;
 using DVLD_DataAccessLayer.Tests_Data;
 namespace DVLD_BusinessLayer.Test
 {
@@ -11,7 +13,7 @@ namespace DVLD_BusinessLayer.Test
         public int TestTypeID { get; set; }
         public int LDL_ApplicationID { get; set; }
         public DateTime AppointmentDate { get; set; }
-        public decimal PaidFees { get; set; }
+        private decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
         public bool IsLocked { get; set; }
 
@@ -56,12 +58,34 @@ namespace DVLD_BusinessLayer.Test
             this.IsLocked = IsLocked;
         }
 
-        protected string TypeName() => clsTestTypes_Data.GetTestTypeName(this.TestTypeID);
-        protected decimal Fees() => clsTestTypes_Data.GetTestTypeFees(this.TestTypeID);
+
+
+        public string TypeName() => clsTestTypes_Data.GetTestTypeName(this.TestTypeID);
+        public decimal Fees() => clsTestTypes_Data.GetTestTypeFees(this.TestTypeID);
 
 
 
-        public bool _SchduleTestAppointments()
+        public static  clsTestAppointment Find(int TestAppointmentID)
+        {
+            int TestType = 0, LDLappID = 0, CreatedByUserID = 0;
+            DateTime AppointmentDate = DateTime.Now;
+            bool isLocked = false;
+            decimal PaidFees = 0;
+
+
+            if (clsTestsAppointments_Data.GetTestAppointmentInfoByID(TestAppointmentID, ref LDLappID, ref TestType,
+                ref AppointmentDate, ref PaidFees, ref CreatedByUserID, ref isLocked))
+            {
+                return new clsTestAppointment(TestAppointmentID, LDLappID, TestType,
+                 AppointmentDate, PaidFees, CreatedByUserID, isLocked);
+            }
+            return null;
+        }
+
+
+
+
+        private bool _SchduleTestAppointments()
         {
             
 
@@ -72,10 +96,31 @@ namespace DVLD_BusinessLayer.Test
         }
 
 
+        private bool _Update() => clsTestsAppointments_Data.UpdateTestAppointment(this.TestAppointmentID, AppointmentDate);
 
 
 
         public static DataTable GetAllTestAppointments(int LDLappID, int TestTypeID) => clsTestsAppointments_Data.GetAllTestAppointments(LDLappID, TestTypeID);
+
+
+
+
+        public bool Save()
+        {
+            switch (mode)
+            {
+                case Mode.Addnew:
+                    mode = Mode.Update;
+                    return _SchduleTestAppointments();
+
+                case Mode.Update:
+                    return _Update();
+
+                default:
+                    break;
+            }
+            return false;
+        }
 
     }
 }

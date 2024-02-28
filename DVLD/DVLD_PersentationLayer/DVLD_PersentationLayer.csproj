@@ -64,12 +64,6 @@
     <Compile Include="MyControls\ctrlBasicApplicationInfo.Designer.cs">
       <DependentUpon>ctrlBasicApplicationInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyControls\ctrlVisionTestAppointment.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControls\ctrlVisionTestAppointment.Designer.cs">
-      <DependentUpon>ctrlVisionTestAppointment.cs</DependentUpon>
-    </Compile>
     <Compile Include="MyControls\ctrl_LDLapplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -200,9 +194,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyControls\ctrlBasicApplicationInfo.resx">
       <DependentUpon>ctrlBasicApplicationInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyControls\ctrlVisionTestAppointment.resx">
-      <DependentUpon>ctrlVisionTestAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyControls\ctrl_LDLapplicationInfo.resx">
       <DependentUpon>ctrl_LDLapplicationInfo.cs</DependentUpon>

@@ -53,6 +53,59 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
 
 
+
+
+
+        public static bool GetTestAppointmentInfoByID(int TestAppointmentID, ref int LDLAppID,ref int TestTypeID,
+            ref DateTime AppointmentDate, ref decimal PaidFees, ref int CreatedByUserID, ref bool isLocked)
+        {
+
+            bool isFound = false;
+
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select * from TestAppointments where TestAppointmentID = @TestAppointmentID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+                    LDLAppID = (int)reader["LDLAppID"];
+                    TestTypeID = (int)reader["TestTypeID"];
+                    AppointmentDate = (DateTime)reader["AppointmentDate"];
+                    isLocked = (bool)reader["isLocked"];
+                    PaidFees = (decimal)reader["PaidFees"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+
+
+
         public static int AddTestAppointment(int LocalDrivingLicenseApplicationID, int TestTypeID, DateTime AppointmentDate,
         decimal PaidFees, bool IsLocked, int CreatedByUserID)
         {
@@ -70,12 +123,12 @@ namespace DVLD_DataAccessLayer.Tests_Data
                        ,[CreatedByUserID]
                        ,[IsLocked])
                  VALUES
-                       (<TestTypeID, int,>
-                       ,<LocalDrivingLicenseApplicationID, int,>
-                       ,<AppointmentDate, smalldatetime,>
-                       ,<PaidFees, smallmoney,>
-                       ,<CreatedByUserID, int,>
-                       ,<IsLocked, bit,>)
+                       (@TestTypeID
+                       ,@LocalDrivingLicenseApplicationID
+                       ,@AppointmentDate
+                       ,@PaidFees
+                       ,@CreatedByUserID
+                       ,@IsLocked)
                     SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);

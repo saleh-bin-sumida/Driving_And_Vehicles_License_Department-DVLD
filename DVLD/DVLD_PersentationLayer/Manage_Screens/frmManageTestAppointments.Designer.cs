@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.lblTotalMembers = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -36,7 +37,11 @@
             this.lblHeading = new System.Windows.Forms.Label();
             this.ctrlBasicApplicationInfo1 = new DVLD.MyControls.ctrlBasicApplicationInfo();
             this.ctrl_LDLapplicationInfo1 = new DVLD.ctrl_LDLapplicationInfo();
+            this.cmsTestAppointments = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmTakeTest = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
+            this.cmsTestAppointments.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataGridView
@@ -52,6 +57,7 @@
             this.DataGridView.RowTemplate.Height = 26;
             this.DataGridView.Size = new System.Drawing.Size(1022, 213);
             this.DataGridView.TabIndex = 32;
+            this.DataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView_CellMouseClick);
             // 
             // lblTotalMembers
             // 
@@ -82,6 +88,7 @@
             this.btnClose.TabIndex = 27;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAdd
             // 
@@ -119,6 +126,29 @@
             this.ctrl_LDLapplicationInfo1.Size = new System.Drawing.Size(1032, 150);
             this.ctrl_LDLapplicationInfo1.TabIndex = 33;
             // 
+            // cmsTestAppointments
+            // 
+            this.cmsTestAppointments.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsTestAppointments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmEdit,
+            this.tsmTakeTest});
+            this.cmsTestAppointments.Name = "cmsTestAppointments";
+            this.cmsTestAppointments.Size = new System.Drawing.Size(138, 52);
+            // 
+            // tsmEdit
+            // 
+            this.tsmEdit.Name = "tsmEdit";
+            this.tsmEdit.Size = new System.Drawing.Size(137, 24);
+            this.tsmEdit.Text = "Edit";
+            this.tsmEdit.Click += new System.EventHandler(this.tsmEdit_Click);
+            // 
+            // tsmTakeTest
+            // 
+            this.tsmTakeTest.Name = "tsmTakeTest";
+            this.tsmTakeTest.Size = new System.Drawing.Size(137, 24);
+            this.tsmTakeTest.Text = "Take Test";
+            this.tsmTakeTest.Click += new System.EventHandler(this.tsmTakeTest_Click);
+            // 
             // frmManageTestAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -136,6 +166,7 @@
             this.Text = "frmManageTestAppointments";
             this.Load += new System.EventHandler(this.frmManageTestAppointments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
+            this.cmsTestAppointments.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,5 +182,8 @@
         protected System.Windows.Forms.Label lblHeading;
         private ctrl_LDLapplicationInfo ctrl_LDLapplicationInfo1;
         private MyControls.ctrlBasicApplicationInfo ctrlBasicApplicationInfo1;
+        private System.Windows.Forms.ContextMenuStrip cmsTestAppointments;
+        private System.Windows.Forms.ToolStripMenuItem tsmEdit;
+        private System.Windows.Forms.ToolStripMenuItem tsmTakeTest;
     }
 }
