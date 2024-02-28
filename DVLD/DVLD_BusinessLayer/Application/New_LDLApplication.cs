@@ -1,9 +1,7 @@
-﻿using DVLD_BusinessLayer.Test;
-using DVLD_DataAccessLayer;
+﻿using DVLD_DataAccessLayer;
 using DVLD_DataAccessLayer.Tests_Data;
 using System;
 using System.Data;
-using System.Runtime.CompilerServices;
 
 
 namespace DVLD_BusinessLayer.Application

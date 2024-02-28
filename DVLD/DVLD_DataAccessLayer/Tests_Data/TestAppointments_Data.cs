@@ -152,7 +152,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
         public static bool AllowedToCreateAppointment(int LocalDrivingLicenseApplicationID, int TestTypeID, ref string ErroMessage)
         {
-            bool CreateAppointment = false;
+            bool CreateAppointment = true;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
@@ -174,20 +174,11 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 if (reader.Read())
                 {
 
-                    if (reader["TestAppointmentID"] == DBNull.Value)
-                    {
-
-                        CreateAppointment = true;
-                        connection.Close();
-                        return CreateAppointment;
-                    }
-
                     if (!(bool)reader["isLocked"])
                     {
                         ErroMessage = "this application alredy had active appointment, cant apply for more than one appointment for the same app";
                         CreateAppointment = false;
-                        connection.Close();
-                        return CreateAppointment;
+
 
                
                     }
@@ -197,12 +188,11 @@ namespace DVLD_DataAccessLayer.Tests_Data
                         ErroMessage = "This Test aleady Passed, cant be taken again for this application";
                         CreateAppointment = false;
                     }
-                    else
-                    {
-                        CreateAppointment = true;
-                    }
+
 
                 }
+    
+                
 
 
             }

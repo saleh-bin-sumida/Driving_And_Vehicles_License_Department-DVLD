@@ -1,4 +1,5 @@
-﻿using DVLD_BusinessLayer.Application;
+﻿using DVLD.AddUpdate_Screens;
+using DVLD_BusinessLayer.Application;
 using DVLD_BusinessLayer.Test;
 using System.Windows.Forms;
 
@@ -51,6 +52,11 @@ namespace DVLD.Manage_Screens
                 MessageBox.Show(ErrorMessage);
                 return;
             }
+
+            //clsTestAppointment frm = new clsTestAppointment(LDLapp.LDL_ApplicationID, _TestType);
+            frmAddUpdateTestAppointment frm = new frmAddUpdateTestAppointment(LDLapp.LDL_ApplicationID, _TestType)
+
+            RefreshDataGridVeiw();
         }
     }
 }

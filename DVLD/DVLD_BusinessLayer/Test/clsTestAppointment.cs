@@ -28,6 +28,19 @@ namespace DVLD_BusinessLayer.Test
             IsLocked = false;
 
         }
+        public clsTestAppointment(int LDLappID, int TestTypeID)
+        {
+            mode = Mode.Addnew;
+
+            TestAppointmentID = -1;
+            this.TestTypeID = TestTypeID;
+            this.LDL_ApplicationID = LDLappID;
+            AppointmentDate = DateTime.Now;
+            PaidFees = this.Fees();
+            CreatedByUserID = GlobalSettings.CurrentUser.UserID;
+            IsLocked = false;
+
+        }
 
         public clsTestAppointment(int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID,
             DateTime AppointmentDate, decimal PaidFees, int CreatedByUserID , bool IsLocked)

@@ -23,7 +23,7 @@ namespace DVLD
         {
             _LDLapp = cls_NewLDLApplication.Find(LDLappID);
 
-            if (_LDLapp.LinkedwithLicense())
+            if (!_LDLapp.LinkedwithLicense())
             {
                 linkLabelShowLicenseInfo.Enabled = false;
             }
