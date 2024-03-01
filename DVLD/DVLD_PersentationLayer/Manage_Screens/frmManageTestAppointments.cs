@@ -19,6 +19,16 @@ namespace DVLD.Manage_Screens
 
         private void LoadData()
         {
+        
+
+            ctrl_LDLapplicationInfo1.LoadData(LDLapp.LDL_ApplicationID);
+            ctrlBasicApplicationInfo1.LoadData(LDLapp.ApplicationID);
+            RefreshDataGridVeiw();
+
+        }
+
+        private void frmManageTestAppointments_Load(object sender, System.EventArgs e)
+        {
             if (_TestTypeID == 1)
                 lblHeading.Text = "Vision Test Appointments";
             else if (_TestTypeID == 2)
@@ -26,15 +36,6 @@ namespace DVLD.Manage_Screens
             else
                 lblHeading.Text = "Street Test Appointments";
 
-            ctrl_LDLapplicationInfo1.LoadData(LDLapp.LDL_ApplicationID);
-            ctrlBasicApplicationInfo1.LoadData(LDLapp.ApplicationID);
-            btnAdd.Text = "Add Appointment";
-            RefreshDataGridVeiw();
-
-        }
-
-        private void frmManageTestAppointments_Load(object sender, System.EventArgs e)
-        {
             LoadData();
             
 
@@ -54,10 +55,10 @@ namespace DVLD.Manage_Screens
                 return;
             }
 
-            frmAddUpdateTestAppointment frm = new frmAddUpdateTestAppointment(LDLapp.LDL_ApplicationID,-1, _TestTypeID);
+            frmAddUpdateTestAppointment frm = new frmAddUpdateTestAppointment(-1, LDLapp.LDL_ApplicationID, _TestTypeID);
             frm.ShowDialog();
 
-            RefreshDataGridVeiw();
+            LoadData();
         }
 
         private void btnClose_Click(object sender, System.EventArgs e)
@@ -67,17 +68,31 @@ namespace DVLD.Manage_Screens
 
         private void tsmEdit_Click(object sender, System.EventArgs e)
         {
+                
             int TestAppointmentID  = (int)DataGridView.CurrentRow.Cells[0].Value;
             
-            frmAddUpdateTestAppointment frm = new frmAddUpdateTestAppointment(LDLapp.LDL_ApplicationID, TestAppointmentID, _TestTypeID);
+            frmAddUpdateTestAppointment frm = new frmAddUpdateTestAppointment(TestAppointmentID, LDLapp.LDL_ApplicationID, _TestTypeID);
+ 
             frm.ShowDialog();
 
-            RefreshDataGridVeiw();
+            LoadData();
         }
 
         private void tsmTakeTest_Click(object sender, System.EventArgs e)
         {
+            bool isLocked = (bool)DataGridView.CurrentRow.Cells[3].Value;
+            if (isLocked)
+            {
+                MessageBox.Show("this Appointment is locked!");
+                return;
+            }
 
+            int TestAppointmentID = (int)DataGridView.CurrentRow.Cells[0].Value;
+
+            frmTakeTest frm = new frmTakeTest(TestAppointmentID);
+            frm.ShowDialog();
+
+            LoadData();
         }
 
         private void DataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

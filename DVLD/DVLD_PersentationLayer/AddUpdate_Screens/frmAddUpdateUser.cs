@@ -2,8 +2,7 @@
 using System.Data;
 using DVLD_BusinessLayer;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Drawing.Text;
+
 
 namespace DVLD
 {

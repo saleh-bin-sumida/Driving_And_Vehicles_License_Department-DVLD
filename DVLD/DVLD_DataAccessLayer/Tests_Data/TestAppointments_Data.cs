@@ -54,8 +54,6 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
 
 
-
-
         public static bool GetTestAppointmentInfoByID(int TestAppointmentID, ref int LDLAppID,ref int TestTypeID,
             ref DateTime AppointmentDate, ref decimal PaidFees, ref int CreatedByUserID, ref bool isLocked)
         {
@@ -81,7 +79,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 if (reader.Read())
                 {
                     isFound = true;
-                    LDLAppID = (int)reader["LDLAppID"];
+                    LDLAppID = (int)reader["LocalDrivingLicenseApplicationID"];
                     TestTypeID = (int)reader["TestTypeID"];
                     AppointmentDate = (DateTime)reader["AppointmentDate"];
                     isLocked = (bool)reader["isLocked"];
@@ -170,19 +168,22 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
 
 
-        public static bool UpdateTestAppointment(int TestAppointmentID, DateTime AppointmentDate)
+        public static bool UpdateTestAppointment(int TestAppointmentID, DateTime AppointmentDate,bool IsLocked)
         {
 
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"UPDATE TestAppointments 
-                    set AppointmentDate = @AppointmentDate where TestAppointmentID = @TestAppointmentID ";
+                    set AppointmentDate = @AppointmentDate,
+                    IsLocked = @IsLocked where TestAppointmentID = @TestAppointmentID ";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
             command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+            command.Parameters.AddWithValue("@IsLocked", IsLocked);
+
 
             try
             {
@@ -258,6 +259,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
             return CreateAppointment;
         }
+
 
 
 

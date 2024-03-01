@@ -79,7 +79,7 @@ namespace DVLD
 
             ctrlPersonCard1.LoadData(Person);
 
-            OnPersonSelected.Invoke(Person.PersonID);
+            OnPersonSelected?.Invoke(Person.PersonID);
 
 
         }

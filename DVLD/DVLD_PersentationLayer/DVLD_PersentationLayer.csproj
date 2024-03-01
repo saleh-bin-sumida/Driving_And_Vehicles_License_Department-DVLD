@@ -52,6 +52,12 @@
     <Compile Include="AddUpdate_Screens\frmAddUpdateTestAppointment.Designer.cs">
       <DependentUpon>frmAddUpdateTestAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTakeTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTakeTest.Designer.cs">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manage_Screens\frmManageTestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </Compile>
     <EmbeddedResource Include="AddUpdate_Screens\frmAddUpdateTestAppointment.resx">
       <DependentUpon>frmAddUpdateTestAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTakeTest.resx">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Screens\frmManageTestAppointments.resx">
       <DependentUpon>frmManageTestAppointments.cs</DependentUpon>

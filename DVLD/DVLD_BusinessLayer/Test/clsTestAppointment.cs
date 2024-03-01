@@ -24,7 +24,7 @@ namespace DVLD_BusinessLayer.Test
             TestAppointmentID = -1;
             TestTypeID = 1;
             LDL_ApplicationID = 0;
-            AppointmentDate = DateTime.Now;
+            AppointmentDate =  DateTime.Now.AddDays(1);
             PaidFees = this.Fees();
             CreatedByUserID = GlobalSettings.CurrentUser.UserID;
             IsLocked = false;
@@ -44,7 +44,7 @@ namespace DVLD_BusinessLayer.Test
 
         }
 
-        public clsTestAppointment(int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID,
+        public clsTestAppointment(int TestAppointmentID ,int LocalDrivingLicenseApplicationID,int TestTypeID,
             DateTime AppointmentDate, decimal PaidFees, int CreatedByUserID , bool IsLocked)
         {
             mode = Mode.Update;
@@ -96,9 +96,13 @@ namespace DVLD_BusinessLayer.Test
         }
 
 
-        private bool _Update() => clsTestsAppointments_Data.UpdateTestAppointment(this.TestAppointmentID, AppointmentDate);
+        private bool _Update() => clsTestsAppointments_Data.UpdateTestAppointment(this.TestAppointmentID, AppointmentDate,IsLocked);
 
-
+        public void TakeTest()
+        {
+            this.IsLocked = true;
+            _ = _Update();
+        }
 
         public static DataTable GetAllTestAppointments(int LDLappID, int TestTypeID) => clsTestsAppointments_Data.GetAllTestAppointments(LDLappID, TestTypeID);
 

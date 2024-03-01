@@ -469,5 +469,45 @@ namespace DVLD_DataAccessLayer
 
             return isFound;
         }
+
+
+        public static byte GetTrial(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            byte Trial = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select count(*) from TestAppointments where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                and TestTypeID = @TestTypeID";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    Trial = (byte)result;
+                }
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return Trial;
+        }
+
+
+
+
     }
 }

@@ -30,12 +30,13 @@
         {
             this.gbxScheduleTest = new System.Windows.Forms.GroupBox();
             this.gbx = new System.Windows.Forms.GroupBox();
+            this.lblSatForTest = new System.Windows.Forms.Label();
             this.dtpAppointmentDate = new System.Windows.Forms.DateTimePicker();
-            this.Trial = new System.Windows.Forms.Label();
+            this.lblTrial = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblHeading = new System.Windows.Forms.Label();
             this.lblFees = new System.Windows.Forms.Label();
             this.lblDClass = new System.Windows.Forms.Label();
             this.lbl_LDLappID = new System.Windows.Forms.Label();
@@ -44,10 +45,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.gbxRetakeTestInfo = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTotalFees = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ApplicationDate = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblR_testAppID = new System.Windows.Forms.Label();
+            this.lblR_appFees = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -74,12 +75,13 @@
             // 
             // gbx
             // 
+            this.gbx.Controls.Add(this.lblSatForTest);
             this.gbx.Controls.Add(this.dtpAppointmentDate);
-            this.gbx.Controls.Add(this.Trial);
+            this.gbx.Controls.Add(this.lblTrial);
             this.gbx.Controls.Add(this.label5);
             this.gbx.Controls.Add(this.lblName);
             this.gbx.Controls.Add(this.label8);
-            this.gbx.Controls.Add(this.label6);
+            this.gbx.Controls.Add(this.lblHeading);
             this.gbx.Controls.Add(this.lblFees);
             this.gbx.Controls.Add(this.lblDClass);
             this.gbx.Controls.Add(this.lbl_LDLappID);
@@ -96,6 +98,15 @@
             this.gbx.TabStop = false;
             this.gbx.Text = "??? Test";
             // 
+            // lblSatForTest
+            // 
+            this.lblSatForTest.AutoSize = true;
+            this.lblSatForTest.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblSatForTest.Location = new System.Drawing.Point(247, 211);
+            this.lblSatForTest.Name = "lblSatForTest";
+            this.lblSatForTest.Size = new System.Drawing.Size(0, 17);
+            this.lblSatForTest.TabIndex = 5;
+            // 
             // dtpAppointmentDate
             // 
             this.dtpAppointmentDate.CalendarFont = new System.Drawing.Font("Segoe UI", 10.8F);
@@ -105,15 +116,15 @@
             this.dtpAppointmentDate.Size = new System.Drawing.Size(200, 25);
             this.dtpAppointmentDate.TabIndex = 36;
             // 
-            // Trial
+            // lblTrial
             // 
-            this.Trial.AutoSize = true;
-            this.Trial.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Trial.Location = new System.Drawing.Point(237, 362);
-            this.Trial.Name = "Trial";
-            this.Trial.Size = new System.Drawing.Size(28, 22);
-            this.Trial.TabIndex = 35;
-            this.Trial.Text = "??";
+            this.lblTrial.AutoSize = true;
+            this.lblTrial.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrial.Location = new System.Drawing.Point(237, 362);
+            this.lblTrial.Name = "lblTrial";
+            this.lblTrial.Size = new System.Drawing.Size(28, 22);
+            this.lblTrial.TabIndex = 35;
+            this.lblTrial.Text = "??";
             // 
             // label5
             // 
@@ -145,15 +156,15 @@
             this.label8.TabIndex = 32;
             this.label8.Text = "Name";
             // 
-            // label6
+            // lblHeading
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Yu Gothic", 16.2F);
-            this.label6.Location = new System.Drawing.Point(256, 170);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(197, 36);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Schedule Test";
+            this.lblHeading.AutoSize = true;
+            this.lblHeading.Font = new System.Drawing.Font("Yu Gothic", 16.2F);
+            this.lblHeading.Location = new System.Drawing.Point(255, 155);
+            this.lblHeading.Name = "lblHeading";
+            this.lblHeading.Size = new System.Drawing.Size(197, 36);
+            this.lblHeading.TabIndex = 31;
+            this.lblHeading.Text = "Schedule Test";
             // 
             // lblFees
             // 
@@ -227,10 +238,10 @@
             // 
             // gbxRetakeTestInfo
             // 
-            this.gbxRetakeTestInfo.Controls.Add(this.label1);
+            this.gbxRetakeTestInfo.Controls.Add(this.lblTotalFees);
             this.gbxRetakeTestInfo.Controls.Add(this.label4);
-            this.gbxRetakeTestInfo.Controls.Add(this.ApplicationDate);
-            this.gbxRetakeTestInfo.Controls.Add(this.label13);
+            this.gbxRetakeTestInfo.Controls.Add(this.lblR_testAppID);
+            this.gbxRetakeTestInfo.Controls.Add(this.lblR_appFees);
             this.gbxRetakeTestInfo.Controls.Add(this.label3);
             this.gbxRetakeTestInfo.Controls.Add(this.label2);
             this.gbxRetakeTestInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -241,15 +252,15 @@
             this.gbxRetakeTestInfo.TabStop = false;
             this.gbxRetakeTestInfo.Text = "Retake Test Info";
             // 
-            // label1
+            // lblTotalFees
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(587, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 22);
-            this.label1.TabIndex = 34;
-            this.label1.Text = "0";
+            this.lblTotalFees.AutoSize = true;
+            this.lblTotalFees.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalFees.Location = new System.Drawing.Point(587, 32);
+            this.lblTotalFees.Name = "lblTotalFees";
+            this.lblTotalFees.Size = new System.Drawing.Size(19, 22);
+            this.lblTotalFees.TabIndex = 34;
+            this.lblTotalFees.Text = "0";
             // 
             // label4
             // 
@@ -261,25 +272,25 @@
             this.label4.TabIndex = 33;
             this.label4.Text = "Total Fees : ";
             // 
-            // ApplicationDate
+            // lblR_testAppID
             // 
-            this.ApplicationDate.AutoSize = true;
-            this.ApplicationDate.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ApplicationDate.Location = new System.Drawing.Point(234, 67);
-            this.ApplicationDate.Name = "ApplicationDate";
-            this.ApplicationDate.Size = new System.Drawing.Size(42, 22);
-            this.ApplicationDate.TabIndex = 32;
-            this.ApplicationDate.Text = "N/A";
+            this.lblR_testAppID.AutoSize = true;
+            this.lblR_testAppID.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblR_testAppID.Location = new System.Drawing.Point(234, 67);
+            this.lblR_testAppID.Name = "lblR_testAppID";
+            this.lblR_testAppID.Size = new System.Drawing.Size(42, 22);
+            this.lblR_testAppID.TabIndex = 32;
+            this.lblR_testAppID.Text = "N/A";
             // 
-            // label13
+            // lblR_appFees
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(234, 32);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(19, 22);
-            this.label13.TabIndex = 31;
-            this.label13.Text = "0";
+            this.lblR_appFees.AutoSize = true;
+            this.lblR_appFees.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblR_appFees.Location = new System.Drawing.Point(234, 32);
+            this.lblR_appFees.Name = "lblR_appFees";
+            this.lblR_appFees.Size = new System.Drawing.Size(19, 22);
+            this.lblR_appFees.TabIndex = 31;
+            this.lblR_appFees.Text = "0";
             // 
             // label3
             // 
@@ -357,18 +368,18 @@
 
         private System.Windows.Forms.GroupBox gbxScheduleTest;
         private System.Windows.Forms.GroupBox gbxRetakeTestInfo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTotalFees;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label ApplicationDate;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblR_testAppID;
+        private System.Windows.Forms.Label lblR_appFees;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gbx;
-        private System.Windows.Forms.Label Trial;
+        private System.Windows.Forms.Label lblTrial;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.Label lblFees;
         private System.Windows.Forms.Label lblDClass;
         private System.Windows.Forms.Label lbl_LDLappID;
@@ -380,5 +391,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblSatForTest;
     }
 }

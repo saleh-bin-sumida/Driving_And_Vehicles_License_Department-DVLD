@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Runtime;
 using System.Xml.Serialization;
 
 namespace DVLD_DataAccessLayer
@@ -325,6 +326,36 @@ namespace DVLD_DataAccessLayer
             finally { connection.Close(); }
 
             return ApplicantName;
+        }
+
+        public static bool MakeComplete(int ApplicationID)
+        {
+            int RowsEffected = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string qurey = @"update Applications
+                    set ApplicationStatus = 3 where ApplicationID = @ApplicationID";
+
+            SqlCommand command  = new SqlCommand(qurey,connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+
+            try
+            {
+                connection.Open();
+
+                RowsEffected =  command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return RowsEffected > 0;
         }
 
 

@@ -8,26 +8,28 @@ namespace DVLD.AddUpdate_Screens
 {
     public partial class frmAddUpdateTestAppointment : Form
     {
-        enum Mode { AddnewAppointment, UpdateAppointment};
-        Mode mode;
+        //enum Mode { AddnewAppointment, UpdateAppointment, RetakeTestApp};
+        //Mode mode;
+
 
         cls_NewLDLApplication _LDLapp;
         clsTestAppointment _TestAppointment;
 
-        public frmAddUpdateTestAppointment(int LDLappID, int TestAppointmentID, int TestTypeID)
+        public frmAddUpdateTestAppointment(int TestAppointmentID , int LDLappID, int TestTypeID)
         {
             InitializeComponent();
             
             _LDLapp = cls_NewLDLApplication.Find(LDLappID);
+        
 
             if (TestAppointmentID == -1)
             {
-                mode = Mode.AddnewAppointment;
+               // mode = Mode.AddnewAppointment;
                 _TestAppointment = new clsTestAppointment(LDLappID, TestTypeID);
                 return;
             }
 
-            mode = Mode.UpdateAppointment;
+            //mode = Mode.UpdateAppointment;
             _TestAppointment = clsTestAppointment.Find(TestAppointmentID);
 
 
@@ -37,16 +39,38 @@ namespace DVLD.AddUpdate_Screens
         {
             gbx.Text = _TestAppointment.TypeName();
             lbl_LDLappID.Text = _LDLapp.LDL_ApplicationID.ToString();
+            lblDClass.Text = _LDLapp.TypeTitle();
             lblName.Text = _LDLapp.ApplicantName();
+            lblTrial.Text = _LDLapp.Trial(_TestAppointment.TestTypeID).ToString();
             dtpAppointmentDate.MinDate = _TestAppointment.AppointmentDate;
             lblFees.Text = _TestAppointment.Fees().ToString();
 
         }
 
+        
+
         private void frmAddUpdateTestAppointment_Load(object sender, EventArgs e)
         {
-            LoadData(); 
-            gbxRetakeTestInfo.Enabled = false;
+            LoadData();
+            if (_LDLapp.Trial(_TestAppointment.TestTypeID) >= 1) 
+            {
+                clsRetakeTestApplication RetakeTestApp = new clsRetakeTestApplication(_LDLapp.LDL_ApplicationID, _TestAppointment.TestTypeID);
+                lblTotalFees.Text = (_TestAppointment.Fees() + clsRetakeTestApplication.RetakeTestFees).ToString() ;
+                lblR_appFees.Text = clsRetakeTestApplication.RetakeTestFees.ToString();
+
+
+            }
+            else
+                gbxRetakeTestInfo.Enabled = false;
+
+            if (_TestAppointment.IsLocked)
+            {
+                lblSatForTest.Text = "perosn already sat for the test, appointment locked";
+                lblHeading.Text = "Schdule Retake Test";
+                dtpAppointmentDate.Enabled = false;
+                gbxRetakeTestInfo.Enabled = true;
+                btnSave.Enabled = false;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -60,6 +84,7 @@ namespace DVLD.AddUpdate_Screens
             if (_TestAppointment.Save())
             {
                 MessageBox.Show($"Test Appointment Saved Succesfully at {_TestAppointment.AppointmentDate}","Saving Appointment");
+                //lblR_testAppID.Text = 
                 return;
             }
 

@@ -75,6 +75,9 @@ namespace DVLD_BusinessLayer
 
         public string TypeTitle() => ApplicationTypes_Data.GetApplicationTypeName(ApplicationTypeID);
 
+        public void MakeComplete() => clsApplications_Data.MakeComplete(this.ApplicationID);
+
+
         public string UserFullName() => clsUser_Data.GetUserFullNameByID(this.CreatedByUserID);
 
 

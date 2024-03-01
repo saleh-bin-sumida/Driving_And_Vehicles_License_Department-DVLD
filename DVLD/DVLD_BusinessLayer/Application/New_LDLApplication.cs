@@ -11,6 +11,8 @@ namespace DVLD_BusinessLayer.Application
         public int LDL_ApplicationID { get; set; }
         public int LicenseClassID { get; set; }
 
+      
+
 
         public cls_NewLDLApplication() : base()
         {
@@ -18,6 +20,7 @@ namespace DVLD_BusinessLayer.Application
             base.ApplicationTypeID = 1;
             base.PaidFees = clsApplicationType.GetApplicationTypeFees(base.ApplicationTypeID);
             this.LicenseClassID = 3;
+
         }
 
 
@@ -54,9 +57,10 @@ namespace DVLD_BusinessLayer.Application
         public  bool LinkedwithLicense() => clsApplications_Data.ApplicationLikedWithLicense(this.ApplicationID) ;
 
 
-        //public static bool isLDLappHasActiveTestAppointment(int LDLappID, int TestTypeID) => cls_NewLDLApplications_Data.isLDLappHasActiveTestAppointment(LDLappID, TestTypeID);
 
         public static bool Cancel(int LDLappID) => cls_NewLDLApplications_Data.Cancel_NewLDLApplication(LDLappID);
+
+        public int Trial(int TestTypeID) => cls_NewLDLApplications_Data.GetTrial(this.LDL_ApplicationID, TestTypeID);
 
 
 

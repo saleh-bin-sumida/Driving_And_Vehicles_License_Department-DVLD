@@ -106,7 +106,7 @@
             // 
             this.lblHeading.AutoSize = true;
             this.lblHeading.Font = new System.Drawing.Font("Yu Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeading.Location = new System.Drawing.Point(265, 9);
+            this.lblHeading.Location = new System.Drawing.Point(272, 9);
             this.lblHeading.Name = "lblHeading";
             this.lblHeading.Size = new System.Drawing.Size(70, 43);
             this.lblHeading.TabIndex = 28;
