@@ -2,6 +2,7 @@
 using DVLD_DataAccessLayer.Tests_Data;
 using System;
 using System.Data;
+using System.Reflection.Emit;
 
 
 namespace DVLD_BusinessLayer.Application
@@ -57,6 +58,13 @@ namespace DVLD_BusinessLayer.Application
         public  bool LinkedwithLicense() => clsApplications_Data.ApplicationLikedWithLicense(this.ApplicationID) ;
 
 
+        public override bool MakeComplete()
+        {
+            clsDriver driver = new clsDriver(this);
+            driver.Save();
+            return base.MakeComplete();
+        }
+
 
         public static bool Cancel(int LDLappID) => cls_NewLDLApplications_Data.Cancel_NewLDLApplication(LDLappID);
 
@@ -94,12 +102,12 @@ namespace DVLD_BusinessLayer.Application
 
         }
 
-        public bool IssueNewDrivingLicense()
-        {
+        //public bool IssueNewDrivingLicense()
+        //{
 
-            return clsTestsAppointments_Data;
+        //    return clsTestsAppointments_Data;
 
-        }
+        //}
 
 
 

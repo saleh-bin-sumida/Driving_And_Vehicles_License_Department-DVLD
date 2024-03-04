@@ -35,7 +35,7 @@ namespace DVLD
 
         private void frmNewLocalDL_Load(object sender, EventArgs e)
         {
-            cbxLicenseClasses.DataSource = clsLicenseClass.GetAllLicenseClasses();
+            cbxLicenseClasses.DataSource = LicenseClass.GetAllLicenseClasses();
             cbxLicenseClasses.DisplayMember = "ClassName";
             cbxLicenseClasses.SelectedIndex = _LDLapp.LicenseClassID -1 ;
 

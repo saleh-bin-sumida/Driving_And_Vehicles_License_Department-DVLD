@@ -6,7 +6,7 @@ namespace DVLD_BusinessLayer
 {
     public class clsDriver
     {
-        public int DriverID { get; }
+        public int DriverID { get; set; }
         public clsPerson Person { get; set; }
         DateTime CreatedDate { get; set; }
         public int CreatedByUserID { get; set; }
@@ -21,6 +21,27 @@ namespace DVLD_BusinessLayer
             this.CreatedByUserID = GlobalSettings.CurrentUser.UserID;
         }
 
-        private bool _Add() => DVLD_DataAccessLayer.Drivers_Data.AddNewDriver(this.Person.PersonID,CreatedByUserID, CreatedDate);
+        private bool _Add()
+        {
+           this.DriverID =  Drivers_Data.AddNewDriver(this.Person.PersonID,CreatedByUserID, CreatedDate);
+
+            return this.DriverID != -1;
+        }
+
+
+
+        public static clsDriver Find(int DriverID)
+        {
+            DateTime CreatedDatea = DateTime.Now.Date;
+            int CreatedByUserID = 0;
+
+            clsPerson person;
+        }
+
+
+        public bool Save()
+        {
+            return _Add();
+        }
     }
 }

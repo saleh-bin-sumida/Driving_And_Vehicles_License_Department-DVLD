@@ -208,8 +208,8 @@ namespace DVLD
                             MessageBox.Show("this Application Liked with License on this system, Cant be deleted");
                     }
                     break;
-                case "tsmIssueDrivingLicense":
-                    lDLApplication.iss       
+                //case "tsmIssueDrivingLicense":
+                //    lDLApplication.iss       
             }
 
             RefreshDataGridView();

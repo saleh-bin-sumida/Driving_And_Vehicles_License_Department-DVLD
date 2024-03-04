@@ -75,9 +75,8 @@ namespace DVLD_BusinessLayer
 
         public string TypeTitle() => ApplicationTypes_Data.GetApplicationTypeName(ApplicationTypeID);
 
-        public bool MakeComplete()
+        public virtual bool MakeComplete()
         {
-            clsDriver Driver = new clsDriver();
             return clsApplications_Data.MakeComplete(this.ApplicationID);
         }
 
