@@ -166,7 +166,7 @@ namespace DVLD
         private void toolStripMeune_Clicked(object sender, EventArgs e)
         {
             int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-
+            cls_NewLDLApplication lDLApplication = cls_NewLDLApplication.Find(ID);
 
             switch (((ToolStripMenuItem)sender).Name.ToString())
             {
@@ -208,6 +208,8 @@ namespace DVLD
                             MessageBox.Show("this Application Liked with License on this system, Cant be deleted");
                     }
                     break;
+                case "tsmIssueDrivingLicense":
+                    lDLApplication.iss       
             }
 
             RefreshDataGridView();

@@ -94,6 +94,12 @@ namespace DVLD_BusinessLayer.Application
 
         }
 
+        public bool IssueNewDrivingLicense()
+        {
+
+            return clsTestsAppointments_Data;
+
+        }
 
 
 

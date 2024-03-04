@@ -46,6 +46,7 @@
     <Compile Include="Application\New_LDLApplication.cs" />
     <Compile Include="Application\RetakeTestApplication.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="Driver.cs" />
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="clsLicenseClass.cs" />
     <Compile Include="Person.cs" />

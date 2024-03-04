@@ -57,7 +57,7 @@ namespace DVLD
                 btnSave.Enabled = false;
                 MessageBox.Show("Test Saved Succsefully", "Saving Test");
 
-                if (_TestAppointment.TestTypeID == 3)
+                if (_TestAppointment.TestTypeID == 3 && _Test.isPassed)
                 {
                     _LDLapp.MakeComplete();
                 }
