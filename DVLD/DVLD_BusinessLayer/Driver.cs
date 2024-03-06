@@ -1,6 +1,7 @@
 ﻿using DVLD_BusinessLayer.Application;
 using DVLD_DataAccessLayer;
 using System;
+using System.Data;
 
 namespace DVLD_BusinessLayer
 {
@@ -21,27 +22,25 @@ namespace DVLD_BusinessLayer
             this.CreatedByUserID = GlobalSettings.CurrentUser.UserID;
         }
 
-        private bool _Add()
-        {
-           this.DriverID =  Drivers_Data.AddNewDriver(this.Person.PersonID,CreatedByUserID, CreatedDate);
-
-            return this.DriverID != -1;
-        }
+     
 
 
+        //public static clsDriver Find(int DriverID)
+        //{
+        //    DateTime CreatedDatea = DateTime.Now.Date;
+        //    int CreatedByUserID = 0;
 
-        public static clsDriver Find(int DriverID)
-        {
-            DateTime CreatedDatea = DateTime.Now.Date;
-            int CreatedByUserID = 0;
-
-            clsPerson person;
-        }
+        //    clsPerson person;
+        //}
 
 
         public bool Save()
         {
-            return _Add();
+            this.DriverID = clsDrivers_Data.AddNewDriver(this.Person.PersonID, CreatedByUserID, CreatedDate);
+
+            return this.DriverID != -1;
         }
+
+        public static DataTable GetAllDrivers() => clsDrivers_Data.GetAllDrivers();
     }
 }

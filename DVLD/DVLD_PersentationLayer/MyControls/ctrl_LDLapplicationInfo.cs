@@ -28,7 +28,7 @@ namespace DVLD
                 linkLabelShowLicenseInfo.Enabled = false;
             }
             DLAppID = _LDLapp.LDL_ApplicationID;
-            lblAppliedForLicense.Text = _LDLapp.LicenseClassName();
+            lblAppliedForLicense.Text = clsLicense.LicenseClassName(_LDLapp.LicenseClassID);
             lblPassedTests.Text = _LDLapp.GetPassedTests().ToString();
         }
 

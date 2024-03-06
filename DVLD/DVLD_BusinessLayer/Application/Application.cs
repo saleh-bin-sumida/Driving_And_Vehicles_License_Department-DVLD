@@ -82,7 +82,7 @@ namespace DVLD_BusinessLayer
 
 
         public string UserFullName() => clsUser_Data.GetUserFullNameByID(this.CreatedByUserID);
-
+         
 
         public static clsApplication Find(int AppID)
         {

@@ -8,6 +8,39 @@ namespace DVLD_DataAccessLayer
     public class clsLicenseClasses_Data
     {
 
+        public static string GetLicenseClassNameByID(int LicenseClassID)
+        {
+            string LicenseClassName = "";
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select ClassName from LicenseClasses where LicenseClassID = @LicenseClassID";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    LicenseClassName = result.ToString();
+                }
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return LicenseClassName;
+        }
+
+
         public static byte GetDefaultValidityLength(int LicenseClassID)
         {
             byte DefaultValidityLength = 0;
@@ -42,7 +75,7 @@ namespace DVLD_DataAccessLayer
         }
 
 
-        public static decimal GetClassFees(int LicenseClassID)
+        public static decimal GetLicenseClassFees(int LicenseClassID)
         {
             decimal ClassFees = 0;
 

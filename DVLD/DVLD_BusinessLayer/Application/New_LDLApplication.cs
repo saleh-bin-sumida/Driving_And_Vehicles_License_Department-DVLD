@@ -38,9 +38,6 @@ namespace DVLD_BusinessLayer.Application
 
 
 
-        public string LicenseClassName() => cls_NewLDLApplications_Data.GetLicenseClassNameByID(LicenseClassID);
-
-
         public int GetPassedTests() => cls_NewLDLApplications_Data.GetPassedTestsForLDLapp(LDL_ApplicationID);    
 
 
@@ -105,7 +102,8 @@ namespace DVLD_BusinessLayer.Application
         //public bool IssueNewDrivingLicense()
         //{
 
-        //    return clsTestsAppointments_Data;
+        //    clsLicense License = new clsLicense(this);
+
 
         //}
 

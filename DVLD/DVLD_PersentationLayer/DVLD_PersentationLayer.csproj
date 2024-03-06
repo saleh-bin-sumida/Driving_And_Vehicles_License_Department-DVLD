@@ -82,6 +82,12 @@
     <Compile Include="MyControls\ctrlBasicApplicationInfo.Designer.cs">
       <DependentUpon>ctrlBasicApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyControls\ctrlDriverLicenseCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyControls\ctrlDriverLicenseCard.Designer.cs">
+      <DependentUpon>ctrlDriverLicenseCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyControls\ctrl_LDLapplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +178,12 @@
     <Compile Include="ShowInfo_Screens\frmShowApplicationDetails.Designer.cs">
       <DependentUpon>frmShowApplicationDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowInfo_Screens\frmShowDriverLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowInfo_Screens\frmShowDriverLicense.Designer.cs">
+      <DependentUpon>frmShowDriverLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowInfo_Screens\frmShowPersonInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +234,9 @@
     <EmbeddedResource Include="MyControls\ctrlBasicApplicationInfo.resx">
       <DependentUpon>ctrlBasicApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyControls\ctrlDriverLicenseCard.resx">
+      <DependentUpon>ctrlDriverLicenseCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyControls\ctrl_LDLapplicationInfo.resx">
       <DependentUpon>ctrl_LDLapplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShowInfo_Screens\frmShowApplicationDetails.resx">
       <DependentUpon>frmShowApplicationDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowInfo_Screens\frmShowDriverLicense.resx">
+      <DependentUpon>frmShowDriverLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowInfo_Screens\frmShowPersonInfo.resx">
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>

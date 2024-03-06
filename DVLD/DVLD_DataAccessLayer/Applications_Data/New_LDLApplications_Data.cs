@@ -356,38 +356,6 @@ namespace DVLD_DataAccessLayer
         }
 
 
-        public static string GetLicenseClassNameByID(int LicenseClassID) 
-        {
-            string LicenseClassName = "";
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"select ClassName from LicenseClasses where LicenseClassID = @LicenseClassID";
-
-            SqlCommand command = new SqlCommand(@query, connection);
-
-            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
-
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null)
-                {
-                    LicenseClassName = result.ToString();
-                }
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-            finally { connection.Close(); }
-
-            return LicenseClassName;
-        }
-
 
         public static byte GetPassedTestsForLDLapp(int LocalDrivingLicenseApplicationID)
         {
@@ -432,7 +400,6 @@ namespace DVLD_DataAccessLayer
 
             return Passedtests;
         }
-
 
 
         public static bool isLDLappHasActiveTestAppointment(int LocalDrivingLicenseApplicationID, int TestTypeID)

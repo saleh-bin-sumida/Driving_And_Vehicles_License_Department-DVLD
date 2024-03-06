@@ -1,6 +1,7 @@
 ﻿using System;
 using DVLD_BusinessLayer;
 using System.Windows.Forms;
+using DVLD.Manage_Screens;
 
 
 namespace DVLD
@@ -81,7 +82,7 @@ namespace DVLD
 
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManagePeople f = new frmManagePeople();
+            frmManageDrivers f = new frmManageDrivers();
             f.ShowDialog();
         }
 

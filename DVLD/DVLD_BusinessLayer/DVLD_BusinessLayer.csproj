@@ -48,7 +48,6 @@
     <Compile Include="Country.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="GlobalSettings.cs" />
-    <Compile Include="LicenseClass.cs" />
     <Compile Include="License.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

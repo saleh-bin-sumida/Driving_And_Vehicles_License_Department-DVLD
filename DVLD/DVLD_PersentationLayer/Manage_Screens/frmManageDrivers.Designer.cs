@@ -65,6 +65,7 @@
             this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Name = "frmManageDrivers";
             this.Text = "frmManageDrivers";
+            this.Load += new System.EventHandler(this.frmManageDrivers_Load);
             this.Controls.SetChildIndex(this.lblHeading, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.btnClose, 0);

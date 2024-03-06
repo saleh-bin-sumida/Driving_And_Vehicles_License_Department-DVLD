@@ -20,7 +20,6 @@ namespace DVLD.ShowInfo_Screens
 
         private void frmShowApplicationDetails_Load(object sender, EventArgs e)
         {
-            cls_NewLDLApplication s;
             
             this.ctrl_LDLapplicationInfo1.LoadData(LDLApplication.LDL_ApplicationID);
             this.ctrlBasicApplicationInfo1.LoadData(LDLApplication.ApplicationID);

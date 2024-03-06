@@ -6,8 +6,7 @@ namespace DVLD_BusinessLayer
 {
     public class clsTest
     {
-        enum Mode { TakeTest, RetakeTest}
-        Mode mode;
+        
 
         public int TestID;
         clsTestAppointment TestAppointment;

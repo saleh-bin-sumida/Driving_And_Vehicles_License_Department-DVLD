@@ -90,6 +90,7 @@
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmIssueDriverLicense
             // 
@@ -104,6 +105,7 @@
             this.Controls.Add(this.ctrl_LDLapplicationInfo1);
             this.Name = "frmIssueDriverLicense";
             this.Text = "frmIssueDriverLicense";
+            this.Load += new System.EventHandler(this.frmIssueDriverLicense_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

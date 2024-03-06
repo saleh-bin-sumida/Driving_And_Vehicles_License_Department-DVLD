@@ -1,11 +1,50 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 
 namespace DVLD_DataAccessLayer
 {
-    public class Drivers_Data
+    public class clsDrivers_Data
     {
+        public static DataTable GetAllDrivers()
+        {
+
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select * from Drivers";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+
+
+            }
+
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+
+        }
+
         public static int AddNewDriver(int PersonID,int CreatedByUserID, DateTime CreatedDate)
         {
         
@@ -60,6 +99,36 @@ namespace DVLD_DataAccessLayer
                 connection.Close();
             }
 
+
+            return DriverID;
+        }
+
+        public static int GetDriverID(int PersonID)
+        {
+            int DriverID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select DriverID from Drivers where PersonID = @PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null)
+                {
+                    DriverID = (int) result;
+                }
+            }
+
+            catch (Exception) {}
+
+            finally  {connection.Close();}
 
             return DriverID;
         }
