@@ -1,4 +1,5 @@
-﻿using DVLD_BusinessLayer;
+﻿using DVLD.ShowInfo_Screens;
+using DVLD_BusinessLayer;
 using DVLD_BusinessLayer.Application;
 using System.Windows.Forms;
 
@@ -32,5 +33,10 @@ namespace DVLD
             lblPassedTests.Text = _LDLapp.GetPassedTests().ToString();
         }
 
+        private void linkLabelShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowDriverLicense frm = new frmShowDriverLicense(DLAppID);
+            frm.ShowDialog();
+        }
     }
 }

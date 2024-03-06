@@ -22,16 +22,6 @@ namespace DVLD_BusinessLayer
             this.CreatedByUserID = GlobalSettings.CurrentUser.UserID;
         }
 
-     
-
-
-        //public static clsDriver Find(int DriverID)
-        //{
-        //    DateTime CreatedDatea = DateTime.Now.Date;
-        //    int CreatedByUserID = 0;
-
-        //    clsPerson person;
-        //}
 
 
         public bool Save()

@@ -8,6 +8,17 @@ namespace DVLD
 {
     public partial class frmTakeTest : Form
     {
+
+        public event Action<int> OnTestsPassed;
+        protected virtual void TestPassed(int LDLappID)
+        {
+            Action<int> handler = OnTestsPassed;
+            if (handler != null)
+            {
+                handler(LDLappID);
+            }
+        }
+
         clsTest _Test;
         clsTestAppointment _TestAppointment;
         cls_NewLDLApplication _LDLapp;
@@ -58,9 +69,8 @@ namespace DVLD
                 MessageBox.Show("Test Saved Succsefully", "Saving Test");
 
                 if (_TestAppointment.TestTypeID == 3 && _Test.isPassed)
-                {
                     _LDLapp.MakeComplete();
-                }
+
                 return;
             }
             MessageBox.Show("Faild to save this Test!", "Saving Test");
