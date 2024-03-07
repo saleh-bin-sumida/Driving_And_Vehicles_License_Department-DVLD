@@ -50,11 +50,8 @@
             "UserID",
             "Username",
             "FullName",
-            "Is Active"});
+            "IsActive"});
             this.cbxFilter.SelectedIndexChanged += new System.EventHandler(this.cbxFilter_SelectedIndexChanged);
-            // 
-            // txtFilterExpressions
-            // 
             // 
             // btnAdd
             // 

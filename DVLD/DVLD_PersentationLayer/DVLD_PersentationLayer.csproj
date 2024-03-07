@@ -52,6 +52,12 @@
     <Compile Include="AddUpdate_Screens\frmAddUpdateTestAppointment.Designer.cs">
       <DependentUpon>frmAddUpdateTestAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddUpdate_Screens\frmAdd_ILapplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUpdate_Screens\frmAdd_ILapplication.Designer.cs">
+      <DependentUpon>frmAdd_ILapplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmIssueDriverLicense.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,12 @@
     <Compile Include="Manage_Screens\frmManageDrivers.Designer.cs">
       <DependentUpon>frmManageDrivers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manage_Screens\frmManageILApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Screens\frmManageILApplications.Designer.cs">
+      <DependentUpon>frmManageILApplications.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manage_Screens\frmManageTestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +99,12 @@
     </Compile>
     <Compile Include="MyControls\ctrlDriverLicenseCard.Designer.cs">
       <DependentUpon>ctrlDriverLicenseCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyControls\ctrlDriverLicenseCardwithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyControls\ctrlDriverLicenseCardwithFilter.Designer.cs">
+      <DependentUpon>ctrlDriverLicenseCardwithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="MyControls\ctrl_LDLapplicationInfo.cs">
       <SubType>UserControl</SubType>
@@ -219,6 +237,9 @@
     <EmbeddedResource Include="AddUpdate_Screens\frmAddUpdateTestAppointment.resx">
       <DependentUpon>frmAddUpdateTestAppointment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddUpdate_Screens\frmAdd_ILapplication.resx">
+      <DependentUpon>frmAdd_ILapplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIssueDriverLicense.resx">
       <DependentUpon>frmIssueDriverLicense.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +249,9 @@
     <EmbeddedResource Include="Manage_Screens\frmManageDrivers.resx">
       <DependentUpon>frmManageDrivers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Manage_Screens\frmManageILApplications.resx">
+      <DependentUpon>frmManageILApplications.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Manage_Screens\frmManageTestAppointments.resx">
       <DependentUpon>frmManageTestAppointments.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyControls\ctrlDriverLicenseCard.resx">
       <DependentUpon>ctrlDriverLicenseCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyControls\ctrlDriverLicenseCardwithFilter.resx">
+      <DependentUpon>ctrlDriverLicenseCardwithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyControls\ctrl_LDLapplicationInfo.resx">
       <DependentUpon>ctrl_LDLapplicationInfo.cs</DependentUpon>

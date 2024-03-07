@@ -90,7 +90,7 @@
             this.toolStripSeparator6,
             this.tsmShowPersonLicenseHistory});
             this.cmsManageLDLApplications.Name = "cmsManagePeople";
-            this.cmsManageLDLApplications.Size = new System.Drawing.Size(293, 260);
+            this.cmsManageLDLApplications.Size = new System.Drawing.Size(293, 232);
             // 
             // tsmShowDetails
             // 
@@ -208,7 +208,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Name = "frmManage_NewLDLApplications";
-            this.Text = "frmManage_LDL_Applications";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.frmManage_NewLDLApplications_Load);
             this.Controls.SetChildIndex(this.lblHeading, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);

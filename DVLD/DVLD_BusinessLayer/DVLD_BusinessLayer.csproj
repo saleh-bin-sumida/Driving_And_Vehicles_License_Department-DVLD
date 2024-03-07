@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Application\Application.cs" />
     <Compile Include="Application\ApplicationType.cs" />
+    <Compile Include="Application\ILApplication.cs" />
     <Compile Include="Application\New_LDLApplication.cs" />
     <Compile Include="Application\RetakeTestApplication.cs" />
     <Compile Include="Country.cs" />

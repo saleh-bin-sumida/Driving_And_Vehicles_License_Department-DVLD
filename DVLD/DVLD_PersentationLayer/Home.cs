@@ -104,5 +104,11 @@ namespace DVLD
             frmManageUsers frm = new frmManageUsers();
             frm.ShowDialog();
         }
+
+        private void internationalDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageILApplications frm = new frmManageILApplications();
+            frm.ShowDialog();
+        }
     }
 }

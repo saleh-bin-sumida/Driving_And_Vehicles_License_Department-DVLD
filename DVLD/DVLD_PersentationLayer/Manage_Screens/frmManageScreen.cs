@@ -64,7 +64,9 @@ namespace DVLD
                 return;
             }
             DataView dataView = _dt.DefaultView;
-            if (_selectedFilter == "PersonID" || _selectedFilter == "UserID" || _selectedFilter == "LDL app ID")
+            if (_selectedFilter == "PersonID" || _selectedFilter == "UserID" || _selectedFilter == "LDL app ID"
+                || _selectedFilter == "Int License ID" || _selectedFilter == "Application ID" || _selectedFilter == "Driver ID"
+               || _selectedFilter == "License ID" )
             {
                 dataView.RowFilter = $"[{cbxFilter.Text}] = '{txtFilterExpressions.Text}'";
                 return;
