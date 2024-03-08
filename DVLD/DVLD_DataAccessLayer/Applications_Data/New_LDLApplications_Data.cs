@@ -4,7 +4,7 @@ using System.Data;
 
 namespace DVLD_DataAccessLayer
 {
-    public static class cls_NewLDLApplications_Data
+    public static class cls_LDLapplications_Data
     {
 
         public static DataTable GetAll_NewLDLApplications()

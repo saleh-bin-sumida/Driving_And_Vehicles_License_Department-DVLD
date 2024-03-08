@@ -4,13 +4,13 @@ using System.Windows.Forms;
 
 namespace DVLD.ShowInfo_Screens
 {
-    public partial class frmShowDriverLicense : Form
+    public partial class frmShowDriverLocalLicense : Form
     {
         int _LicenseID;
-        public frmShowDriverLicense(int LDLappID)
+        public frmShowDriverLocalLicense(int LDLappID)
         {
             InitializeComponent();
-            _LicenseID = clsLicense.GetLicenseIDbyLDLappID(LDLappID);
+            _LicenseID = clsLocalLicense.GetLicenseIDbyLDLappID(LDLappID);
 
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedToolWindow;

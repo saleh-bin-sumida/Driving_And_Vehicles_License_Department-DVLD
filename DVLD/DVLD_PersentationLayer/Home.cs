@@ -2,6 +2,7 @@
 using DVLD_BusinessLayer;
 using System.Windows.Forms;
 using DVLD.Manage_Screens;
+using DVLD.AddUpdate_Screens;
 
 
 namespace DVLD
@@ -29,7 +30,8 @@ namespace DVLD
         }
         private void tsmInternationalLicense_Click(object sender, EventArgs e)
         {
-
+            frmAdd_ILapplication frm = new frmAdd_ILapplication();
+            frm.ShowDialog();
         }
 
       

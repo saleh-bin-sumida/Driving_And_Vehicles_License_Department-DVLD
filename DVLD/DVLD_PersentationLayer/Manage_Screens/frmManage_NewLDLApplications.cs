@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Data;
 using DVLD_BusinessLayer.Application;
 using System.Windows.Forms;
-using System.Diagnostics.Eventing.Reader;
-using DVLD_BusinessLayer;
 using DVLD.ShowInfo_Screens;
 using DVLD.Manage_Screens;
 
@@ -28,7 +25,7 @@ namespace DVLD
 
         protected override void RefreshDataGridView()
         {
-            _dt = cls_NewLDLApplication.GetAll_NewLDLApplications();
+            _dt = cls_LDLapplication.GetAll_NewLDLApplications();
             base.RefreshDataGridView();
         }
   
@@ -66,7 +63,7 @@ namespace DVLD
                     // Display the context menu strip at the mouse pointer position
 
                     int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-                    cls_NewLDLApplication lDLApplication = cls_NewLDLApplication.Find(ID);
+                    cls_LDLapplication lDLApplication = cls_LDLapplication.Find(ID);
 
                     ResetToolstripMeuseItems();
                     InitializeContextMenueStrip(lDLApplication);
@@ -113,7 +110,7 @@ namespace DVLD
             }
         }
 
-        private void InitializeContextMenueStrip(cls_NewLDLApplication lDLApplication)
+        private void InitializeContextMenueStrip(cls_LDLapplication lDLApplication)
         {
 
             if (lDLApplication.Status() == "New")
@@ -166,7 +163,7 @@ namespace DVLD
         private void toolStripMeune_Clicked(object sender, EventArgs e)
         {
             int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-            cls_NewLDLApplication lDLApplication = cls_NewLDLApplication.Find(ID);
+            cls_LDLapplication lDLApplication = cls_LDLapplication.Find(ID);
 
             switch (((ToolStripMenuItem)sender).Name.ToString())
             {
@@ -176,7 +173,7 @@ namespace DVLD
                     break;
 
                 case "tsmCancel":
-                    cls_NewLDLApplication.Cancel(ID);
+                    cls_LDLapplication.Cancel(ID);
                     break;
 
                 case "tsmEdit":
@@ -202,7 +199,7 @@ namespace DVLD
 
                     if (MessageBox.Show("R U sure To delete this Application?", "Deleting Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
-                        if (cls_NewLDLApplication.Delete(ID))
+                        if (cls_LDLapplication.Delete(ID))
                             MessageBox.Show("LDL Application Deleted Succesfully");
                         else
                             MessageBox.Show("this Application Liked with License on this system, Cant be deleted");
@@ -213,7 +210,7 @@ namespace DVLD
                     frmDriverLicense.ShowDialog();
                     break;
                 case "tsmShowLicense":
-                    frmShowDriverLicense frmShowLicense = new frmShowDriverLicense(ID);
+                    frmShowDriverLocalLicense frmShowLicense = new frmShowDriverLocalLicense(ID);
                     frmShowLicense.ShowDialog();
                     break;
             }

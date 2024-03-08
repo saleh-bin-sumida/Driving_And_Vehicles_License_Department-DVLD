@@ -645,7 +645,41 @@ namespace DVLD_DataAccessLayer
             return isFound;
         }
 
-  
+        public static string GetPersonFullNameByID(int PersonID)
+        {
+            string PersonFullName = "";
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select  [Full Name] = People.FirstName + ' ' + People.SecondName + ' ' + People.ThirdName + ' ' + People.LastName
+                            from People where PersonID = @PersonID"; 
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null)
+                {
+                    PersonFullName = result.ToString();
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally { connection.Close(); }
+            return PersonFullName;
+        }
+
+
+
+
+
 
 
     }

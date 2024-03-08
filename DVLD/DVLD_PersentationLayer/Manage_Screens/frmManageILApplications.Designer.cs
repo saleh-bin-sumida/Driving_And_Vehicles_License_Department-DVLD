@@ -34,6 +34,10 @@
             this.tsmShowPersonDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmShowLicenseDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsManageILApplications.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +55,6 @@
             // btnAdd
             // 
             this.btnAdd.Text = "Add IL app";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblHeading
             // 
@@ -74,16 +77,18 @@
             this.cmsManageILApplications.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsManageILApplications.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmShowPersonDetails,
+            this.toolStripSeparator1,
             this.tsmShowLicenseDetails,
             this.tsmShowPersonLicenseHistory});
             this.cmsManageILApplications.Name = "cmsManageTestTypes";
-            this.cmsManageILApplications.Size = new System.Drawing.Size(265, 76);
+            this.cmsManageILApplications.Size = new System.Drawing.Size(265, 110);
             // 
             // tsmShowPersonDetails
             // 
             this.tsmShowPersonDetails.Name = "tsmShowPersonDetails";
             this.tsmShowPersonDetails.Size = new System.Drawing.Size(264, 24);
             this.tsmShowPersonDetails.Text = "Show Person Details";
+            this.tsmShowPersonDetails.Click += new System.EventHandler(this.tsmShowPersonDetails_Click);
             // 
             // tsmShowLicenseDetails
             // 
@@ -97,6 +102,29 @@
             this.tsmShowPersonLicenseHistory.Name = "tsmShowPersonLicenseHistory";
             this.tsmShowPersonLicenseHistory.Size = new System.Drawing.Size(264, 24);
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";
+            // 
+            // tsmScheduleVisionTest
+            // 
+            this.tsmScheduleVisionTest.Name = "tsmScheduleVisionTest";
+            this.tsmScheduleVisionTest.Size = new System.Drawing.Size(235, 26);
+            this.tsmScheduleVisionTest.Text = "Schedule Vision Test";
+            // 
+            // tsmScheduleWrittenTest
+            // 
+            this.tsmScheduleWrittenTest.Name = "tsmScheduleWrittenTest";
+            this.tsmScheduleWrittenTest.Size = new System.Drawing.Size(235, 26);
+            this.tsmScheduleWrittenTest.Text = "Schedule Written Test";
+            // 
+            // tsmScheduleStreetTest
+            // 
+            this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
+            this.tsmScheduleStreetTest.Size = new System.Drawing.Size(235, 26);
+            this.tsmScheduleStreetTest.Text = "Schedule Street Test";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(261, 6);
             // 
             // frmManageILApplications
             // 
@@ -129,5 +157,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmShowPersonDetails;
         private System.Windows.Forms.ToolStripMenuItem tsmShowLicenseDetails;
         private System.Windows.Forms.ToolStripMenuItem tsmShowPersonLicenseHistory;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleVisionTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleWrittenTest;
+        private System.Windows.Forms.ToolStripMenuItem tsmScheduleStreetTest;
     }
 }

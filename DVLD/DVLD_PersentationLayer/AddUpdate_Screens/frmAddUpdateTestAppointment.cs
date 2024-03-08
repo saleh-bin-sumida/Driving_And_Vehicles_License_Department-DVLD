@@ -12,14 +12,14 @@ namespace DVLD.AddUpdate_Screens
         //Mode mode;
 
 
-        cls_NewLDLApplication _LDLapp;
+        cls_LDLapplication _LDLapp;
         clsTestAppointment _TestAppointment;
 
         public frmAddUpdateTestAppointment(int TestAppointmentID , int LDLappID, int TestTypeID)
         {
             InitializeComponent();
             
-            _LDLapp = cls_NewLDLApplication.Find(LDLappID);
+            _LDLapp = cls_LDLapplication.Find(LDLappID);
         
 
             if (TestAppointmentID == -1)

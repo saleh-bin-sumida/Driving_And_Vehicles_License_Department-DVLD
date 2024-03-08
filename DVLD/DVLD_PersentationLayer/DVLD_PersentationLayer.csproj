@@ -88,11 +88,23 @@
     <Compile Include="Manage_Screens\frmManageTestAppointments.Designer.cs">
       <DependentUpon>frmManageTestAppointments.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyControls\ctrlApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyControls\ctrlApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyControls\ctrlBasicApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MyControls\ctrlBasicApplicationInfo.Designer.cs">
       <DependentUpon>ctrlBasicApplicationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyControls\ctrlDriverInternationalLicenseCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyControls\ctrlDriverInternationalLicenseCard.Designer.cs">
+      <DependentUpon>ctrlDriverInternationalLicenseCard.cs</DependentUpon>
     </Compile>
     <Compile Include="MyControls\ctrlDriverLicenseCard.cs">
       <SubType>UserControl</SubType>
@@ -196,11 +208,17 @@
     <Compile Include="ShowInfo_Screens\frmShowApplicationDetails.Designer.cs">
       <DependentUpon>frmShowApplicationDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowInfo_Screens\frmShowDriverLicense.cs">
+    <Compile Include="ShowInfo_Screens\frmShowDriverIntLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowInfo_Screens\frmShowDriverLicense.Designer.cs">
-      <DependentUpon>frmShowDriverLicense.cs</DependentUpon>
+    <Compile Include="ShowInfo_Screens\frmShowDriverIntLicense.Designer.cs">
+      <DependentUpon>frmShowDriverIntLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowInfo_Screens\frmShowDriverLocalLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowInfo_Screens\frmShowDriverLocalLicense.Designer.cs">
+      <DependentUpon>frmShowDriverLocalLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowInfo_Screens\frmShowPersonInfo.cs">
       <SubType>Form</SubType>
@@ -255,8 +273,14 @@
     <EmbeddedResource Include="Manage_Screens\frmManageTestAppointments.resx">
       <DependentUpon>frmManageTestAppointments.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyControls\ctrlApplicationInfo.resx">
+      <DependentUpon>ctrlApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyControls\ctrlBasicApplicationInfo.resx">
       <DependentUpon>ctrlBasicApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyControls\ctrlDriverInternationalLicenseCard.resx">
+      <DependentUpon>ctrlDriverInternationalLicenseCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyControls\ctrlDriverLicenseCard.resx">
       <DependentUpon>ctrlDriverLicenseCard.cs</DependentUpon>
@@ -309,8 +333,11 @@
     <EmbeddedResource Include="ShowInfo_Screens\frmShowApplicationDetails.resx">
       <DependentUpon>frmShowApplicationDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShowInfo_Screens\frmShowDriverLicense.resx">
-      <DependentUpon>frmShowDriverLicense.cs</DependentUpon>
+    <EmbeddedResource Include="ShowInfo_Screens\frmShowDriverIntLicense.resx">
+      <DependentUpon>frmShowDriverIntLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowInfo_Screens\frmShowDriverLocalLicense.resx">
+      <DependentUpon>frmShowDriverLocalLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowInfo_Screens\frmShowPersonInfo.resx">
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>

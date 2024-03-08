@@ -14,7 +14,7 @@ namespace DVLD_BusinessLayer
 
 
 
-        public clsDriver(cls_NewLDLApplication LDLapp)
+        public clsDriver(cls_LDLapplication LDLapp)
         {
             this.DriverID = -1;
             this.Person = clsPerson.FindPersonByID(LDLapp.ApplicantPersonID);

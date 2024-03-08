@@ -10,7 +10,7 @@ namespace DVLD
         enum Mode { Addnew = 1, Update =2};
         Mode mode;
 
-        cls_NewLDLApplication _LDLapp;
+        cls_LDLapplication _LDLapp;
 
         int _LDLappID;
         public frmAddUpdate_NewLDLApplication(int LDLapp)
@@ -22,12 +22,12 @@ namespace DVLD
             if (this._LDLappID == -1)
             {
                 mode = Mode.Addnew;
-                _LDLapp = new cls_NewLDLApplication();
+                _LDLapp = new cls_LDLapplication();
             }
             else
             {
                 mode = Mode.Update;
-                _LDLapp = cls_NewLDLApplication.Find(this._LDLappID);
+                _LDLapp = cls_LDLapplication.Find(this._LDLappID);
                 
             }
 
@@ -35,7 +35,7 @@ namespace DVLD
 
         private void frmNewLocalDL_Load(object sender, EventArgs e)
         {
-            cbxLicenseClasses.DataSource = clsLicense.GetAllLicenseClasses();
+            cbxLicenseClasses.DataSource = clsLocalLicense.GetAllLicenseClasses();
             cbxLicenseClasses.DisplayMember = "ClassName";
             cbxLicenseClasses.SelectedIndex = _LDLapp.LicenseClassID -1 ;
 

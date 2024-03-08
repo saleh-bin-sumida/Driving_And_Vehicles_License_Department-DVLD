@@ -47,8 +47,9 @@
     <Compile Include="Countries_Data.cs" />
     <Compile Include="Applications_Data\New_LDLApplications_Data.cs" />
     <Compile Include="Drivers_Data.cs" />
+    <Compile Include="Licenses_Data\InternationalLicenses_Data.cs" />
     <Compile Include="Licenses_Data\LicenseClasses_Data.cs" />
-    <Compile Include="Licenses_Data\Licenses_Data.cs" />
+    <Compile Include="Licenses_Data\LocalLicenses_Data.cs" />
     <Compile Include="Person_Data.cs" />
     <Compile Include="DataAccessSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

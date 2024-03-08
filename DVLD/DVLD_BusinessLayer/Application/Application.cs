@@ -1,7 +1,9 @@
 ﻿using DVLD_BusinessLayer;
 using DVLD_BusinessLayer.Application;
 using DVLD_DataAccessLayer;
+using DVLD_DataAccessLayer.Applications_Data;
 using System;
+using System.Data;
 
 
 namespace DVLD_BusinessLayer
@@ -38,6 +40,21 @@ namespace DVLD_BusinessLayer
 
 
 
+        public clsApplication(int ApplicationTypeID)
+        {
+            mode = Mode.Addnew;
+
+            this.ApplicationID = -1;
+            this.ApplicantPersonID = 0;
+            this.ApplicationDate = DateTime.Now;
+            this.ApplicationTypeID = ApplicationTypeID;
+            this.ApplicationStatus = 1; // means app is new
+            this.LastStatusDate = DateTime.Now;
+            this.PaidFees = TypeFees();
+            this.CreatedByUserID = GlobalSettings.CurrentUser.UserID;
+        }
+
+
         public clsApplication()
         {
             mode = Mode.Addnew;
@@ -69,11 +86,14 @@ namespace DVLD_BusinessLayer
         }
 
 
-        public string ApplicantName() => clsApplications_Data.GetApplicantName(this.ApplicantPersonID);
+        public string ApplicantName() => clsPerson_Data.GetPersonFullNameByID(this.ApplicantPersonID);
 
         public string Status() => clsApplications_Data.GetApplicationStatus(this.ApplicationID);
 
         public string TypeTitle() => ApplicationTypes_Data.GetApplicationTypeName(ApplicationTypeID);
+
+        public decimal TypeFees() => ApplicationTypes_Data.GetApplicationTypeFees(ApplicationTypeID);
+
 
         public virtual bool MakeComplete()
         {
@@ -100,6 +120,10 @@ namespace DVLD_BusinessLayer
             }
             return null;
         }
+
+        public static DataTable GetAll_ILApplications() => clsILApplications_Data.GetAll_ILApplications();
+
+
 
 
     }

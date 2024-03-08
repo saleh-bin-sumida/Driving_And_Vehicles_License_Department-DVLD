@@ -14,14 +14,14 @@ namespace DVLD.MyControls
 
         public void LoadData(int  licenseID)
         {
-            clsLicense License = clsLicense.Find(licenseID);
+            clsLocalLicense License = clsLocalLicense.Find(licenseID);
             clsApplication app = clsApplication.Find(License.ApplicationID);
             clsPerson person = clsPerson.FindPersonByID(app.ApplicantPersonID);
 
 
-            lblClassName.Text = clsLicense.LicenseClassName(License.LicenseClassID);
+            lblClassName.Text = clsLocalLicense.LicenseClassName(License.LicenseClassID);
             lblName.Text = app.ApplicantName();
-            lblLicenseID.Text = License.LicenseID.ToString();
+            lblLicenseID.Text = License.LocalLicenseID.ToString();
             lblNationalNo.Text = person.NationalNo;
             lblGender.Text = person.Gender.ToString();    
             lblIssueDate.Text = License.IssueDate.ToString();

@@ -7,12 +7,12 @@ namespace DVLD.Manage_Screens
 {
     public partial class frmManageTestAppointments : Form
     {
-        cls_NewLDLApplication LDLapp;
+        cls_LDLapplication LDLapp;
         int _TestTypeID;
         public frmManageTestAppointments(int LDLappID, int TestType) 
         {
             InitializeComponent();
-            LDLapp = cls_NewLDLApplication.Find(LDLappID);
+            LDLapp = cls_LDLapplication.Find(LDLappID);
             _TestTypeID = TestType;
         
         }

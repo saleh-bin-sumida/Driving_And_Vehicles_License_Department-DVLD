@@ -7,7 +7,7 @@ namespace DVLD
 {
     public partial class ctrl_LDLapplicationInfo : UserControl
     {
-        cls_NewLDLApplication _LDLapp;
+        cls_LDLapplication _LDLapp;
         public int DLAppID 
         { 
             get { return int.Parse(lbl_LDLappID.Text); } 
@@ -22,20 +22,20 @@ namespace DVLD
 
         public void LoadData(int LDLappID)
         {
-            _LDLapp = cls_NewLDLApplication.Find(LDLappID);
+            _LDLapp = cls_LDLapplication.Find(LDLappID);
 
             if (!_LDLapp.LinkedwithLicense())
             {
                 linkLabelShowLicenseInfo.Enabled = false;
             }
             DLAppID = _LDLapp.LDL_ApplicationID;
-            lblAppliedForLicense.Text = clsLicense.LicenseClassName(_LDLapp.LicenseClassID);
+            lblAppliedForLicense.Text = clsLocalLicense.LicenseClassName(_LDLapp.LicenseClassID);
             lblPassedTests.Text = _LDLapp.GetPassedTests().ToString();
         }
 
         private void linkLabelShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmShowDriverLicense frm = new frmShowDriverLicense(DLAppID);
+            frmShowDriverLocalLicense frm = new frmShowDriverLocalLicense(DLAppID);
             frm.ShowDialog();
         }
     }

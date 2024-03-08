@@ -1,6 +1,9 @@
 ﻿
+using DVLD.ShowInfo_Screens;
+using DVLD_BusinessLayer;
 using DVLD_BusinessLayer.Application;
 using System.Data;
+using System.Windows.Forms;
 
 namespace DVLD.Manage_Screens
 {
@@ -9,13 +12,12 @@ namespace DVLD.Manage_Screens
         public frmManageILApplications() : base() 
         {
             InitializeComponent();
-            
-
+            base.DataGridView.CellMouseClick += CellMouseClick_dataGridVeiew;
         }
-       
+
         protected override void RefreshDataGridView()
         {
-            _dt = clsILApplication.GetAllILApplications();
+            _dt = clsApplication.GetAll_ILApplications();
             base.RefreshDataGridView();
         }
 
@@ -53,12 +55,41 @@ namespace DVLD.Manage_Screens
 
         private void tsmShowLicenseDetails_Click(object sender, System.EventArgs e)
         {
+            int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
 
+            frmShowDriverIntLicense frm = new frmShowDriverIntLicense(ID);
+            frm.ShowDialog();
         }
 
-        private void btnAdd_Click(object sender, System.EventArgs e)
+       
+
+        private void tsmShowPersonDetails_Click(object sender, System.EventArgs e)
+        {
+            int ID = (int)DataGridView.CurrentRow.Cells[1].Value;
+
+            clsApplication app = clsApplication.Find(ID);
+
+            frmShowPersonInfo frm = new frmShowPersonInfo(app.ApplicantPersonID);
+            frm.ShowDialog();
+
+            RefreshDataGridView();
+        }
+        private void CellMouseClick_dataGridVeiew(object sender, DataGridViewCellMouseEventArgs e)
         {
 
+            if (e.Button == MouseButtons.Right) // Check if right mouse button is clicked
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Check if a cell is clicked
+                {
+                    DataGridView.CurrentCell = DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex]; // Select the cell that was right-clicked
+                    DataGridView.Rows[e.RowIndex].Selected = true;
+
+                    // Display the context menu strip at the mouse pointer position
+
+                    cmsManageILApplications.Show(Cursor.Position);
+
+                }
+            }
         }
     }
 }

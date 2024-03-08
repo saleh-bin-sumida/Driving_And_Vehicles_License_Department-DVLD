@@ -5,7 +5,7 @@ using System;
 
 namespace DVLD_DataAccessLayer
 {
-    public class clsLicenses_Data
+    public class clsLocalLicenses_Data
     {
 
         public static int AddNewLicense( int ApplicationID, int DriverID, int LicenseClassID,

@@ -7,7 +7,7 @@ using System.Reflection.Emit;
 
 namespace DVLD_BusinessLayer.Application
 {
-    public class cls_NewLDLApplication : clsApplication //, IApplication
+    public class cls_LDLapplication : clsApplication //, IApplication
     {
         public int LDL_ApplicationID { get; set; }
         public int LicenseClassID { get; set; }
@@ -15,18 +15,18 @@ namespace DVLD_BusinessLayer.Application
       
 
 
-        public cls_NewLDLApplication() : base()
+        public cls_LDLapplication() : base()
         {
             LDL_ApplicationID = -1;
             base.ApplicationTypeID = 1;
-            base.PaidFees = clsApplicationType.GetApplicationTypeFees(base.ApplicationTypeID);
+            base.PaidFees = TypeFees();
             this.LicenseClassID = 3;
 
         }
 
 
 
-        public cls_NewLDLApplication(int lDL_ApplicationID, int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
+        public cls_LDLapplication(int lDL_ApplicationID, int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
             byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID, int licenseClassID)
             : base(ApplicationID, ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID)
         {
@@ -38,21 +38,21 @@ namespace DVLD_BusinessLayer.Application
 
 
 
-        public int GetPassedTests() => cls_NewLDLApplications_Data.GetPassedTestsForLDLapp(LDL_ApplicationID);    
+        public int GetPassedTests() => cls_LDLapplications_Data.GetPassedTestsForLDLapp(LDL_ApplicationID);    
 
 
         private bool _AddNew()
         {
-            this.LDL_ApplicationID = cls_NewLDLApplications_Data.Add_NewLDLApplication(this.ApplicantPersonID, ApplicationDate,
+            this.LDL_ApplicationID = cls_LDLapplications_Data.Add_NewLDLApplication(this.ApplicantPersonID, ApplicationDate,
                 ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID, LicenseClassID);
             return this.LDL_ApplicationID != -1;
         }
 
 
-        private bool _Update() => cls_NewLDLApplications_Data.Update_NewLDLApplication(this.LDL_ApplicationID,ApplicantPersonID, LicenseClassID);
+        private bool _Update() => cls_LDLapplications_Data.Update_NewLDLApplication(this.LDL_ApplicationID,ApplicantPersonID, LicenseClassID);
 
 
-        public  bool LinkedwithLicense() => clsApplications_Data.ApplicationLikedWithLicense(this.ApplicationID) ;
+        public bool LinkedwithLicense() => clsApplications_Data.ApplicationLikedWithLicense(this.ApplicationID) ;
 
 
         public override bool MakeComplete()
@@ -63,16 +63,16 @@ namespace DVLD_BusinessLayer.Application
         }
 
 
-        public static bool Cancel(int LDLappID) => cls_NewLDLApplications_Data.Cancel_NewLDLApplication(LDLappID);
+        public static bool Cancel(int LDLappID) => cls_LDLapplications_Data.Cancel_NewLDLApplication(LDLappID);
 
-        public int Trial(int TestTypeID) => cls_NewLDLApplications_Data.GetTrial(this.LDL_ApplicationID, TestTypeID);
-
-
-
-        public static bool Delete(int LDLappID) => cls_NewLDLApplications_Data.Delete_NewLDLApplication(LDLappID);
+        public int Trial(int TestTypeID) => cls_LDLapplications_Data.GetTrial(this.LDL_ApplicationID, TestTypeID);
 
 
-        public  static  new cls_NewLDLApplication  Find(int LDL_ApplicationID)
+
+        public static bool Delete(int LDLappID) => cls_LDLapplications_Data.Delete_NewLDLApplication(LDLappID);
+
+
+        public  static  new cls_LDLapplication  Find(int LDL_ApplicationID)
         {
             int ApplicationID = 0, ApplicantPersonID = 0, ApplicationTypeID = 0, CreatedByUserID = 0, LicenseClassID = 0;
             byte ApplicationStatus = 0;
@@ -80,17 +80,17 @@ namespace DVLD_BusinessLayer.Application
             DateTime ApplicationDate = DateTime.Now, LastStatusDate = DateTime.Now;
 
 
-            if (cls_NewLDLApplications_Data.Get_NewLDLApplicationInfoByID(LDL_ApplicationID, ref ApplicationID, ref ApplicantPersonID, ref ApplicationDate,
+            if (cls_LDLapplications_Data.Get_NewLDLApplicationInfoByID(LDL_ApplicationID, ref ApplicationID, ref ApplicantPersonID, ref ApplicationDate,
                 ref ApplicationTypeID, ref ApplicationStatus, ref LastStatusDate, ref PaidFees, ref CreatedByUserID, ref LicenseClassID))
             {
-                return new cls_NewLDLApplication(LDL_ApplicationID, ApplicationID, ApplicantPersonID, ApplicationDate,
+                return new cls_LDLapplication(LDL_ApplicationID, ApplicationID, ApplicantPersonID, ApplicationDate,
                 ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID, LicenseClassID);
             }
             return null;
         }
 
 
-        public static DataTable GetAll_NewLDLApplications() => cls_NewLDLApplications_Data.GetAll_NewLDLApplications();
+        public static DataTable GetAll_NewLDLApplications() => cls_LDLapplications_Data.GetAll_NewLDLApplications();
 
         public bool AllowedToCreateAppointment(int TestType, ref string ErrorMessage)
         {
@@ -98,17 +98,6 @@ namespace DVLD_BusinessLayer.Application
             return clsTestsAppointments_Data.AllowedToCreateAppointment(LDL_ApplicationID, TestType , ref ErrorMessage);
 
         }
-
-        //public bool IssueNewDrivingLicense()
-        //{
-
-        //    clsLicense License = new clsLicense(this);
-
-
-        //}
-
-
-
 
 
         public bool Save()

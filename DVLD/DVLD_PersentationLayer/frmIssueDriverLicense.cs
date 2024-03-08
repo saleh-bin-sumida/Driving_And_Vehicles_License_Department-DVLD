@@ -7,16 +7,16 @@ namespace DVLD
 {
     public partial class frmIssueDriverLicense : Form
     {
-        cls_NewLDLApplication LDLapp;
+        cls_LDLapplication LDLapp;
         public frmIssueDriverLicense(int LDLappID)
         {
             InitializeComponent();
-            this.LDLapp = cls_NewLDLApplication.Find(LDLappID);
+            this.LDLapp = cls_LDLapplication.Find(LDLappID);
         }
 
         private void btnIssue_Click(object sender, EventArgs e)
         {
-            clsLicense license = new clsLicense(LDLapp);
+            clsLocalLicense license = new clsLocalLicense(LDLapp);
             license.Notes = richTextBox1.Text;
 
             if (license.Save())

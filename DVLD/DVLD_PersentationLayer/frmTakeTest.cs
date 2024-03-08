@@ -21,12 +21,12 @@ namespace DVLD
 
         clsTest _Test;
         clsTestAppointment _TestAppointment;
-        cls_NewLDLApplication _LDLapp;
+        cls_LDLapplication _LDLapp;
         public frmTakeTest(int TestAppointmentID)
         {
             InitializeComponent();
             _TestAppointment = clsTestAppointment.Find(TestAppointmentID);
-            _LDLapp = cls_NewLDLApplication.Find(_TestAppointment.LDL_ApplicationID);
+            _LDLapp = cls_LDLapplication.Find(_TestAppointment.LDL_ApplicationID);
             _Test = new clsTest(TestAppointmentID);
 
         }

@@ -8,13 +8,13 @@ namespace DVLD.ShowInfo_Screens
 {
     public partial class frmShowApplicationDetails : Form
     {
-        cls_NewLDLApplication LDLApplication;
+        cls_LDLapplication LDLApplication;
 
         public frmShowApplicationDetails(int LDLAppID)
         {
 
             InitializeComponent();
-            LDLApplication = cls_NewLDLApplication.Find(LDLAppID);
+            LDLApplication = cls_LDLapplication.Find(LDLAppID);
         }
 
 

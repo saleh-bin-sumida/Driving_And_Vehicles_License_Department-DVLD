@@ -294,39 +294,6 @@ namespace DVLD_DataAccessLayer
         }
 
 
-        public static string GetApplicantName(int PersonID)
-        {
-
-            string ApplicantName = "";
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"select  [Full Name] = People.FirstName + ' ' + People.SecondName + ' ' + People.ThirdName + ' ' + People.LastName
-                            from People where PersonID = @PersonID";
-
-            SqlCommand command = new SqlCommand(@query, connection);
-
-            command.Parameters.AddWithValue("@PersonID", PersonID);
-
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null)
-                {
-                    ApplicantName = result.ToString();
-                }
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-            finally { connection.Close(); }
-
-            return ApplicantName;
-        }
 
         public static bool MakeComplete(int ApplicationID)
         {
