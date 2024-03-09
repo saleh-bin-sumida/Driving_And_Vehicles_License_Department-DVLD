@@ -14,11 +14,11 @@ namespace DVLD_BusinessLayer
         public bool IsActive { get; set; }
         public int CreatedByUserID { get; set; }
 
-
         public clsLicense()
         {
                 
         }
+
         public clsLicense(int applicationID, int driverID, DateTime issueDate, DateTime expirationDate
         , bool isActive, int createdByUserID)
         {

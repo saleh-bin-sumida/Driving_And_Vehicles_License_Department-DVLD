@@ -1,4 +1,5 @@
 ﻿
+using DVLD.AddUpdate_Screens;
 using DVLD.ShowInfo_Screens;
 using DVLD_BusinessLayer;
 using DVLD_BusinessLayer.Application;
@@ -90,6 +91,20 @@ namespace DVLD.Manage_Screens
 
                 }
             }
+        }
+
+        private void btnAdd_Click(object sender, System.EventArgs e)
+        {
+            frmAddILapplication frm = new frmAddILapplication();
+            frm.ShowDialog();
+        }
+
+        private void tsmShowPersonLicenseHistory_Click(object sender, System.EventArgs e)
+        {
+            int ID = (int)DataGridView.CurrentRow.Cells[2].Value;
+
+            frmShowLicenseHistory frm = new frmShowLicenseHistory(ID);
+            frm.ShowDialog();
         }
     }
 }

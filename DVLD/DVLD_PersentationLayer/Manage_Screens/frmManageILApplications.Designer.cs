@@ -32,12 +32,12 @@
             this.cbxExpressions = new System.Windows.Forms.ComboBox();
             this.cmsManageILApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmShowPersonDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmShowLicenseDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsManageILApplications.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,7 @@
             // btnAdd
             // 
             this.btnAdd.Text = "Add IL app";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblHeading
             // 
@@ -90,6 +91,11 @@
             this.tsmShowPersonDetails.Text = "Show Person Details";
             this.tsmShowPersonDetails.Click += new System.EventHandler(this.tsmShowPersonDetails_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(261, 6);
+            // 
             // tsmShowLicenseDetails
             // 
             this.tsmShowLicenseDetails.Name = "tsmShowLicenseDetails";
@@ -102,6 +108,7 @@
             this.tsmShowPersonLicenseHistory.Name = "tsmShowPersonLicenseHistory";
             this.tsmShowPersonLicenseHistory.Size = new System.Drawing.Size(264, 24);
             this.tsmShowPersonLicenseHistory.Text = "Show Person License History";
+            this.tsmShowPersonLicenseHistory.Click += new System.EventHandler(this.tsmShowPersonLicenseHistory_Click);
             // 
             // tsmScheduleVisionTest
             // 
@@ -120,11 +127,6 @@
             this.tsmScheduleStreetTest.Name = "tsmScheduleStreetTest";
             this.tsmScheduleStreetTest.Size = new System.Drawing.Size(235, 26);
             this.tsmScheduleStreetTest.Text = "Schedule Street Test";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(261, 6);
             // 
             // frmManageILApplications
             // 

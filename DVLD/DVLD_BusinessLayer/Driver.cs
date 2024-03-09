@@ -22,7 +22,31 @@ namespace DVLD_BusinessLayer
             this.CreatedByUserID = GlobalSettings.CurrentUser.UserID;
         }
 
+        public clsDriver(int driverID, clsPerson person, DateTime createdDate, int createdByUserID)
+        {
+            DriverID = driverID;
+            Person = person;
+            CreatedDate = createdDate;
+            CreatedByUserID = createdByUserID;
+        }
 
+
+        public static clsDriver Find(int DriverID)
+        {
+            int CreatedByUserID = 0, personID = 0;
+            DateTime createdDate = DateTime.Now.Date;
+
+
+            if (clsDrivers_Data.GetDriverInfoByID(DriverID, ref personID, ref createdDate, ref CreatedByUserID))
+                return new clsDriver(DriverID, clsPerson.FindPersonByID(personID), createdDate, CreatedByUserID);
+            else
+                return null;
+        }
+
+        public bool HasActiveIntLicense() => HasActiveInternationalLicense(this.DriverID);
+
+        public static bool HasActiveInternationalLicense(int DriverID) =>
+            clsDrivers_Data.HasActiveInternationalLicense(DriverID);
 
         public bool Save()
         {
@@ -30,6 +54,14 @@ namespace DVLD_BusinessLayer
 
             return this.DriverID != -1;
         }
+
+
+        public static int GetDriverIDby(int PersonID) => clsDrivers_Data.GetDriverID(PersonID);
+
+
+        public DataTable GetLocalLicenses() => clsDrivers_Data.GetLocalLicenses(DriverID);
+        public DataTable GetInternationalLicenses() => clsDrivers_Data.GetInternationalLicenses(DriverID);
+
 
         public static DataTable GetAllDrivers() => clsDrivers_Data.GetAllDrivers();
     }

@@ -23,12 +23,13 @@ namespace DVLD
         public ctrlPersonCardwithFilter()
         {
             InitializeComponent();
+
         }
 
      
-        public void HideFilter()
+        public void DisableFilter()
         {
-            gbxPersonFilter.Hide();
+            gbxPersonFilter.Enabled = false;
         }
 
         private void AddnewPerson_Click(object sender, EventArgs e)

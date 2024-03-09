@@ -33,7 +33,7 @@ namespace DVLD_DataAccessLayer
              VALUES
                    (@ApplicationID
                    ,@DriverID
-                   ,@LicenseClass
+                   ,@LicenseClassID
                    ,@IssueDate
                    ,@ExpirationDate
                    ,@Notes
@@ -48,7 +48,7 @@ namespace DVLD_DataAccessLayer
 
             command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
             command.Parameters.AddWithValue("@DriverID", DriverID);
-            command.Parameters.AddWithValue("@LicenseClass", LicenseClassID);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
             command.Parameters.AddWithValue("@IssueDate", IssueDate);
             command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
             command.Parameters.AddWithValue("@Notes", Notes);

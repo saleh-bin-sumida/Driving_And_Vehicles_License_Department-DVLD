@@ -30,7 +30,7 @@ namespace DVLD
         }
         private void tsmInternationalLicense_Click(object sender, EventArgs e)
         {
-            frmAdd_ILapplication frm = new frmAdd_ILapplication();
+            frmAddILapplication frm = new frmAddILapplication();
             frm.ShowDialog();
         }
 

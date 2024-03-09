@@ -22,6 +22,7 @@ namespace DVLD.MyControls
 
 
             lblName.Text = app.ApplicantName();
+            lblLicenseID.Text = IntLicense.LocalLicenseID.ToString();
             lblIntLicenseID.Text = IntLicense.intLicenseID.ToString();
             lblNationalNo.Text = person.NationalNo;
             lblGender.Text = person.Gender.ToString();
@@ -31,6 +32,7 @@ namespace DVLD.MyControls
             lblDateOfBith.Text = person.DateOfBirth.ToString();
             lblDriverID.Text = IntLicense.DriverID.ToString();
             lblExpirationDate.Text = IntLicense.ExpirationDate.ToString();
+
 
             try
             {

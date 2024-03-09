@@ -41,7 +41,7 @@ namespace DVLD_BusinessLayer.Application
         public int GetPassedTests() => cls_LDLapplications_Data.GetPassedTestsForLDLapp(LDL_ApplicationID);    
 
 
-        private bool _AddNew()
+         private  bool _AddNew()
         {
             this.LDL_ApplicationID = cls_LDLapplications_Data.Add_NewLDLApplication(this.ApplicantPersonID, ApplicationDate,
                 ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID, LicenseClassID);
@@ -100,7 +100,7 @@ namespace DVLD_BusinessLayer.Application
         }
 
 
-        public bool Save()
+        public override bool Save()
         {
             switch (mode)
             {

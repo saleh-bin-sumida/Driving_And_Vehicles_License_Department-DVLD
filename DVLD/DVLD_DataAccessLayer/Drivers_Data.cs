@@ -45,6 +45,102 @@ namespace DVLD_DataAccessLayer
 
         }
 
+
+        public static DataTable GetLocalLicenses(int DriverID)
+        {
+
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select [License ID] = LicenseID,
+	                [App ID] = ApplicationID,
+	                [Class Name] = (select ClassName from LicenseClasses where LicenseClassID = Licenses.LicenseClassID),
+	                [Issue Date] = IssueDate,
+	                [Expiration Date] = ExpirationDate,
+	                [Is Acitve] = IsActive
+                from Licenses
+                where DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+
+
+            }
+
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+
+        }
+
+
+        public static DataTable GetInternationalLicenses(int DriverID)
+        {
+
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select [intLicense ID] = InternationalLicenseID,
+	                    [App ID] = ApplicationID,
+	                    [Local License ID] = IssuedUsingLocalLicenseID,
+	                    [Issue Date] = IssueDate,
+	                    [Expiration Date] = ExpirationDate,
+	                    [Is Acitve] = IsActive
+                    from InternationalLicenses
+                    where DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+
+
+            }
+
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+
+        }
+
+
+
         public static int AddNewDriver(int PersonID,int CreatedByUserID, DateTime CreatedDate)
         {
         
@@ -131,6 +227,82 @@ namespace DVLD_DataAccessLayer
             finally  {connection.Close();}
 
             return DriverID;
+        }
+
+        public static bool GetDriverInfoByID(int DriverID,ref int PersonID,ref DateTime CreatedDate, ref int CreatedByUserID)
+        {
+            bool isFound = false;
+
+
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT * FROM  Drivers 
+                        where DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // The record was found
+                    isFound = true;
+
+                    PersonID = (int)reader["PersonID"];
+                    CreatedDate = (DateTime)reader["CreatedDate"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+                }
+                else
+                    isFound = false;
+
+                reader.Close();
+            }
+            catch (Exception) {isFound = false;}
+            finally {connection.Close();}
+
+            return isFound;
+        }
+
+        public static bool HasActiveInternationalLicense(int DriverID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select top 1 found = 1 from InternationalLicenses inner join Drivers
+                on InternationalLicenses.DriverID = Drivers.DriverID
+                where Drivers.DriverID = @DriverID and InternationalLicenses.IsActive = 1
+                order by IssueDate desc";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    isFound = true;
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return isFound;
         }
     }
 }

@@ -75,7 +75,7 @@ namespace DVLD
             {
         
                 lblHeading.Text = "Update Local Drving License Application";
-                ctrlPersonCardwithFilter1.HideFilter();
+                ctrlPersonCardwithFilter1.DisableFilter();
                 MessageBox.Show("The Application Saved Succesfully", "Saving application");
 
                 return;

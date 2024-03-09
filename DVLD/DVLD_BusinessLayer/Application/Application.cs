@@ -92,8 +92,9 @@ namespace DVLD_BusinessLayer
 
         public string TypeTitle() => ApplicationTypes_Data.GetApplicationTypeName(ApplicationTypeID);
 
-        public decimal TypeFees() => ApplicationTypes_Data.GetApplicationTypeFees(ApplicationTypeID);
+        public decimal TypeFees() => ApplicationTypeFees(this.ApplicationTypeID);
 
+        public static decimal ApplicationTypeFees(int ApplicationTypeID) => ApplicationTypes_Data.GetApplicationTypeFees(ApplicationTypeID);
 
         public virtual bool MakeComplete()
         {
@@ -102,11 +103,11 @@ namespace DVLD_BusinessLayer
 
 
         public string UserFullName() => clsUser_Data.GetUserFullNameByID(this.CreatedByUserID);
-         
+
 
         public static clsApplication Find(int AppID)
         {
-            int  ApplicantPersonID = 0, ApplicationTypeID = 0, CreatedByUserID = 0;
+            int ApplicantPersonID = 0, ApplicationTypeID = 0, CreatedByUserID = 0;
             byte ApplicationStatus = 0;
             decimal PaidFees = 0;
             DateTime ApplicationDate = DateTime.Now, LastStatusDate = DateTime.Now;
@@ -124,8 +125,32 @@ namespace DVLD_BusinessLayer
         public static DataTable GetAll_ILApplications() => clsILApplications_Data.GetAll_ILApplications();
 
 
+        private bool _AddNew()
+        {
+
+            this.ApplicationID = clsApplications_Data.AddApplication(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
+            return this.ApplicationID != -1;
+        }
 
 
+        public virtual bool Save()
+        {
+            switch (mode)
+            {
+                case Mode.Addnew:
+                    mode = Mode.Update;
+                    return _AddNew();
+
+                //case Mode.Update:
+                //    return _Update();
+
+                default:
+                    break;
+            }
+            return false;
+
+
+        }
     }
 }
 

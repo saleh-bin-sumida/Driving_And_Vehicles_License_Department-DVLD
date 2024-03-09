@@ -3,6 +3,7 @@ using DVLD_BusinessLayer.Application;
 using System.Windows.Forms;
 using DVLD.ShowInfo_Screens;
 using DVLD.Manage_Screens;
+using DVLD_BusinessLayer;
 
 namespace DVLD
 {
@@ -212,6 +213,10 @@ namespace DVLD
                 case "tsmShowLicense":
                     frmShowDriverLocalLicense frmShowLicense = new frmShowDriverLocalLicense(ID);
                     frmShowLicense.ShowDialog();
+                    break;
+                case "tsmShowPersonLicenseHistory":
+                    frmShowLicenseHistory frmSowLicenseHistory = new frmShowLicenseHistory(clsDriver.GetDriverIDby(lDLApplication.ApplicantPersonID));
+                    frmSowLicenseHistory.ShowDialog();
                     break;
             }
 

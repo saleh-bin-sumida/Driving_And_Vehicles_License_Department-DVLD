@@ -21,7 +21,8 @@ namespace DVLD_BusinessLayer
         public clsLocalLicense(cls_LDLapplication LDLapp)
         {
             this.ApplicationID = LDLapp.ApplicationID;
-            this.DriverID = clsDrivers_Data.GetDriverID(LDLapp.ApplicantPersonID);
+            this.DriverID = clsDriver.GetDriverIDby(LDLapp.ApplicantPersonID);
+
             this.LicenseClassID = LDLapp.LicenseClassID;
             this.IssueDate = DateTime.Now.Date;
             this.ExpirationDate = DateTime.Now.Date.AddYears(clsLicenseClasses_Data.GetDefaultValidityLength(LicenseClassID));
@@ -100,6 +101,9 @@ namespace DVLD_BusinessLayer
                 Notes, PaidFees, IsActive, IssueReason, CreatedByUserID);
             return this.LocalLicenseID != -1;
         }
+
+
+
 
     }
 }

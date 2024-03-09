@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DVLD_DataAccessLayer.Licenses_Data
 {
-    public class InternationalLicenses_Data
+    public class clsInternationalLicenses_Data
     {
         public static bool GetIntLicenseInfoByID(int InternationalLicenseID, ref int LocalLicenseID, ref int ApplicationID,
         ref int DriverID, ref int CreatedByUserID,
@@ -39,7 +36,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
 
                     ApplicationID = (int)reader["ApplicationID"];
                     DriverID = (int)reader["DriverID"];
-                    LocalLicenseID = (int)reader["LocalLicenseID"];
+                    LocalLicenseID = (int)reader["IssuedUsingLocalLicenseID"];
                     IssueDate = (DateTime)reader["IssueDate"];
                     ExpirationDate = (DateTime)reader["ExpirationDate"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
@@ -59,6 +56,77 @@ namespace DVLD_DataAccessLayer.Licenses_Data
             }
 
             return isFound;
+        }
+
+
+
+        public static int AddNewIntLicense(int ApplicationID, int DriverID, int LocalLicenseID,
+            DateTime IssueDate, DateTime ExpirationDate, bool IsActive,int CreatedByUserID)
+        {
+
+            int intLicenseID = -1;
+
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+
+            string query = @"INSERT INTO [dbo].[InternationalLicenses]
+                           ([ApplicationID]
+                           ,[DriverID]
+                           ,[IssuedUsingLocalLicenseID]
+                           ,[IssueDate]
+                           ,[ExpirationDate]
+                           ,[IsActive]
+                           ,[CreatedByUserID])
+                     VALUES
+                           (@ApplicationID
+                           ,@DriverID
+                           ,@IssuedUsingLocalLicenseID
+                           ,@IssueDate
+                           ,@ExpirationDate
+                           ,@IsActive
+                           ,@CreatedByUserID)
+                    SELECT SCOPE_IDENTITY();";
+
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+            command.Parameters.AddWithValue("@IssuedUsingLocalLicenseID", LocalLicenseID);
+            command.Parameters.AddWithValue("@IssueDate", IssueDate);
+            command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
+            command.Parameters.AddWithValue("@IsActive", IsActive);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    intLicenseID = insertedID;
+                }
+            }
+
+            catch (Exception)
+            {
+
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+
+
+            return intLicenseID;
         }
 
     }
