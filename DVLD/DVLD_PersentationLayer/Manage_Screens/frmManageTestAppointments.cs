@@ -1,4 +1,5 @@
 ﻿using DVLD.AddUpdate_Screens;
+using DVLD_BusinessLayer;
 using DVLD_BusinessLayer.Application;
 using DVLD_BusinessLayer.Test;
 using System.Windows.Forms;
@@ -7,11 +8,19 @@ namespace DVLD.Manage_Screens
 {
     public partial class frmManageTestAppointments : Form
     {
+        enum Mode { Addappoinment, RetakeTestApp};
+        Mode mode;
+
         cls_LDLapplication LDLapp;
+        clsApplication RetakeTestApp;
         int _TestTypeID;
         public frmManageTestAppointments(int LDLappID, int TestType) 
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+
+
             LDLapp = cls_LDLapplication.Find(LDLappID);
             _TestTypeID = TestType;
         
@@ -37,6 +46,11 @@ namespace DVLD.Manage_Screens
                 lblHeading.Text = "Street Test Appointments";
 
             LoadData();
+            string temp = "";
+            if (LDLapp.AllowedToCreateAppointment(_TestTypeID,ref temp))
+            {
+
+            }
             
 
         }
@@ -55,7 +69,18 @@ namespace DVLD.Manage_Screens
                 return;
             }
 
-            frmAddUpdateTestAppointment frm = new frmAddUpdateTestAppointment(-1, LDLapp.LDL_ApplicationID, _TestTypeID);
+            if (LDLapp.HasAppoinntment(_TestTypeID))
+            {
+                RetakeTestApp = new clsApplication(8);
+                RetakeTestApp.ApplicantPersonID = LDLapp.ApplicantPersonID;
+
+                frmAddUpdateTestAppointment fr = new frmAddUpdateTestAppointment(-1, LDLapp.LDL_ApplicationID, _TestTypeID,RetakeTestApp);
+                fr.ShowDialog();
+                LoadData();
+                return;
+            }
+
+            frmAddUpdateTestAppointment frm = new frmAddUpdateTestAppointment(-1, LDLapp.LDL_ApplicationID, _TestTypeID, RetakeTestApp);
             frm.ShowDialog();
 
             LoadData();
@@ -71,7 +96,7 @@ namespace DVLD.Manage_Screens
                 
             int TestAppointmentID  = (int)DataGridView.CurrentRow.Cells[0].Value;
             
-            frmAddUpdateTestAppointment frm = new frmAddUpdateTestAppointment(TestAppointmentID, LDLapp.LDL_ApplicationID, _TestTypeID);
+            frmAddUpdateTestAppointment frm = new frmAddUpdateTestAppointment(TestAppointmentID, LDLapp.LDL_ApplicationID, _TestTypeID, RetakeTestApp);
  
             frm.ShowDialog();
 

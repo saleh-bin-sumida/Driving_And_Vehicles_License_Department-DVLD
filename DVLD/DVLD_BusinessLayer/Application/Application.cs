@@ -48,7 +48,7 @@ namespace DVLD_BusinessLayer
             this.ApplicantPersonID = -1;
             this.ApplicationDate = DateTime.Now;
             this.ApplicationTypeID = ApplicationTypeID;
-            if (ApplicationTypeID != 1 || ApplicationTypeID != 8)
+            if (ApplicationTypeID != 1 )
                 this.ApplicationStatus = 3; // means app is new
             else
                 this.ApplicationStatus = 1;

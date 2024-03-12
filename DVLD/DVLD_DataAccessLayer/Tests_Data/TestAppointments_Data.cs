@@ -33,6 +33,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 {
                     dt.Load(reader);
                 }
+                else { dt = null; }
 
                 reader.Close();
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
+using DVLD_DataAccessLayer.Tests_Data;
 
 namespace DVLD_DataAccessLayer
 {
@@ -473,6 +474,11 @@ namespace DVLD_DataAccessLayer
             return Trial;
         }
 
+        public static bool HasLockedAppoinntment(int LDLappID, int TestTypeID)
+        {
+           DataTable dt = clsTestsAppointments_Data.GetAllTestAppointments(LDLappID,TestTypeID);
+            return dt != null;
+        }
 
 
 

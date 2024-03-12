@@ -1,4 +1,5 @@
-﻿using DVLD_BusinessLayer.Application;
+﻿using DVLD_BusinessLayer;
+using DVLD_BusinessLayer.Application;
 using DVLD_BusinessLayer.Test;
 using System;
 
@@ -14,14 +15,16 @@ namespace DVLD.AddUpdate_Screens
 
         cls_LDLapplication _LDLapp;
         clsTestAppointment _TestAppointment;
+        clsApplication _RetakeTestApp;
 
-        public frmAddUpdateTestAppointment(int TestAppointmentID , int LDLappID, int TestTypeID)
+
+        public frmAddUpdateTestAppointment(int TestAppointmentID , int LDLappID, int TestTypeID, clsApplication RetakeTestApp)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
-
-
+            _RetakeTestApp = RetakeTestApp;
+            
             _LDLapp = cls_LDLapplication.Find(LDLappID);
         
 
@@ -55,16 +58,28 @@ namespace DVLD.AddUpdate_Screens
         private void frmAddUpdateTestAppointment_Load(object sender, EventArgs e)
         {
             LoadData();
-            if (_LDLapp.Trial(_TestAppointment.TestTypeID) >= 1) 
+            if (_RetakeTestApp != null)
             {
-                clsRetakeTestApplication RetakeTestApp = new clsRetakeTestApplication(_LDLapp.LDL_ApplicationID, _TestAppointment.TestTypeID);
-                lblTotalFees.Text = (_TestAppointment.Fees() + clsRetakeTestApplication.RetakeTestFees).ToString() ;
-                lblR_appFees.Text = clsRetakeTestApplication.RetakeTestFees.ToString();
-
-
+                lblR_appFees.Text = _RetakeTestApp.PaidFees.ToString();
+                decimal totalFees = _RetakeTestApp.PaidFees + _TestAppointment.Fees();
+                lblTotalFees.Text   = totalFees.ToString();
             }
             else
                 gbxRetakeTestInfo.Enabled = false;
+
+            lblTrial.Text = _LDLapp.Trial(_TestAppointment.TestTypeID).ToString();
+
+
+            //if (_LDLapp.Trial(_TestAppointment.TestTypeID) >= 1) 
+            //{
+            //    clsRetakeTestApplication RetakeTestApp = new clsRetakeTestApplication(_LDLapp.LDL_ApplicationID, _TestAppointment.TestTypeID);
+            //    lblTotalFees.Text = (_TestAppointment.Fees() + clsRetakeTestApplication.RetakeTestFees).ToString() ;
+            //    lblR_appFees.Text = clsRetakeTestApplication.RetakeTestFees.ToString();
+
+
+            //}
+            //else
+            //    gbxRetakeTestInfo.Enabled = false;
 
             if (_TestAppointment.IsLocked)
             {
@@ -82,7 +97,11 @@ namespace DVLD.AddUpdate_Screens
             _TestAppointment.AppointmentDate = dtpAppointmentDate.Value;
 
 
-
+            if (_RetakeTestApp != null)
+            {
+                _RetakeTestApp.Save();
+                lblR_testAppID.Text = _RetakeTestApp.ApplicationID.ToString();
+            }
 
             if (_TestAppointment.Save())
             {

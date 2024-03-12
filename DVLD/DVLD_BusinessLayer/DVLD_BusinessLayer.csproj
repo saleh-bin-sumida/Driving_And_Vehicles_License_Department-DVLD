@@ -44,7 +44,6 @@
     <Compile Include="Application\Application.cs" />
     <Compile Include="Application\ApplicationType.cs" />
     <Compile Include="Application\LDLapplication.cs" />
-    <Compile Include="Application\RetakeTestApplication.cs" />
     <Compile Include="License\License.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Driver.cs" />

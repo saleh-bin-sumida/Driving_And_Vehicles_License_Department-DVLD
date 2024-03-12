@@ -92,12 +92,11 @@ namespace DVLD_BusinessLayer.Application
 
         public static DataTable GetAll_NewLDLApplications() => cls_LDLapplications_Data.GetAll_NewLDLApplications();
 
-        public bool AllowedToCreateAppointment(int TestType, ref string ErrorMessage)
-        {
+        public bool AllowedToCreateAppointment(int TestType, ref string ErrorMessage) =>
+             clsTestsAppointments_Data.AllowedToCreateAppointment(LDL_ApplicationID, TestType , ref ErrorMessage);
 
-            return clsTestsAppointments_Data.AllowedToCreateAppointment(LDL_ApplicationID, TestType , ref ErrorMessage);
-
-        }
+        public bool HasAppoinntment(int TestType) => 
+            cls_LDLapplications_Data.HasLockedAppoinntment(this.LDL_ApplicationID,TestType);
 
 
         public override bool Save()
