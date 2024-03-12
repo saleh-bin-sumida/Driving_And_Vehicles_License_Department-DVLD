@@ -39,7 +39,6 @@ namespace DVLD.MyControls
                 MessageBox.Show("Licesen with this ID not found!");
                 ctrlDriverLicenseCard1.ClearData();
                 _LicenseID = -1;
-                OnLicenseSelected?.Invoke(_LicenseID);
                 return;
             }
 

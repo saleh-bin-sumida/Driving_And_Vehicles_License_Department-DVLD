@@ -63,6 +63,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Highlight;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -73,7 +74,8 @@
             this.accountSettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1301, 31);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 5, 0, 5);
+            this.menuStrip1.Size = new System.Drawing.Size(1301, 37);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -87,6 +89,7 @@
             this.toolStripSeparator2,
             this.manageApplicationTypesToolStripMenuItem,
             this.manageTestsTypesToolStripMenuItem});
+            this.applicationsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.applicationsToolStripMenuItem.Name = "applicationsToolStripMenuItem";
             this.applicationsToolStripMenuItem.Size = new System.Drawing.Size(117, 27);
             this.applicationsToolStripMenuItem.Text = "Applications";
@@ -254,6 +257,7 @@
             // 
             // peopleToolStripMenuItem
             // 
+            this.peopleToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
             this.peopleToolStripMenuItem.Size = new System.Drawing.Size(75, 27);
             this.peopleToolStripMenuItem.Tag = "1";
@@ -262,6 +266,7 @@
             // 
             // driversToolStripMenuItem
             // 
+            this.driversToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.driversToolStripMenuItem.Name = "driversToolStripMenuItem";
             this.driversToolStripMenuItem.Size = new System.Drawing.Size(76, 27);
             this.driversToolStripMenuItem.Text = "Drivers";
@@ -269,6 +274,7 @@
             // 
             // usersToolStripMenuItem
             // 
+            this.usersToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(65, 27);
             this.usersToolStripMenuItem.Tag = "2";
@@ -281,6 +287,7 @@
             this.showInfoToolStripMenuItem,
             this.changePasswordToolStripMenuItem,
             this.logOutToolStripMenuItem});
+            this.accountSettingsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
             this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(153, 27);
             this.accountSettingsToolStripMenuItem.Text = "Account Settings";

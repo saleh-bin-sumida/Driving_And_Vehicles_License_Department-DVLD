@@ -18,6 +18,10 @@ namespace DVLD
         public frmAddUpdateUser(int UserID)
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+
+
             this._UserID = UserID;
 
             if (_UserID == -1)

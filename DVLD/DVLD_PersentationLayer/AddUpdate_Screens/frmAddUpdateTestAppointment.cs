@@ -18,7 +18,10 @@ namespace DVLD.AddUpdate_Screens
         public frmAddUpdateTestAppointment(int TestAppointmentID , int LDLappID, int TestTypeID)
         {
             InitializeComponent();
-            
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+
+
             _LDLapp = cls_LDLapplication.Find(LDLappID);
         
 

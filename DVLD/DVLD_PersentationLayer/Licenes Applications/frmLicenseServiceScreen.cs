@@ -10,6 +10,8 @@ namespace DVLD.Licenes_Applications
         public frmLicenseServiceScreen()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
         }
 
      

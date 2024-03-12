@@ -16,6 +16,8 @@ namespace DVLD
         public frmUpdateApplicationTestTypes(string WhatToUpdate, int ID)
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             _ID = ID;
 
             if (WhatToUpdate == "UpdatApplicationType")

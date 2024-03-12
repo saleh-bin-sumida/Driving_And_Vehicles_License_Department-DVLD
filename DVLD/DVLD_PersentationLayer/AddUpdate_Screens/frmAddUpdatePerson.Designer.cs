@@ -471,7 +471,7 @@
             this.Controls.Add(this.lblFromHeading);
             this.Controls.Add(this.label1);
             this.Name = "frmAddUpdatePerson";
-            this.Text = "frmAddPerson";
+            this.Text = "7";
             this.Load += new System.EventHandler(this.frmAddUpdatePerson_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

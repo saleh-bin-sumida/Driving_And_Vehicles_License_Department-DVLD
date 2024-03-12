@@ -30,6 +30,8 @@ namespace DVLD
 
 
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
         }
 
         private void frmAddUpdatePerson_Load(object sender, EventArgs e)

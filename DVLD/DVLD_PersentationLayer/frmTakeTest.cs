@@ -9,6 +9,10 @@ namespace DVLD
     public partial class frmTakeTest : Form
     {
 
+        clsTest _Test;
+        clsTestAppointment _TestAppointment;
+        cls_LDLapplication _LDLapp;
+
         public event Action<int> OnTestsPassed;
         protected virtual void TestPassed(int LDLappID)
         {
@@ -18,13 +22,14 @@ namespace DVLD
                 handler(LDLappID);
             }
         }
-
-        clsTest _Test;
-        clsTestAppointment _TestAppointment;
-        cls_LDLapplication _LDLapp;
         public frmTakeTest(int TestAppointmentID)
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+
+
+
             _TestAppointment = clsTestAppointment.Find(TestAppointmentID);
             _LDLapp = cls_LDLapplication.Find(_TestAppointment.LDL_ApplicationID);
             _Test = new clsTest(TestAppointmentID);

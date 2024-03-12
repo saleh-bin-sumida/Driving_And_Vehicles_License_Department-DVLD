@@ -11,6 +11,10 @@ namespace DVLD
         public frmIssueDriverLicense(int LDLappID)
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+
+
             this.LDLapp = cls_LDLapplication.Find(LDLappID);
         }
 

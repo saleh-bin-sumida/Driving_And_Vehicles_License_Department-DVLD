@@ -16,6 +16,8 @@ namespace DVLD
         public frmAddUpdate_NewLDLApplication(int LDLapp)
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
 
             this._LDLappID = LDLapp;
 

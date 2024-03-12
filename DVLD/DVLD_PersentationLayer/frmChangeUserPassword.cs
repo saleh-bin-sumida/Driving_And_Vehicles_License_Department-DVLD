@@ -11,6 +11,9 @@ namespace DVLD
         public frmChangeUserPassword(int UserID)
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+
             _UserID = UserID;
         }
 
