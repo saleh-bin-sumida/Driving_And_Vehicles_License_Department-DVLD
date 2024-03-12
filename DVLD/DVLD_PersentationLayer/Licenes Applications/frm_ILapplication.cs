@@ -3,25 +3,23 @@ using DVLD_BusinessLayer;
 using System;
 using System.Windows.Forms;
 
-namespace DVLD.AddUpdate_Screens
+namespace DVLD.Licenes_Applications
 {
-    public partial class frmAddILapplication : Form
+    public partial class frm_ILapplication : frmLicenseServiceScreen
     {
         clsLocalLicense license;
         clsApplication Ilapp;
-
-        public frmAddILapplication()
+        clsInternationalLicense Intlicense;
+        public frm_ILapplication() : base()
         {
             InitializeComponent();
+
         }
 
- 
-
-
-        private void frmAddILapplication_Load(object sender, EventArgs e)
+        private void frm_ILapplication_Load(object sender, EventArgs e)
         {
-            btnIssue.Enabled = false;
-            linklabel_intLicense.Enabled = false;
+            btn.Enabled = false;
+            linklabel_NewLicense.Enabled = false;
             linklabel_licsneHistroy.Enabled = false;
 
             lblapplicationDate.Text = DateTime.Now.Date.ToString();
@@ -31,16 +29,14 @@ namespace DVLD.AddUpdate_Screens
             lblCreatedbyUser.Text = GlobalSettings.CurrentUser.UserID.ToString();
         }
 
-
         private void ctrlDriverLicenseCardwithFilter1_OnLicenseSelected(int obj)
         {
-            btnIssue.Enabled = true;
+            btn.Enabled = true;
             lblLicenseID.Text = ctrlDriverLicenseCardwithFilter1.LicenseID.ToString();
             linklabel_licsneHistroy.Enabled = true;
         }
 
-
-        private void btnIssue_Click(object sender, EventArgs e)
+        private void btn_Click(object sender, EventArgs e)
         {
             license = clsLocalLicense.Find(ctrlDriverLicenseCardwithFilter1.LicenseID);
 
@@ -69,36 +65,28 @@ namespace DVLD.AddUpdate_Screens
 
             if (Ilapp.Save())
             {
-                clsInternationalLicense Intlicense = new clsInternationalLicense(license, Ilapp);
+                Intlicense = new clsInternationalLicense(license, Ilapp);
                 if (Intlicense.Save())
                 {
                     MessageBox.Show("Ur IL app and International License issued succesfully");
                     lblILlicenseID.Text = Intlicense.intLicenseID.ToString();
                     lblILapplicationID.Text = Intlicense.ApplicationID.ToString();
-                    btnIssue.Enabled = false;
-                    linklabel_intLicense.Enabled = true;
+                    btn.Enabled = false;
+                    linklabel_NewLicense.Enabled = true;
                     return;
                 }
             }
             MessageBox.Show("somthing went wrong", "faild to issue IL licnese", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
         }
-            
-        private void linklabel_intLicense_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        private void linklabel_NewLicense_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmShowDriverIntLicense frm = new frmShowDriverIntLicense(int.Parse(lblILlicenseID.Text));
-            frm.ShowDialog();
+            ShowInternationallicenseInfo(Intlicense.intLicenseID);
         }
 
         private void linklabel_licsneHistroy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmShowLicenseHistory frm = new frmShowLicenseHistory(license.DriverID);
-            frm.ShowDialog();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
+            ShowLicenseHistory(license.DriverID);
         }
     }
 }

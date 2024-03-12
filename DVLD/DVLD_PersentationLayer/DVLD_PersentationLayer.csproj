@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddUpdate_Screens\frmAddILapplication.cs">
+    <Compile Include="Licenes Applications\frmDetainLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddUpdate_Screens\frmAddILapplication.Designer.cs">
-      <DependentUpon>frmAddILapplication.cs</DependentUpon>
+    <Compile Include="Licenes Applications\frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenes Applications\frmReleaseDetainedLicenseApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenes Applications\frmReleaseDetainedLicenseApp.Designer.cs">
+      <DependentUpon>frmReleaseDetainedLicenseApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenes Applications\frmRenewLicenseApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenes Applications\frmRenewLicenseApp.Designer.cs">
+      <DependentUpon>frmRenewLicenseApp.cs</DependentUpon>
     </Compile>
     <Compile Include="AddUpdate_Screens\frmAddUpdateTestAppointment.cs">
       <SubType>Form</SubType>
@@ -69,6 +81,30 @@
     </Compile>
     <Compile Include="frmTakeTest.Designer.cs">
       <DependentUpon>frmTakeTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenes Applications\frmLicenseServiceScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenes Applications\frmLicenseServiceScreen.Designer.cs">
+      <DependentUpon>frmLicenseServiceScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenes Applications\frmReplacementDamagedLicenseApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenes Applications\frmReplacementDamagedLicenseApp.Designer.cs">
+      <DependentUpon>frmReplacementDamagedLicenseApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenes Applications\frm_ILapplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenes Applications\frm_ILapplication.Designer.cs">
+      <DependentUpon>frm_ILapplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage_Screens\frmManageDetainedLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Screens\frmManageDetainedLicenses.Designer.cs">
+      <DependentUpon>frmManageDetainedLicenses.cs</DependentUpon>
     </Compile>
     <Compile Include="Manage_Screens\frmManageDrivers.cs">
       <SubType>Form</SubType>
@@ -154,10 +190,10 @@
     <Compile Include="frmLoginPage.Designer.cs">
       <DependentUpon>frmLoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddUpdate_Screens\frmAddUpdate_NewLDLApplication.cs">
+    <Compile Include="Licenes Applications\frmAddUpdate_NewLDLApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddUpdate_Screens\frmAddUpdate_NewLDLApplication.Designer.cs">
+    <Compile Include="Licenes Applications\frmAddUpdate_NewLDLApplication.Designer.cs">
       <DependentUpon>frmAddUpdate_NewLDLApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Manage_Screens\frmManageTestTypes.cs">
@@ -232,11 +268,11 @@
     <Compile Include="ShowInfo_Screens\frmShowUserInfo.Designer.cs">
       <DependentUpon>frmShowUserInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddUpdate_Screens\frmUpdateApplicationTest.cs">
+    <Compile Include="AddUpdate_Screens\frmUpdateApplicationTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddUpdate_Screens\frmUpdateApplicationTest.Designer.cs">
-      <DependentUpon>frmUpdateApplicationTest.cs</DependentUpon>
+    <Compile Include="AddUpdate_Screens\frmUpdateApplicationTestTypes.Designer.cs">
+      <DependentUpon>frmUpdateApplicationTestTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -252,8 +288,14 @@
     <Compile Include="MyControls\ctrlPersonCard.Designer.cs">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddUpdate_Screens\frmAddILapplication.resx">
-      <DependentUpon>frmAddILapplication.cs</DependentUpon>
+    <EmbeddedResource Include="Licenes Applications\frmDetainLicense.resx">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenes Applications\frmReleaseDetainedLicenseApp.resx">
+      <DependentUpon>frmReleaseDetainedLicenseApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenes Applications\frmRenewLicenseApp.resx">
+      <DependentUpon>frmRenewLicenseApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddUpdate_Screens\frmAddUpdateTestAppointment.resx">
       <DependentUpon>frmAddUpdateTestAppointment.cs</DependentUpon>
@@ -263,6 +305,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTakeTest.resx">
       <DependentUpon>frmTakeTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenes Applications\frmLicenseServiceScreen.resx">
+      <DependentUpon>frmLicenseServiceScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenes Applications\frmReplacementDamagedLicenseApp.resx">
+      <DependentUpon>frmReplacementDamagedLicenseApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenes Applications\frm_ILapplication.resx">
+      <DependentUpon>frm_ILapplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage_Screens\frmManageDetainedLicenses.resx">
+      <DependentUpon>frmManageDetainedLicenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Screens\frmManageDrivers.resx">
       <DependentUpon>frmManageDrivers.cs</DependentUpon>
@@ -306,7 +360,7 @@
     <EmbeddedResource Include="frmLoginPage.resx">
       <DependentUpon>frmLoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddUpdate_Screens\frmAddUpdate_NewLDLApplication.resx">
+    <EmbeddedResource Include="Licenes Applications\frmAddUpdate_NewLDLApplication.resx">
       <DependentUpon>frmAddUpdate_NewLDLApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Screens\frmManageTestTypes.resx">
@@ -345,8 +399,8 @@
     <EmbeddedResource Include="ShowInfo_Screens\frmShowUserInfo.resx">
       <DependentUpon>frmShowUserInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddUpdate_Screens\frmUpdateApplicationTest.resx">
-      <DependentUpon>frmUpdateApplicationTest.cs</DependentUpon>
+    <EmbeddedResource Include="AddUpdate_Screens\frmUpdateApplicationTestTypes.resx">
+      <DependentUpon>frmUpdateApplicationTestTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

@@ -1,6 +1,7 @@
 ﻿using DVLD_DataAccessLayer;
 using System;
 using System.Runtime.Remoting.Messaging;
+using System.Xml.Linq;
 
 
 namespace DVLD_BusinessLayer
@@ -30,7 +31,10 @@ namespace DVLD_BusinessLayer
             CreatedByUserID = createdByUserID;
         }
 
+        public virtual bool IsLicenseActive() => ( _ = (DateTime.Now.Date < this.ExpirationDate) ? true : false) && IsActive;
 
+        public abstract bool Save();
+        public abstract bool Deactivate();
 
     }
 }

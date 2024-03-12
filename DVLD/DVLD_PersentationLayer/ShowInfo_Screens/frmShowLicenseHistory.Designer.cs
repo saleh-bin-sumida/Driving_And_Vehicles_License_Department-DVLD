@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -42,12 +43,15 @@
             this.dgvIntLicenses = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.ctrlPersonCardwithFilter1 = new DVLD.ctrlPersonCardwithFilter();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showLicenseInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenses)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIntLicenses)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -131,6 +135,7 @@
             this.dgvLocalLicenses.RowTemplate.Height = 26;
             this.dgvLocalLicenses.Size = new System.Drawing.Size(971, 203);
             this.dgvLocalLicenses.TabIndex = 24;
+            this.dgvLocalLicenses.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMouseClick);
             // 
             // label2
             // 
@@ -190,6 +195,7 @@
             this.dgvIntLicenses.RowTemplate.Height = 26;
             this.dgvIntLicenses.Size = new System.Drawing.Size(971, 203);
             this.dgvIntLicenses.TabIndex = 28;
+            this.dgvIntLicenses.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMouseClick);
             // 
             // label6
             // 
@@ -207,6 +213,21 @@
             this.ctrlPersonCardwithFilter1.Name = "ctrlPersonCardwithFilter1";
             this.ctrlPersonCardwithFilter1.Size = new System.Drawing.Size(993, 419);
             this.ctrlPersonCardwithFilter1.TabIndex = 1;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showLicenseInfoToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 56);
+            // 
+            // showLicenseInfoToolStripMenuItem
+            // 
+            this.showLicenseInfoToolStripMenuItem.Name = "showLicenseInfoToolStripMenuItem";
+            this.showLicenseInfoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.showLicenseInfoToolStripMenuItem.Text = "Show License Info";
+            this.showLicenseInfoToolStripMenuItem.Click += new System.EventHandler(this.showLicenseInfoToolStripMenuItem_Click);
             // 
             // frmShowLicenseHistory
             // 
@@ -227,6 +248,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIntLicenses)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +270,7 @@
         private System.Windows.Forms.Label label5;
         protected System.Windows.Forms.DataGridView dgvIntLicenses;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem showLicenseInfoToolStripMenuItem;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace DVLD
 {
-    partial class frmUpdateApplicationTest
+    partial class frmUpdateApplicationTestTypes
     {
         /// <summary>
         /// Required designer variable.

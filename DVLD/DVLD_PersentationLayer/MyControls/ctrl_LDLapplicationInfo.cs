@@ -35,7 +35,7 @@ namespace DVLD
 
         private void linkLabelShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmShowDriverLocalLicense frm = new frmShowDriverLocalLicense(DLAppID);
+            frmShowDriverLocalLicense frm = new frmShowDriverLocalLicense(clsLocalLicense.GetLicenseIDbyLDLappID(_LDLapp.LDL_ApplicationID));
             frm.ShowDialog();
         }
     }

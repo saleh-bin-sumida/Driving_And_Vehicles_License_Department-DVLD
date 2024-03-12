@@ -7,13 +7,14 @@ namespace DVLD.ShowInfo_Screens
     public partial class frmShowDriverLocalLicense : Form
     {
         int _LicenseID;
-        public frmShowDriverLocalLicense(int LDLappID)
+        public frmShowDriverLocalLicense(int LicenseID)
         {
             InitializeComponent();
-            _LicenseID = clsLocalLicense.GetLicenseIDbyLDLappID(LDLappID);
 
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
+   
+            _LicenseID = LicenseID;
         }
 
         private void frmShowDriverLicense_Load(object sender, EventArgs e)

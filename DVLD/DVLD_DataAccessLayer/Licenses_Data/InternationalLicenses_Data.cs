@@ -129,5 +129,38 @@ namespace DVLD_DataAccessLayer.Licenses_Data
             return intLicenseID;
         }
 
+
+        public static bool DeactivateintLicense(int intLicenseID)
+        {
+
+            int rowsAffected = 0;
+
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"update InternationalLicenses
+                    set IsActive = 0 where InternationalLicenseID = @InternationalLicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@InternationalLicenseID ", intLicenseID);
+
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            { }
+
+            finally
+            { connection.Close(); }
+
+            return (rowsAffected > 0);
+        }
+
+
     }
 }

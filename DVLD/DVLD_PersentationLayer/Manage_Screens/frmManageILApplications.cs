@@ -1,5 +1,6 @@
 ﻿
 using DVLD.AddUpdate_Screens;
+using DVLD.Licenes_Applications;
 using DVLD.ShowInfo_Screens;
 using DVLD_BusinessLayer;
 using DVLD_BusinessLayer.Application;
@@ -95,7 +96,7 @@ namespace DVLD.Manage_Screens
 
         private void btnAdd_Click(object sender, System.EventArgs e)
         {
-            frmAddILapplication frm = new frmAddILapplication();
+            frm_ILapplication frm = new frm_ILapplication();
             frm.ShowDialog();
         }
 

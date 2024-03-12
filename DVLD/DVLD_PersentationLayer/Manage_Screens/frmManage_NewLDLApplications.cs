@@ -211,7 +211,8 @@ namespace DVLD
                     frmDriverLicense.ShowDialog();
                     break;
                 case "tsmShowLicense":
-                    frmShowDriverLocalLicense frmShowLicense = new frmShowDriverLocalLicense(ID);
+                    int licenseID = clsLocalLicense.GetLicenseIDbyLDLappID(ID);
+                    frmShowDriverLocalLicense frmShowLicense = new frmShowDriverLocalLicense(licenseID);
                     frmShowLicense.ShowDialog();
                     break;
                 case "tsmShowPersonLicenseHistory":

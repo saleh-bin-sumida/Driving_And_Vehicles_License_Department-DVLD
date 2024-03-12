@@ -49,7 +49,7 @@ namespace DVLD
         private void tsmUpdateTestType_Click(object sender, System.EventArgs e)
         {
             int ID = (int)DataGridView.CurrentRow.Cells[0].Value;
-            frmUpdateApplicationTest frm = new frmUpdateApplicationTest("UpdatTestType", ID);
+            frmUpdateApplicationTestTypes frm = new frmUpdateApplicationTestTypes("UpdatTestType", ID);
             frm.ShowDialog();
 
             RefreshDataGridView();

@@ -45,10 +45,14 @@ namespace DVLD_BusinessLayer
             mode = Mode.Addnew;
 
             this.ApplicationID = -1;
-            this.ApplicantPersonID = 0;
+            this.ApplicantPersonID = -1;
             this.ApplicationDate = DateTime.Now;
             this.ApplicationTypeID = ApplicationTypeID;
-            this.ApplicationStatus = 1; // means app is new
+            if (ApplicationTypeID != 1 || ApplicationTypeID != 8)
+                this.ApplicationStatus = 3; // means app is new
+            else
+                this.ApplicationStatus = 1;
+
             this.LastStatusDate = DateTime.Now;
             this.PaidFees = TypeFees();
             this.CreatedByUserID = GlobalSettings.CurrentUser.UserID;

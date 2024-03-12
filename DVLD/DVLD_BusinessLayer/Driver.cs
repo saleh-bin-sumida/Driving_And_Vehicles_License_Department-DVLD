@@ -59,6 +59,9 @@ namespace DVLD_BusinessLayer
         public static int GetDriverIDby(int PersonID) => clsDrivers_Data.GetDriverID(PersonID);
 
 
+        public static bool HasActiveLocalLicense(int DriverID, int LicenseClassID) 
+            => clsDrivers_Data.HasActiveLocalLicense(DriverID, LicenseClassID);  
+
         public DataTable GetLocalLicenses() => clsDrivers_Data.GetLocalLicenses(DriverID);
         public DataTable GetInternationalLicenses() => clsDrivers_Data.GetInternationalLicenses(DriverID);
 

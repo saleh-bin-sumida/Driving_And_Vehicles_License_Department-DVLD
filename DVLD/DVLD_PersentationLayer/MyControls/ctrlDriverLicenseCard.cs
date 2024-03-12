@@ -1,5 +1,6 @@
 ﻿using DVLD_BusinessLayer;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -42,6 +43,25 @@ namespace DVLD.MyControls
                 _ = (person.Gender == 1 ? pbxLicensePhoto.Image = Properties.Resources.Male :
                     pbxLicensePhoto.Image = Properties.Resources.Female);
             }
+        }
+
+        public void ClearData()
+        {
+
+            lblClassName.Text = "";
+            lblName.Text = "";
+            lblLicenseID.Text = "";
+            lblNationalNo.Text = "";
+            lblGender.Text = "";
+            lblIssueDate.Text = "";
+            lblIssueReason.Text = "";
+            lblNotes.Text = "";
+            lblIsActive.Text = "";
+            lblDateOfBith.Text = "";
+            lblDriverID.Text = "";
+            lblExpirationDate.Text = "";
+            lblIsDetained.Text = "";
+            pbxLicensePhoto.Image = Properties.Resources.Male;
         }
     }
 }

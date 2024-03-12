@@ -3,6 +3,7 @@ using DVLD_BusinessLayer;
 using System.Windows.Forms;
 using DVLD.Manage_Screens;
 using DVLD.AddUpdate_Screens;
+using DVLD.Licenes_Applications;
 
 
 namespace DVLD
@@ -30,7 +31,7 @@ namespace DVLD
         }
         private void tsmInternationalLicense_Click(object sender, EventArgs e)
         {
-            frmAddILapplication frm = new frmAddILapplication();
+            frm_ILapplication frm = new frm_ILapplication();
             frm.ShowDialog();
         }
 
@@ -110,6 +111,43 @@ namespace DVLD
         private void internationalDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageILApplications frm = new frmManageILApplications();
+            frm.ShowDialog();
+        }
+
+        private void renewDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRenewLicenseApp frm = new frmRenewLicenseApp();
+            frm.ShowDialog();
+            
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            frmReplacementDamagedLicenseApp frm = new frmReplacementDamagedLicenseApp();
+            frm.ShowDialog();
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicenseApp frm = new frmReleaseDetainedLicenseApp();
+            frm.ShowDialog();
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicenseApp frm = new frmReleaseDetainedLicenseApp();
+            frm.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frm = new frmDetainLicense();
+            frm.ShowDialog();
+        }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageDetainedLicenses frm = new frmManageDetainedLicenses();
             frm.ShowDialog();
         }
     }

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace DVLD
 {
-    public partial class frmUpdateApplicationTest : Form
+    public partial class frmUpdateApplicationTestTypes : Form
     {
 
         enum Mode { UpdateApplication = 1, UpdateTest = 2 };
@@ -13,7 +13,7 @@ namespace DVLD
         int _ID;
 
         dynamic _obj; // could be Application or test [will be initialized in runtime]
-        public frmUpdateApplicationTest(string WhatToUpdate, int ID)
+        public frmUpdateApplicationTestTypes(string WhatToUpdate, int ID)
         {
             InitializeComponent();
             _ID = ID;

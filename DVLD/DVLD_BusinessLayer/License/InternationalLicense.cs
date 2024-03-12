@@ -55,13 +55,17 @@ namespace DVLD_BusinessLayer
 
         
 
-        public bool Save()
+        public override bool Save()
         {
             this.intLicenseID = clsInternationalLicenses_Data.AddNewIntLicense(ApplicationID, DriverID, LocalLicenseID, IssueDate, ExpirationDate,
                  IsActive, CreatedByUserID);
             return this.LocalLicenseID != -1;
         }
 
-
+        public override bool Deactivate()
+        {
+            this.IsActive = false;
+            return clsInternationalLicenses_Data.DeactivateintLicense(this.intLicenseID);
+        }
     }
 }

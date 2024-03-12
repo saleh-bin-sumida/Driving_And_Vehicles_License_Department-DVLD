@@ -304,5 +304,41 @@ namespace DVLD_DataAccessLayer
 
             return isFound;
         }
+
+
+        public static bool HasActiveLocalLicense(int DriverID, int LicenseClassID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"select found =1 from Licenses where LicenseClassID = @LicenseClassID and IsActive = 1 and DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(@query, connection);
+
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    isFound = true;
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally { connection.Close(); }
+
+            return isFound;
+        }
     }
 }

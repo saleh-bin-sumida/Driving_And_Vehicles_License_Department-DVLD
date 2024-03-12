@@ -45,7 +45,8 @@ namespace DVLD
 
         private void txtFilterExpressions_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_selectedFilter == "PersonID" || _selectedFilter == "UserID" || _selectedFilter == "Gender" || _selectedFilter == "LDL app ID")
+            if (_selectedFilter == "PersonID" || _selectedFilter == "UserID" || _selectedFilter == "Gender" || _selectedFilter == "LDL app ID"
+                || _selectedFilter == "D ID" || _selectedFilter == "L.ID")
             {
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 {
@@ -66,9 +67,9 @@ namespace DVLD
             DataView dataView = _dt.DefaultView;
             if (_selectedFilter == "PersonID" || _selectedFilter == "UserID" || _selectedFilter == "LDL app ID"
                 || _selectedFilter == "Int License ID" || _selectedFilter == "Application ID" || _selectedFilter == "Driver ID"
-               || _selectedFilter == "License ID" )
+               || _selectedFilter == "License ID" || _selectedFilter == "D ID" || _selectedFilter == "L.ID" || _selectedFilter == "Is Released")
             {
-                dataView.RowFilter = $"[{cbxFilter.Text}] = '{txtFilterExpressions.Text}'";
+                dataView.RowFilter = $"[{cbxFilter.Text}] = {txtFilterExpressions.Text}";
                 return;
             }
             dataView.RowFilter = $"[{cbxFilter.Text}] LIKE '%{txtFilterExpressions.Text}%'";

@@ -1,6 +1,6 @@
-﻿namespace DVLD.AddUpdate_Screens
+﻿namespace DVLD.Licenes_Applications
 {
-    partial class frmAddILapplication
+    partial class frm_ILapplication
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlDriverLicenseCardwithFilter1 = new DVLD.MyControls.ctrlDriverLicenseCardwithFilter();
             this.gbxApplicatinInfo = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.linklabel_licsneHistroy = new System.Windows.Forms.LinkLabel();
-            this.linklabel_intLicense = new System.Windows.Forms.LinkLabel();
-            this.btnIssue = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblExpirationDate = new System.Windows.Forms.Label();
@@ -51,21 +45,31 @@
             this.lblapplicationDate = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.gbxApplicatinInfo.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.gbxApplicatinInfo.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // linklabel_licsneHistroy
+            // 
+            this.linklabel_licsneHistroy.Location = new System.Drawing.Point(231, 19);
+            this.linklabel_licsneHistroy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklabel_licsneHistroy_LinkClicked);
+            // 
+            // linklabel_NewLicense
+            // 
+            this.linklabel_NewLicense.Size = new System.Drawing.Size(193, 17);
+            this.linklabel_NewLicense.Text = "Show Internatoinal license Info";
+            this.linklabel_NewLicense.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklabel_NewLicense_LinkClicked);
+            // 
+            // btn
+            // 
+            this.btn.Click += new System.EventHandler(this.btn_Click);
             // 
             // ctrlDriverLicenseCardwithFilter1
             // 
-            this.ctrlDriverLicenseCardwithFilter1.Location = new System.Drawing.Point(0, -2);
-            this.ctrlDriverLicenseCardwithFilter1.Name = "ctrlDriverLicenseCardwithFilter1";
-            this.ctrlDriverLicenseCardwithFilter1.Size = new System.Drawing.Size(1101, 492);
-            this.ctrlDriverLicenseCardwithFilter1.TabIndex = 0;
             this.ctrlDriverLicenseCardwithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseCardwithFilter1_OnLicenseSelected);
             // 
             // gbxApplicatinInfo
             // 
-            this.gbxApplicatinInfo.Controls.Add(this.panel1);
             this.gbxApplicatinInfo.Controls.Add(this.label1);
             this.gbxApplicatinInfo.Controls.Add(this.label2);
             this.gbxApplicatinInfo.Controls.Add(this.lblExpirationDate);
@@ -84,68 +88,12 @@
             this.gbxApplicatinInfo.Controls.Add(this.label4);
             this.gbxApplicatinInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gbxApplicatinInfo.Font = new System.Drawing.Font("Yu Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxApplicatinInfo.Location = new System.Drawing.Point(0, 496);
+            this.gbxApplicatinInfo.Location = new System.Drawing.Point(0, 535);
             this.gbxApplicatinInfo.Name = "gbxApplicatinInfo";
             this.gbxApplicatinInfo.Size = new System.Drawing.Size(1097, 264);
-            this.gbxApplicatinInfo.TabIndex = 1;
+            this.gbxApplicatinInfo.TabIndex = 33;
             this.gbxApplicatinInfo.TabStop = false;
             this.gbxApplicatinInfo.Text = "Application Info";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.linklabel_licsneHistroy);
-            this.panel1.Controls.Add(this.linklabel_intLicense);
-            this.panel1.Controls.Add(this.btnIssue);
-            this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 207);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1091, 54);
-            this.panel1.TabIndex = 30;
-            // 
-            // linklabel_licsneHistroy
-            // 
-            this.linklabel_licsneHistroy.AutoSize = true;
-            this.linklabel_licsneHistroy.Location = new System.Drawing.Point(248, 19);
-            this.linklabel_licsneHistroy.Name = "linklabel_licsneHistroy";
-            this.linklabel_licsneHistroy.Size = new System.Drawing.Size(139, 17);
-            this.linklabel_licsneHistroy.TabIndex = 9;
-            this.linklabel_licsneHistroy.TabStop = true;
-            this.linklabel_licsneHistroy.Text = "Show License History";
-            this.linklabel_licsneHistroy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklabel_licsneHistroy_LinkClicked);
-            // 
-            // linklabel_intLicense
-            // 
-            this.linklabel_intLicense.AutoSize = true;
-            this.linklabel_intLicense.Location = new System.Drawing.Point(22, 19);
-            this.linklabel_intLicense.Name = "linklabel_intLicense";
-            this.linklabel_intLicense.Size = new System.Drawing.Size(195, 17);
-            this.linklabel_intLicense.TabIndex = 8;
-            this.linklabel_intLicense.TabStop = true;
-            this.linklabel_intLicense.Text = "Show International license Info";
-            this.linklabel_intLicense.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklabel_intLicense_LinkClicked);
-            // 
-            // btnIssue
-            // 
-            this.btnIssue.Font = new System.Drawing.Font("Yu Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIssue.Location = new System.Drawing.Point(960, 8);
-            this.btnIssue.Name = "btnIssue";
-            this.btnIssue.Size = new System.Drawing.Size(110, 38);
-            this.btnIssue.TabIndex = 6;
-            this.btnIssue.Text = "Issue";
-            this.btnIssue.UseVisualStyleBackColor = true;
-            this.btnIssue.Click += new System.EventHandler(this.btnIssue_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Font = new System.Drawing.Font("Yu Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(844, 8);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(110, 38);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // label1
             // 
@@ -307,27 +255,30 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "I.L Application ID : ";
             // 
-            // frmAddILapplication
+            // frm_ILapplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 760);
+            this.ClientSize = new System.Drawing.Size(1097, 853);
             this.Controls.Add(this.gbxApplicatinInfo);
-            this.Controls.Add(this.ctrlDriverLicenseCardwithFilter1);
-            this.Name = "frmAddILapplication";
-            this.Text = "frmAddILapplication";
-            this.Load += new System.EventHandler(this.frmAddILapplication_Load);
-            this.gbxApplicatinInfo.ResumeLayout(false);
-            this.gbxApplicatinInfo.PerformLayout();
+            this.Name = "frm_ILapplication";
+            this.Text = "frm_ILapplication";
+            this.Load += new System.EventHandler(this.frm_ILapplication_Load);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.ctrlDriverLicenseCardwithFilter1, 0);
+            this.Controls.SetChildIndex(this.gbxApplicatinInfo, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.gbxApplicatinInfo.ResumeLayout(false);
+            this.gbxApplicatinInfo.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private MyControls.ctrlDriverLicenseCardwithFilter ctrlDriverLicenseCardwithFilter1;
         private System.Windows.Forms.GroupBox gbxApplicatinInfo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -345,10 +296,5 @@
         private System.Windows.Forms.Label lblapplicationDate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.LinkLabel linklabel_licsneHistroy;
-        private System.Windows.Forms.LinkLabel linklabel_intLicense;
-        private System.Windows.Forms.Button btnIssue;
-        private System.Windows.Forms.Button btnClose;
     }
 }

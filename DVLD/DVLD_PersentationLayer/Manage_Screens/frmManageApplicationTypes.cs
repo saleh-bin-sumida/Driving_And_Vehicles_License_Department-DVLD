@@ -48,7 +48,7 @@ namespace DVLD
         private void tsmUpdateApplicationType_Click(object sender, System.EventArgs e)
         {
             int ID = (int) DataGridView.CurrentRow.Cells[0].Value;
-            frmUpdateApplicationTest frm = new frmUpdateApplicationTest("UpdatApplicationType", ID);
+            frmUpdateApplicationTestTypes frm = new frmUpdateApplicationTestTypes("UpdatApplicationType", ID);
             frm.ShowDialog();
 
             RefreshDataGridView();

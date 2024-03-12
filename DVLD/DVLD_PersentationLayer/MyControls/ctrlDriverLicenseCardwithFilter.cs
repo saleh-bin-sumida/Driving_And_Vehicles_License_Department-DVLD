@@ -23,11 +23,26 @@ namespace DVLD.MyControls
         public ctrlDriverLicenseCardwithFilter()
         {
             InitializeComponent();
-            _LicenseID = 0;
+            _LicenseID = -1;
+        }
+
+        private void ClearData()
+        {
+
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            if (txtLicenseId.Text == "")
+            {
+
+                MessageBox.Show("Licesen with this ID not found!");
+                ctrlDriverLicenseCard1.ClearData();
+                _LicenseID = -1;
+                OnLicenseSelected?.Invoke(_LicenseID);
+                return;
+            }
+
             _LicenseID = int.Parse(txtLicenseId.Text);
 
             _LocalLicense = clsLocalLicense.Find(_LicenseID);
@@ -41,6 +56,20 @@ namespace DVLD.MyControls
             ctrlDriverLicenseCard1.LoadData(_LicenseID);
 
             OnLicenseSelected?.Invoke(_LicenseID);
+        }
+
+        public void Select(int LicenseID)
+        {
+            object o = new object();
+            EventArgs e = new EventArgs();
+            txtLicenseId.Text = LicenseID.ToString();
+            _LicenseID = LicenseID;
+            btnSelect_Click(o,e);
+        }
+
+        public void DisableFilter()
+        {
+            gbxPersonFilter.Enabled = false;
         }
     }
 }
