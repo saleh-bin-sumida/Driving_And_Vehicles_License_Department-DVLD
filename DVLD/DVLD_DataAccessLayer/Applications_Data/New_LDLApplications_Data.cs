@@ -403,42 +403,6 @@ namespace DVLD_DataAccessLayer
         }
 
 
-        public static bool isLDLappHasActiveTestAppointment(int LocalDrivingLicenseApplicationID, int TestTypeID)
-        {
-            bool isFound = false;
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"select found = 1 from TestAppointments where
-            LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID and TestTypeID = @TestTypeID and IsLocked = 0";
-
-            SqlCommand command = new SqlCommand(@query, connection);
-
-            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
-
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null)
-                {
-                    isFound = true;
-                }
-
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-            finally { connection.Close(); }
-
-            return isFound;
-        }
-
-
         public static byte GetTrial(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
             byte Trial = 0;

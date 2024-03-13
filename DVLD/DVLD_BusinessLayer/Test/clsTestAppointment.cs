@@ -16,6 +16,7 @@ namespace DVLD_BusinessLayer.Test
         private decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
         public bool IsLocked { get; set; }
+        public int RetakeTestApplicationID { get; set; }
 
         public clsTestAppointment() 
         {
@@ -24,10 +25,11 @@ namespace DVLD_BusinessLayer.Test
             TestAppointmentID = -1;
             TestTypeID = 1;
             LDL_ApplicationID = 0;
-            AppointmentDate =  DateTime.Now.AddDays(1);
+            AppointmentDate =  DateTime.Now;
             PaidFees = this.Fees();
             CreatedByUserID = GlobalSettings.CurrentUser.UserID;
             IsLocked = false;
+            RetakeTestApplicationID = -1;
 
         }
         public clsTestAppointment(int LDLappID, int TestTypeID)
@@ -41,6 +43,7 @@ namespace DVLD_BusinessLayer.Test
             PaidFees = this.Fees();
             CreatedByUserID = GlobalSettings.CurrentUser.UserID;
             IsLocked = false;
+            RetakeTestApplicationID = -1;
 
         }
 
@@ -85,13 +88,13 @@ namespace DVLD_BusinessLayer.Test
 
 
 
-        private bool _SchduleTestAppointments()
+        private bool _Add()
         {
             
 
 
             this.TestAppointmentID = clsTestsAppointments_Data.AddTestAppointment(LDL_ApplicationID,
-                TestTypeID, AppointmentDate, PaidFees, IsLocked, CreatedByUserID);
+                TestTypeID, AppointmentDate, PaidFees, IsLocked, CreatedByUserID, RetakeTestApplicationID);
             return this.TestAppointmentID != -1;
         }
 
@@ -115,7 +118,7 @@ namespace DVLD_BusinessLayer.Test
             {
                 case Mode.Addnew:
                     mode = Mode.Update;
-                    return _SchduleTestAppointments();
+                    return _Add();
 
                 case Mode.Update:
                     return _Update();

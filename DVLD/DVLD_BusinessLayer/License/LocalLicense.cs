@@ -56,6 +56,9 @@ namespace DVLD_BusinessLayer
 
         public static decimal LicenseClassFees(int LicenseClassID) => clsLicenseClasses_Data.GetLicenseClassFees(LicenseClassID);
 
+        public static byte GetDefaultValidityLength(int LicenseClassID) => clsLicenseClasses_Data.GetDefaultValidityLength(LicenseClassID);
+
+
 
         public string IssueReson()
         {
@@ -81,7 +84,6 @@ namespace DVLD_BusinessLayer
             clsLocalLicenses_Data.ReleaseLicense(DetainID, GlobalSettings.CurrentUser.UserID, ReleaseAppID);
 
 
-        public static byte GetDefaultValidityLength(int LicenseClassID) => clsLicenseClasses_Data.GetDefaultValidityLength(LicenseClassID);
         public static int GetLicenseIDbyLDLappID(int LDLappID) => clsLocalLicenses_Data.GetLicenseIDbyLDLappID(LDLappID);
 
         public static DataTable GetAllLicenseClasses() => clsLicenseClasses_Data.GetAllLicenseClasses();

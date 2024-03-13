@@ -71,7 +71,7 @@ namespace DVLD.Manage_Screens
 
             if (LDLapp.HasAppoinntment(_TestTypeID))
             {
-                RetakeTestApp = new clsApplication(8);
+                RetakeTestApp = new clsApplication(7);
                 RetakeTestApp.ApplicantPersonID = LDLapp.ApplicantPersonID;
 
                 frmAddUpdateTestAppointment fr = new frmAddUpdateTestAppointment(-1, LDLapp.LDL_ApplicationID, _TestTypeID,RetakeTestApp);

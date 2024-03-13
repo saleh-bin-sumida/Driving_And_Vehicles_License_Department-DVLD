@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using DVLD.Manage_Screens;
 using DVLD.AddUpdate_Screens;
 using DVLD.Licenes_Applications;
+using System.Runtime.CompilerServices;
+using System.Drawing;
 
 
 namespace DVLD
@@ -13,12 +15,18 @@ namespace DVLD
         public delegate void ShowFormHandler();
         public ShowFormHandler ShowForm;
         public ShowFormHandler CloseForm;
+        
+     
 
 
 
         public Home()
         {
             InitializeComponent();
+
+
+            this.WindowState = FormWindowState.Maximized;
+
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
         }

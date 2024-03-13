@@ -11,10 +11,6 @@ namespace DVLD
         public string NationalNo { get { return _NationalNo.Text; }private set { this._NationalNo.Text = value; } }
         public string FullName { get { return _FullName.Text; }private set { this._FullName.Text = value; } }
 
-        internal void LoadData(Control value)
-        {
-            throw new NotImplementedException();
-        }
 
         public string Gender { get { return _Gender.Text; }private set { this._Gender.Text = value; } }
         public string DateOfBirth { get { return _DateOfBirth.Text; }private set { this._DateOfBirth.Text = value; } }

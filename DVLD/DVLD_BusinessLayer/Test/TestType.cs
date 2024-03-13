@@ -21,10 +21,11 @@ namespace DVLD_BusinessLayer
 
         }
 
+
         public static DataTable GetAllTestTypes() => clsTestTypes_Data.GetAllTestTypes();
 
 
-        public static clsTestType GetTestTypeInfoByID(int TestTypeID)
+        public static clsTestType Find(int TestTypeID)
         {
             string TestTypeTitle = "";
             string TestTypeDescription = "";
@@ -36,6 +37,8 @@ namespace DVLD_BusinessLayer
 
         }
 
+
+        //this method is referenced by dynamic object
         public bool Update() => clsTestTypes_Data.UpdateTestType(TestTypeID, TestTypeTitle,TestTypeDescription, TestTypeFees);
     }
 }

@@ -436,66 +436,6 @@ namespace DVLD_DataAccessLayer
 
         }
 
-        public static bool GetPersonByFilter(string selectedFilter,dynamic value, ref int PersonID, ref string NationalNo, ref string FirstName, ref string SecondName, ref string ThirdName,
-        ref string LastName, ref DateTime DateOfBirth, ref byte Gender,
-        ref string Address, ref string Phone, ref string Email,
-        ref int NationalityCountryID, ref string ImagePath)
-        {
-            bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string Query = "select * from People where @selectedFilter = @value;";
-
-            SqlCommand cmd = new SqlCommand(Query, connection);
-            cmd.Parameters.AddWithValue("@selectedFilter", selectedFilter);
-            cmd.Parameters.AddWithValue("@value", value);
-
-            connection.Open();
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                isFound = true;
-
-                PersonID = (int)reader["PersonID"];
-                NationalNo = (string)reader["NationalNo"];
-                FirstName = (string)reader["FirstName"];
-                SecondName = (string)reader["SecondName"];
-                LastName = (string)reader["LastName"];
-                DateOfBirth = (DateTime)reader["DateOfBirth"];
-                Gender = (byte)reader["Gender"];
-                Address = (string)reader["Address"];
-                Phone = (string)reader["Phone"];
-                NationalityCountryID = (int)reader["NationalityCountryID"];
-
-
-
-
-                //Email , ImagePath and ThridName: allows null in database so we should handle null
-
-
-                if (reader["ThirdName"] != DBNull.Value)
-                    ThirdName = (string)reader["ThirdName"];
-                else
-                    ThirdName = "";
-
-
-                if (reader["Email"] != DBNull.Value)
-                    Email = (string)reader["Email"];
-                else
-                    Email = "";
-
-
-                if (reader["ImagePath"] != DBNull.Value)
-                    ImagePath = (string)reader["ImagePath"];
-                else
-                    ImagePath = "";
-            }
-       
-
-
-            return isFound;
-        }
-
 
         private static bool _GetPersonID_ByNationalNo(ref int PersonID, string NationalNo)
         {

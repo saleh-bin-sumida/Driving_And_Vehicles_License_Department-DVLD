@@ -400,8 +400,6 @@ namespace DVLD_DataAccessLayer
             return isFound;
         }
 
-   
-
 
         public static DataTable GetAllDetainedLicenses()
         {

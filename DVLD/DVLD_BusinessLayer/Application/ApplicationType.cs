@@ -23,7 +23,7 @@ namespace DVLD_BusinessLayer
         public static DataTable GetAllApplicationsTypes() => ApplicationTypes_Data.GetAllApplicationTypes();
 
 
-        public static clsApplicationType GetApplicationTypeInfoByID(int ApplicationTypeID)
+        public static clsApplicationType Find(int ApplicationTypeID)
         {
             string ApplicationTypeTitle ="";
             decimal ApplicationTypeFees = 0.0m;
@@ -33,7 +33,6 @@ namespace DVLD_BusinessLayer
 
         }
 
-        // this method is referenced by dynamic object
         public bool Update()  => ApplicationTypes_Data.UpdateApplicationType(ApplicationTypeID,ApplicationTypeTitle,ApplicationTypeFees);
 
         public static decimal GetApplicationTypeFees(int ApplicationTypeID) => ApplicationTypes_Data.GetApplicationTypeFees(ApplicationTypeID);

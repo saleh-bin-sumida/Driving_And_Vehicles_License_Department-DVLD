@@ -73,13 +73,7 @@ namespace DVLD_BusinessLayer
         }
 
         private bool _UpdateUser() => clsUser_Data.UpdateUserInfo(this.UserID,this._person.PersonID, this.Username, this.Password, this.IsActive);
-            
-
-
-        private bool _UpdateUserPassword()
-        {
-            return  clsUser_Data.UpdateUserPassword(this.UserID, this.Password);
-        }
+           
 
         public static bool DeleteUser(int UserID) =>  clsUser_Data.DeleteUser(UserID);
 

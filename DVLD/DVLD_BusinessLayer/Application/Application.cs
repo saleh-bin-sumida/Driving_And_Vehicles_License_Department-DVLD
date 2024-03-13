@@ -1,29 +1,13 @@
-﻿using DVLD_BusinessLayer;
-using DVLD_BusinessLayer.Application;
+﻿
 using DVLD_DataAccessLayer;
 using DVLD_DataAccessLayer.Applications_Data;
 using System;
 using System.Data;
 
-
 namespace DVLD_BusinessLayer
 {
 
-    interface IApplication
-    {
-        bool _AddNew();
-        bool _Update();
-        string Status();
-        bool IsNew();
-        bool IsCompleted();
-        bool Cancel(int ID);
-        bool Delete(int ID);
-        bool Save();
-    }
-
-
-
-    public class clsApplication //: IApplication
+    public class clsApplication 
     {
         protected enum Mode { Addnew = 1, Update = 2 };
         protected Mode mode;
@@ -107,6 +91,13 @@ namespace DVLD_BusinessLayer
 
 
         public string UserFullName() => clsUser_Data.GetUserFullNameByID(this.CreatedByUserID);
+
+
+
+        public static int GetActiveApplicationIDForLicenseClass(int PersonID, int  ApplicationTypeID, int LicenseClassID)
+        {
+            return clsApplications_Data.GetActiveApplicationIDForLicenseClass(PersonID, (int)ApplicationTypeID, LicenseClassID);
+        }
 
 
         public static clsApplication Find(int AppID)

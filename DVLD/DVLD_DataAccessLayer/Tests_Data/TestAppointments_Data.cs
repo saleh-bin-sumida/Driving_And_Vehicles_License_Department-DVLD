@@ -106,7 +106,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
 
         public static int AddTestAppointment(int LocalDrivingLicenseApplicationID, int TestTypeID, DateTime AppointmentDate,
-        decimal PaidFees, bool IsLocked, int CreatedByUserID)
+        decimal PaidFees, bool IsLocked, int CreatedByUserID,int RetakeTestApplicationID)
         {
             int TestAppointmentID = -1;
 
@@ -120,14 +120,16 @@ namespace DVLD_DataAccessLayer.Tests_Data
                        ,[AppointmentDate]
                        ,[PaidFees]
                        ,[CreatedByUserID]
-                       ,[IsLocked])
+                       ,[IsLocked]
+                        ,[RetakeTestApplicationID])
                  VALUES
                        (@TestTypeID
                        ,@LocalDrivingLicenseApplicationID
                        ,@AppointmentDate
                        ,@PaidFees
                        ,@CreatedByUserID
-                       ,@IsLocked)
+                       ,@IsLocked
+                       ,@RetakeTestApplicationID)
                     SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -138,6 +140,17 @@ namespace DVLD_DataAccessLayer.Tests_Data
             command.Parameters.AddWithValue("@IsLocked", IsLocked);
             command.Parameters.AddWithValue("@PaidFees", PaidFees);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+
+            if (RetakeTestApplicationID == -1)
+            {
+                command.Parameters.AddWithValue("@RetakeTestAppID", DBNull.Value);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@RetakeTestApplicationID", RetakeTestApplicationID);
+
+            }
 
             try
             {

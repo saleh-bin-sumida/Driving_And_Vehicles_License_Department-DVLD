@@ -95,7 +95,8 @@ namespace DVLD.AddUpdate_Screens
         {
 
             _TestAppointment.AppointmentDate = dtpAppointmentDate.Value;
-
+            _TestAppointment.RetakeTestApplicationID = _RetakeTestApp.ApplicationID;
+            
 
             if (_RetakeTestApp != null)
             {

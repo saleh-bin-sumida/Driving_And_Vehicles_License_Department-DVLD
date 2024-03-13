@@ -70,8 +70,20 @@ namespace DVLD
             }
 
 
+
             _LDLapp.ApplicantPersonID = int.Parse(ctrlPersonCardwithFilter1.PersonID);
-            _LDLapp.LicenseClassID = cbxLicenseClasses.SelectedIndex +1;
+            _LDLapp.LicenseClassID = cbxLicenseClasses.SelectedIndex + 1;
+
+
+            int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(_LDLapp.ApplicantPersonID, 1, _LDLapp.LicenseClassID);
+
+            if (ActiveApplicationID != -1)
+            {
+                MessageBox.Show("Choose another License Class, the selected Person Already have an active application for the selected class with id=" + ActiveApplicationID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
 
             if (_LDLapp.Save())
             {

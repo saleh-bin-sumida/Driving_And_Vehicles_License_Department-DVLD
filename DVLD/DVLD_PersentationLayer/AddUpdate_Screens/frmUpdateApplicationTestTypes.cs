@@ -35,14 +35,14 @@ namespace DVLD
                 txtDescription.Visible = false;
 
                 lblHeading.Text = "Update Application";
-                _obj = clsApplicationType.GetApplicationTypeInfoByID(_ID);
+                _obj = clsApplicationType.Find(_ID);
                 txtTitle.Text = _obj.ApplicationTypeTitle;
                 txtFees.Text = _obj.ApplicationTypeFees.ToString();
             }
             else
             {
                 lblHeading.Text = "Update Test";
-                _obj = clsTestType.GetTestTypeInfoByID(_ID);
+                _obj = clsTestType.Find(_ID);
                 txtTitle.Text = _obj.TestTypeTitle;
                 txtFees.Text = _obj.TestTypeFees.ToString();
                 txtDescription.Text = _obj.TestTypeDescription;
