@@ -3,6 +3,11 @@
 ## Overview
 The Driving & Vehicle License Department (DVLD) system is designed to manage the issuance and administration of driving licenses. It encompasses a range of services to ensure the provision of safe drivers on the roads.
 
+## Project Details
+- **Framework**: Windows Forms (built on .NET Framework 4.8)
+- **Version**: v0.1.0
+- [**Downlaod Version**: v0.1.0](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v0.1.0.zip)
+
 ## Services Offered
 - **Issuance of First-Time License**: A service for applicants to obtain a driving license for the first time.
 - **Re-examination Service**: Allows applicants who have failed a test to schedule a re-examination.
@@ -47,13 +52,6 @@ Upon passing all tests and meeting the conditions, a driving license is issued w
 
 ## Inquiry Service
 The system allows for inquiries about licenses held by an individual using their national number or license number.
-
-## Project Details
-- **Framework**: Windows Forms (built on .NET Framework 4.8)
-- **Version**: 1.0
-
-## First Release
-You can find the first release of the DVLD Project on my GitHub repository: [DVLD Project - First Release](https://github.com/DVLD/dvld-project1/releases/tag/v1.0)
 
 ## Conclusion
 The DVLD system streamlines the process of managing driving licenses, ensuring that all drivers meet the necessary safety standards.
