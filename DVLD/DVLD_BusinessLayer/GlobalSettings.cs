@@ -12,5 +12,8 @@ namespace DVLD_BusinessLayer
         public static  clsUser CurrentUser { get; set; }
 
         public static readonly  string destinationFolder = @"C:\DVLD - People - Images";
+
+
+        public static string ProjectKeyPath = @"\HKEY_CURRENT_USER\SOFTWARE\DVLD";
     }
 }

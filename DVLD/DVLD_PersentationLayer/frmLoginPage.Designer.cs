@@ -70,7 +70,6 @@
             // chkRemeber
             // 
             this.chkRemeber.AutoSize = true;
-            this.chkRemeber.Enabled = false;
             this.chkRemeber.Font = new System.Drawing.Font("Yu Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkRemeber.Location = new System.Drawing.Point(565, 271);
             this.chkRemeber.Name = "chkRemeber";
@@ -121,6 +120,7 @@
             this.Name = "frmLoginPage";
             this.Text = "Login Page";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLoginPage_FormClosed);
+            this.Load += new System.EventHandler(this.frmLoginPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
