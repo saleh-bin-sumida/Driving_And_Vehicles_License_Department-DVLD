@@ -12,7 +12,7 @@ namespace DVLD_DataAccessLayer
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT 
 	                  [LDL app ID] = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
@@ -59,7 +59,7 @@ namespace DVLD_DataAccessLayer
 
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
             }
             finally
             {
@@ -88,7 +88,7 @@ namespace DVLD_DataAccessLayer
             ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
 
             string query = @"INSERT INTO [dbo].[LocalDrivingLicenseApplications]
@@ -120,7 +120,7 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -145,7 +145,7 @@ namespace DVLD_DataAccessLayer
                 return false;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"UPDATE [dbo].[LocalDrivingLicenseApplications]
                    SET [LicenseClassID] = @LicenseClassID
@@ -163,7 +163,7 @@ namespace DVLD_DataAccessLayer
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -184,7 +184,7 @@ namespace DVLD_DataAccessLayer
            
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"
             Update Applications
@@ -202,7 +202,7 @@ namespace DVLD_DataAccessLayer
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -222,7 +222,7 @@ namespace DVLD_DataAccessLayer
 
 
             //clsApplicationsData.DeleteApplication(ApplicationID);
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"declare @appID int
             select @appID = ApplicationID from LocalDrivingLicenseApplications where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
@@ -241,7 +241,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
 
@@ -262,7 +262,7 @@ namespace DVLD_DataAccessLayer
             bool isFound = false;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select * from LocalDrivingLicenseApplications inner join Applications
             on LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID
@@ -296,7 +296,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -310,7 +310,7 @@ namespace DVLD_DataAccessLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"
 				  select Found = 1 from Applications
@@ -335,7 +335,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
 
             return isFound;
@@ -347,7 +347,7 @@ namespace DVLD_DataAccessLayer
         {
             byte Passedtests =0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select [Passed Test] = (select count(*) from  
 						    ( 
@@ -377,7 +377,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
 
             return Passedtests;
@@ -388,7 +388,7 @@ namespace DVLD_DataAccessLayer
         {
             byte Trial = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select count(*) from TestAppointments where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
                 and TestTypeID = @TestTypeID";
@@ -409,7 +409,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
 
             return Trial;

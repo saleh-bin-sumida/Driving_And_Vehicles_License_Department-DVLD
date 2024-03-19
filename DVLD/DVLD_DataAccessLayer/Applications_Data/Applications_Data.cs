@@ -15,7 +15,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[Applications]
                            ([ApplicantPersonID]
@@ -61,7 +61,7 @@ namespace DVLD_DataAccessLayer
 
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
             }
 
             finally
@@ -83,7 +83,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select * from Applications
                         where ApplicationID = @ApplicationID";
@@ -115,7 +115,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
 
             }
             finally
@@ -136,7 +136,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select found =1 from Licenses where ApplicationID = @ApplicationID ";
 
@@ -154,7 +154,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
 
             }
 
@@ -172,7 +172,7 @@ namespace DVLD_DataAccessLayer
 
             string ApplicationStatus = "";
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select  case
 					when Applications.ApplicationStatus = 1 then 'New'
@@ -197,7 +197,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
 
             }
             finally { connection.Close(); }
@@ -209,7 +209,7 @@ namespace DVLD_DataAccessLayer
         {
             int ActiveApplicationID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT ActiveApplicationID=Applications.ApplicationID  
                             From
@@ -236,9 +236,9 @@ namespace DVLD_DataAccessLayer
                     ActiveApplicationID = AppID;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
                 return ActiveApplicationID;
             }
             finally
@@ -253,7 +253,7 @@ namespace DVLD_DataAccessLayer
         public static bool MakeComplete(int ApplicationID)
         {
             int RowsEffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string qurey = @"update Applications
                     set ApplicationStatus = 3 where ApplicationID = @ApplicationID";
@@ -272,7 +272,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
 
 
             }

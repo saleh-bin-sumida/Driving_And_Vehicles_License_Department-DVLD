@@ -10,7 +10,7 @@ namespace DVLD_DataAccessLayer
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select ID = ApplicationTypeID, [Application Title] = ApplicationTypeTitle, Fees = ApplicationFees 
                             from ApplicationTypes;";
@@ -35,7 +35,7 @@ namespace DVLD_DataAccessLayer
 
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
             }
             finally
             {
@@ -49,7 +49,7 @@ namespace DVLD_DataAccessLayer
         public static void GetApplicationTypeInfo(int ApplicationTypeID, ref string ApplicationTypeTitle, ref decimal ApplicationFees)
         {
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
             string query = @"select * from ApplicationTypes where ApplicationTypeID = @ApplicationTypeID;";
 
             SqlCommand cmd = new SqlCommand(query, connection);
@@ -72,7 +72,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
 
             }
             finally { connection.Close(); }
@@ -82,7 +82,7 @@ namespace DVLD_DataAccessLayer
         {
 
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"update ApplicationTypes
                         set ApplicationTypeTitle = @ApplicationTypeTitle,
@@ -104,7 +104,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
 
             }
 
@@ -121,7 +121,7 @@ namespace DVLD_DataAccessLayer
         {
             decimal Fees = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
             string query = @"select ApplicationFees from ApplicationTypes where ApplicationTypeID =@ApplicationTypeID ";
 
             SqlCommand command = new SqlCommand(query,connection);
@@ -142,7 +142,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
 
             }
             finally { connection.Close(); }
@@ -153,7 +153,7 @@ namespace DVLD_DataAccessLayer
         {
             string ApplicationTypeTitle = "";
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
             string query = @"select ApplicationTypeTitle from ApplicationTypes where ApplicationTypeID =@ApplicationTypeID ";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -173,7 +173,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
 
             }
             finally { connection.Close(); }

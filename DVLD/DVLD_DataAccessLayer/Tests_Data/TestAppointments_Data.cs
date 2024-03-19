@@ -11,7 +11,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select TestAppointmentID as [AppointmentID], 
             AppointmentDate as [Appointment Date],
@@ -40,7 +40,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -60,7 +60,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
             bool isFound = false;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select * from TestAppointments where TestAppointmentID = @TestAppointmentID";
 
@@ -89,7 +89,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -108,7 +108,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[TestAppointments]
                        ([TestTypeID]
@@ -162,7 +162,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 }
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -179,7 +179,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
         {
 
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"UPDATE TestAppointments 
                     set AppointmentDate = @AppointmentDate,
@@ -198,7 +198,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -213,7 +213,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
         {
             bool CreateAppointment = true;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"
                     select top 1 TestID, TestAppointments.TestAppointmentID, TestTypeID,LocalDrivingLicenseApplicationID,AppointmentDate,IsLocked,
@@ -255,7 +255,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
 
             return CreateAppointment;

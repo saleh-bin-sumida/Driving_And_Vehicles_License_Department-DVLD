@@ -10,7 +10,7 @@ namespace DVLD_DataAccessLayer
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = "select CountryName from Countries";
 
@@ -32,7 +32,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -44,7 +44,7 @@ namespace DVLD_DataAccessLayer
 
         public static string GetCountryNameByID(int CountryID)
         {
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = "select CountryName from Countries where CountryID = @CountryID";
 
@@ -60,7 +60,7 @@ namespace DVLD_DataAccessLayer
                     return result.ToString();
                 }
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();

@@ -12,7 +12,7 @@ namespace DVLD_DataAccessLayer
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT People.PersonID, People.NationalNo, People.FirstName, People.SecondName, People.ThirdName, People.LastName, People.Gender, People.DateOfBirth, Countries.CountryName, People.Phone, People.Email
                             FROM     People INNER JOIN
@@ -35,7 +35,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -55,7 +55,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT * FROM  People 
                         where PersonID = @PersonID";
@@ -118,7 +118,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); isFound = false; }
+            catch (Exception e) { General.LogErrorMessage(e.Message); isFound = false; }
             finally
             {
                 connection.Close();
@@ -140,7 +140,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT * FROM  People 
                         where NationalNo = @NationalNo";
@@ -203,7 +203,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); isFound = false; }
+            catch (Exception e) { General.LogErrorMessage(e.Message); isFound = false; }
             finally
             {
                 connection.Close();
@@ -242,7 +242,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"insert into People
                         values (@NationalNo,@FirstName,@SecondName,@ThirdName,
@@ -298,7 +298,7 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -318,7 +318,7 @@ namespace DVLD_DataAccessLayer
         {
 
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"Update  People  
                             set NationalNo = @NationalNo,
@@ -375,7 +375,7 @@ namespace DVLD_DataAccessLayer
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -393,7 +393,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"delete from People where PersonID = @PersonID";
 
@@ -408,7 +408,7 @@ namespace DVLD_DataAccessLayer
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
 
@@ -425,7 +425,7 @@ namespace DVLD_DataAccessLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = "SELECT PersonID FROM People WHERE NationalNo = @NationalNo";
 
@@ -446,7 +446,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -461,7 +461,7 @@ namespace DVLD_DataAccessLayer
             bool isFound = false;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT found=1 FROM  People 
                         where PersonID = @PersonID";
@@ -481,7 +481,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -496,7 +496,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT found=1 FROM  People 
                         where NationalNo = @NationalNo";
@@ -516,7 +516,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -532,7 +532,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT found=1 FROM  Users 
                         where PersonID = @PersonID";
@@ -552,7 +552,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -565,7 +565,7 @@ namespace DVLD_DataAccessLayer
         {
             string PersonFullName = "";
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
             string query = @"select  [Full Name] = People.FirstName + ' ' + People.SecondName + ' ' + People.ThirdName + ' ' + People.LastName
                             from People where PersonID = @PersonID"; 
 
@@ -584,7 +584,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
             return PersonFullName;
         }

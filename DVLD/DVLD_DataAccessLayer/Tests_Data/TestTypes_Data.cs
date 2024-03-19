@@ -12,7 +12,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select ID = TestTypeID, [Test Title] = TestTypeTitle, [Test Description] = TestTypeDescription , Fees = TestTypeFees   
                             from TestTypes;";
@@ -35,7 +35,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -48,7 +48,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
         public static void GetTestTypeInfo(int TestTypeID, ref string TestTypeTitle, ref string TestTypeDescription, ref decimal TestTypeFees)
         {
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
             string query = @"select * from TestTypes where TestTypeID = @TestTypeID;";
 
             SqlCommand cmd = new SqlCommand(query, connection);
@@ -70,7 +70,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
         }
 
@@ -78,7 +78,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
         {
 
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"update TestTypes
                         set TestTypeTitle = @TestTypeTitle,
@@ -101,7 +101,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -117,7 +117,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
         {
             decimal Fees = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
             string query = @"select TestTypeFees from TestTypes where TestTypeID = @TestTypeID ";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -136,7 +136,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
             return Fees;
         }
@@ -145,7 +145,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
         {
             string TestTypeTitle = "";
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
             string query = @"select TestTypeTitle from TestTypes where TestTypeID = @TestTypeID ";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -163,7 +163,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
             return TestTypeTitle;
         }

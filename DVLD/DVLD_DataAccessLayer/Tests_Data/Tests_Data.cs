@@ -13,7 +13,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[Tests]
                        ([TestAppointmentID]
@@ -47,7 +47,7 @@ namespace DVLD_DataAccessLayer
                     TestID = insertedID;
                 }
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }s
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {

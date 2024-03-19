@@ -11,7 +11,7 @@ namespace DVLD_DataAccessLayer
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select * from Drivers";
 
@@ -33,7 +33,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -48,7 +48,7 @@ namespace DVLD_DataAccessLayer
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select [License ID] = LicenseID,
 	                [App ID] = ApplicationID,
@@ -78,7 +78,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -93,7 +93,7 @@ namespace DVLD_DataAccessLayer
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select [intLicense ID] = InternationalLicenseID,
 	                    [App ID] = ApplicationID,
@@ -123,7 +123,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -146,7 +146,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[Drivers]
                        ([PersonID]
@@ -179,7 +179,7 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -194,7 +194,7 @@ namespace DVLD_DataAccessLayer
         {
             int DriverID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select DriverID from Drivers where PersonID = @PersonID";
 
@@ -213,7 +213,7 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally  {connection.Close();}
 
@@ -226,7 +226,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT * FROM  Drivers 
                         where DriverID = @DriverID";
@@ -264,7 +264,7 @@ namespace DVLD_DataAccessLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select top 1 found = 1 from InternationalLicenses inner join Drivers
                 on InternationalLicenses.DriverID = Drivers.DriverID
@@ -286,7 +286,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
 
             return isFound;
@@ -297,7 +297,7 @@ namespace DVLD_DataAccessLayer
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select found =1 from Licenses where LicenseClassID = @LicenseClassID and IsActive = 1 and DriverID = @DriverID";
 
@@ -318,7 +318,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
 
             return isFound;

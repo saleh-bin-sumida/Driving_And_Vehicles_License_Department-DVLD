@@ -12,7 +12,7 @@ namespace DVLD_DataAccessLayer
         {
             string LicenseClassName = "";
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select ClassName from LicenseClasses where LicenseClassID = @LicenseClassID";
 
@@ -30,7 +30,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
 
             return LicenseClassName;
@@ -41,7 +41,7 @@ namespace DVLD_DataAccessLayer
         {
             byte DefaultValidityLength = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select DefaultValidityLength from LicenseClasses where LicenseClassID = @LicenseClassID";
 
@@ -60,7 +60,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
 
             return DefaultValidityLength;
@@ -71,7 +71,7 @@ namespace DVLD_DataAccessLayer
         {
             decimal ClassFees = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select ClassFees from LicenseClasses where LicenseClassID = @LicenseClassID";
 
@@ -90,7 +90,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally { connection.Close(); }
 
             return ClassFees;
@@ -101,7 +101,7 @@ namespace DVLD_DataAccessLayer
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select ClassName from LicenseClasses";
 
@@ -123,7 +123,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();

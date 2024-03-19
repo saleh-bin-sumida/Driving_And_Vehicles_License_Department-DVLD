@@ -11,7 +11,7 @@ namespace DVLD_DataAccessLayer.Applications_Data
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"SELECT [Int License ID] = [InternationalLicenseID]
                           ,[Application ID] = [ApplicationID]
@@ -42,7 +42,7 @@ namespace DVLD_DataAccessLayer.Applications_Data
 
             catch (Exception e)
             {
-                clsDataAccessSettings.LogError(e.Message);
+                General.LogErrorMessage(e.Message);
             }
             finally
             {

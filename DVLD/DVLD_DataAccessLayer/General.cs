@@ -1,11 +1,12 @@
 ﻿using System.Diagnostics;
+using System.Configuration;
 namespace DVLD_DataAccessLayer
 {
-    public static class clsDataAccessSettings
+    internal static class General
     {
-        public static string ConnectionString = "Server=.;Database=DVLD; Integrated Security =True;";
+        public static string ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
 
-        public static void LogError(string message)
+        public static void LogErrorMessage(string message)
         {
             string SourceName = "DVLD";
             if (!EventLog.SourceExists(SourceName))

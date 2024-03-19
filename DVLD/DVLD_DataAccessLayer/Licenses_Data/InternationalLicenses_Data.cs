@@ -16,7 +16,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select * from InternationalLicenses where InternationalLicenseID = @InternationalLicenseID";
 
@@ -47,7 +47,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -65,7 +65,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
             int intLicenseID = -1;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
 
             string query = @"INSERT INTO [dbo].[InternationalLicenses]
@@ -112,7 +112,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
                 }
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -131,7 +131,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
             int rowsAffected = 0;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"update InternationalLicenses
                     set IsActive = 0 where InternationalLicenseID = @InternationalLicenseID";
@@ -147,7 +147,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             { connection.Close(); }

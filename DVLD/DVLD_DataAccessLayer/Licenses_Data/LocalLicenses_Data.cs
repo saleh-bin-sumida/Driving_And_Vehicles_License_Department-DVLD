@@ -18,7 +18,7 @@ namespace DVLD_DataAccessLayer
             int LicenseID = -1;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
 
             string query = @"INSERT INTO [dbo].[Licenses]
@@ -74,7 +74,7 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             {
@@ -97,7 +97,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select * from Licenses
                         where LicenseID = @LicenseID";
@@ -136,7 +136,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -153,7 +153,7 @@ namespace DVLD_DataAccessLayer
             int rowsAffected = 0;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"update Licenses 
                     set IsActive = 0 where LicenseID = @LicenseID";
@@ -169,7 +169,7 @@ namespace DVLD_DataAccessLayer
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             { connection.Close(); }
@@ -184,7 +184,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"select found = 1 from DetainedLicenses where IsReleased = 0 and LicenseID = @LicenseID";
 
@@ -203,7 +203,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -219,7 +219,7 @@ namespace DVLD_DataAccessLayer
 
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[DetainedLicenses]
                    ([LicenseID]
@@ -259,7 +259,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally
             {
                 connection.Close();
@@ -276,7 +276,7 @@ namespace DVLD_DataAccessLayer
             int rowsAffected = 0;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"update DetainedLicenses 
                         set IsReleased = 1 ,
@@ -299,7 +299,7 @@ namespace DVLD_DataAccessLayer
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally
             { connection.Close(); }
@@ -315,7 +315,7 @@ namespace DVLD_DataAccessLayer
             int LicenseID = -1;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
 
             string query = @"select * from Licenses inner join LocalDrivingLicenseApplications
@@ -339,7 +339,7 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally { connection.Close(); } 
 
@@ -352,7 +352,7 @@ namespace DVLD_DataAccessLayer
             bool isFound = false;
 
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
 
             string query = @"select top(1) DetainID, FineFees,DetainDate, CreatedByUserID from DetainedLicenses 
@@ -382,7 +382,7 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
 
             finally { connection.Close(); }
 
@@ -394,7 +394,7 @@ namespace DVLD_DataAccessLayer
         {
            
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(General.ConnectionString);
 
             string query = @"
 SELECT  
@@ -431,7 +431,7 @@ FROM     DetainedLicenses INNER JOIN
 
             }
 
-            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
+            catch (Exception e) { General.LogErrorMessage(e.Message); }
             finally  {connection.Close();}
 
             return dt;
