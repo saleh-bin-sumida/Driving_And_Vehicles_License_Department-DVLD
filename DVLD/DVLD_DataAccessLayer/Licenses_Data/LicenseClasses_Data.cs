@@ -30,11 +30,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception)
-            {
-
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally { connection.Close(); }
 
             return LicenseClassName;
@@ -64,11 +60,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception)
-            {
-
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally { connection.Close(); }
 
             return DefaultValidityLength;
@@ -98,11 +90,7 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception)
-            {
-
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally { connection.Close(); }
 
             return ClassFees;
@@ -135,10 +123,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception )
-            {
-                // Console.WriteLine("Error: " + ex.Message);
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally
             {
                 connection.Close();

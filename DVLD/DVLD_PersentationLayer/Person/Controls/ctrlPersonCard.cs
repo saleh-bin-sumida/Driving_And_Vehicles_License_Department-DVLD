@@ -68,13 +68,15 @@ namespace DVLD
 
                 this._pictureBox1.Image = Image.FromFile(Person.ImagePath);
             }
-            catch (Exception)
+            catch (Exception e  )
             {
 
                 if (this.Gender == "Male")
                     _pictureBox1.Image = DVLD.Properties.Resources.Male;
                 else
                     _pictureBox1.Image = DVLD.Properties.Resources.Female;
+                GlobalSettings.LogError(e.Message);
+
             }
         }
 

@@ -59,9 +59,9 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
-
+                clsDataAccessSettings.LogError(e.Message);
             }
 
             finally
@@ -72,98 +72,6 @@ namespace DVLD_DataAccessLayer
 
             return ApplicationID;
         }
-
-
-
-        public static bool UpdateApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
-            int ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
-        {
-
-            int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"UPDATE [dbo].[Applications]
-                           SET [ApplicantPersonID] = @ApplicantPersonID
-                              ,[ApplicationDate] = @ApplicationDate
-                              ,[ApplicationTypeID] = @ApplicationTypeID
-                              ,[ApplicationStatus] = @ApplicationStatus
-                              ,[LastStatusDate] = @LastStatusDate
-                              ,[PaidFees] = @PaidFees
-                              ,[CreatedByUserID] = @CreatedByUserID
-                         WHERE ApplicationID = @ApplicationID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-            command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
-            command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
-            command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
-            command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
-            command.Parameters.AddWithValue("@PaidFees", PaidFees);
-            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
-
-
-
-
-    
-
-
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-
-            }
-            catch (Exception)
-            {
-            }
-
-            finally
-            {
-                connection.Close();
-            }
-
-            return (rowsAffected > 0);
-        }
-
-
-        public static bool DeleteApplication(int ApplicationID)
-        {
-
-            int rowsAffected = 0;
-
-
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"delete from Applications where ApplicationID = @ApplicationID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-
-            try
-            {
-                connection.Open();
-
-                rowsAffected = command.ExecuteNonQuery();
-
-            }
-            catch (Exception)
-            {
-            }
-            finally
-            {
-
-                connection.Close();
-
-            }
-
-            return (rowsAffected > 0);
-
-        }
-
 
 
         public static bool GetApplicationInfoByID( int ApplicationID,
@@ -205,8 +113,10 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataAccessSettings.LogError(e.Message);
+
             }
             finally
             {
@@ -242,8 +152,10 @@ namespace DVLD_DataAccessLayer
                 if (result != null) { isFound = true; }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataAccessSettings.LogError(e.Message);
+
             }
 
             finally
@@ -283,9 +195,9 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                clsDataAccessSettings.LogError(e.Message);
 
             }
             finally { connection.Close(); }
@@ -326,7 +238,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                clsDataAccessSettings.LogError(e.Message);
                 return ActiveApplicationID;
             }
             finally
@@ -358,8 +270,9 @@ namespace DVLD_DataAccessLayer
                 RowsEffected =  command.ExecuteNonQuery();
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataAccessSettings.LogError(e.Message);
 
 
             }

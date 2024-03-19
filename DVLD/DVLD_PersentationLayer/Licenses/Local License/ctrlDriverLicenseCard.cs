@@ -37,10 +37,11 @@ namespace DVLD.MyControls
             {
                 pbxLicensePhoto.Image = Image.FromFile(person.ImagePath);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _ = (person.Gender == 1 ? pbxLicensePhoto.Image = Properties.Resources.Male :
                     pbxLicensePhoto.Image = Properties.Resources.Female);
+                GlobalSettings.LogError(e.Message);
             }
         }
 

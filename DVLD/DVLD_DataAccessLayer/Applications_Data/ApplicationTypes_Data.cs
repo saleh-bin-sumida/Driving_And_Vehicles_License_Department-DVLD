@@ -33,9 +33,9 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+                clsDataAccessSettings.LogError(e.Message);
             }
             finally
             {
@@ -70,15 +70,15 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataAccessSettings.LogError(e.Message);
 
-                throw;
             }
             finally { connection.Close(); }
         }
 
-        public static bool UpdateApplicationType(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)
+        public static bool UpdateApplicationType(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)   
         {
 
             int rowsAffected = 0;
@@ -102,8 +102,10 @@ namespace DVLD_DataAccessLayer
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataAccessSettings.LogError(e.Message);
+
             }
 
             finally
@@ -138,8 +140,9 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataAccessSettings.LogError(e.Message);
 
             }
             finally { connection.Close(); }
@@ -168,8 +171,9 @@ namespace DVLD_DataAccessLayer
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                clsDataAccessSettings.LogError(e.Message);
 
             }
             finally { connection.Close(); }

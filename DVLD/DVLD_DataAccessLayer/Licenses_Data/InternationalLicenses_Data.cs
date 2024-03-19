@@ -47,9 +47,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
                 }
 
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally
             {
                 connection.Close();
@@ -114,10 +112,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
                 }
             }
 
-            catch (Exception)
-            {
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
 
             finally
             {
@@ -152,8 +147,7 @@ namespace DVLD_DataAccessLayer.Licenses_Data
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception)
-            { }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
 
             finally
             { connection.Close(); }

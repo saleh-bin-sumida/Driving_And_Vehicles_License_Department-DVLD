@@ -32,10 +32,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception )
-            {
-                // Console.WriteLine("Error: " + ex.Message);
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally
             {
                 connection.Close();
@@ -63,11 +60,7 @@ namespace DVLD_DataAccessLayer
                     return result.ToString();
                 }
             }
-            catch (Exception )
-            {
-
-                
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally
             {
                 connection.Close();

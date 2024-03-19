@@ -33,9 +33,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception)
-            {
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally
             {
                 connection.Close();
@@ -80,9 +78,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception)
-            {
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally
             {
                 connection.Close();
@@ -127,9 +123,7 @@ namespace DVLD_DataAccessLayer
 
             }
 
-            catch (Exception)
-            {
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally
             {
                 connection.Close();
@@ -185,10 +179,7 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception)
-            {
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
 
             finally
             {
@@ -222,7 +213,7 @@ namespace DVLD_DataAccessLayer
                 }
             }
 
-            catch (Exception) {}
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
 
             finally  {connection.Close();}
 
@@ -295,11 +286,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception)
-            {
-
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally { connection.Close(); }
 
             return isFound;
@@ -331,11 +318,7 @@ namespace DVLD_DataAccessLayer
 
 
             }
-            catch (Exception)
-            {
-
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally { connection.Close(); }
 
             return isFound;

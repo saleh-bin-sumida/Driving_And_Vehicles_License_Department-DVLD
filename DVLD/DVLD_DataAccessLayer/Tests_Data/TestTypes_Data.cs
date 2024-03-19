@@ -35,9 +35,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
             }
 
-            catch (Exception)
-            {
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally
             {
                 connection.Close();
@@ -72,11 +70,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 }
 
             }
-            catch (Exception)
-            {
-
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally { connection.Close(); }
         }
 
@@ -107,9 +101,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 rowsAffected = command.ExecuteNonQuery();
 
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
 
             finally
             {
@@ -144,10 +136,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 }
 
             }
-            catch (Exception)
-            {
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally { connection.Close(); }
             return Fees;
         }
@@ -174,10 +163,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
                 }
 
             }
-            catch (Exception)
-            {
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }
             finally { connection.Close(); }
             return TestTypeTitle;
         }

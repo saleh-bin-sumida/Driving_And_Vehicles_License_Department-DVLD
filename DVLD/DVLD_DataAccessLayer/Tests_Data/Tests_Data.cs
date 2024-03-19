@@ -47,11 +47,7 @@ namespace DVLD_DataAccessLayer
                     TestID = insertedID;
                 }
             }
-
-            catch (Exception)
-            {
-
-            }
+            catch (Exception e) { clsDataAccessSettings.LogError(e.Message); }s
 
             finally
             {

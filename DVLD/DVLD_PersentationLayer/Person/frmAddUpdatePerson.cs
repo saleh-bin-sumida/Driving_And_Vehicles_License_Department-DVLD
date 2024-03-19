@@ -111,9 +111,11 @@ namespace DVLD
                 pictureBox1.Image = Image.FromFile(ImagePath);
                 lblRemoveImage.Visible = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _setDefualtImage();
+                GlobalSettings.LogError(e.Message);
+
             }
             return pictureBox1.Image;
         }
@@ -307,10 +309,12 @@ namespace DVLD
                 _Person.ImagePath = "";
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 pictureBox1.Image = Image.FromFile(_Person.ImagePath);
                 MessageBox.Show("unable to delete picture, Its in use by other process", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                GlobalSettings.LogError(e.Message);
+
             }
         }
 

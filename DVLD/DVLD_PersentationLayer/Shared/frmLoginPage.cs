@@ -113,8 +113,11 @@ namespace DVLD
                 Registry.SetValue(keyPath, valueName, valueData, RegistryValueKind.String);
 
             }
-            catch (Exception ex)
-            { return false; }
+            catch (Exception e)
+            {
+                GlobalSettings.LogError(e.Message);
+                return false; 
+            }
 
             return true;
         }
@@ -140,8 +143,9 @@ namespace DVLD
                 this.Password = UserInfo[1];
                 _ =(UserInfo[2] == "0") ? this.RemeberMe = false : this.RemeberMe = true ;
             }
-            catch ( Exception)
+            catch ( Exception e)
             {
+                GlobalSettings.LogError(e.Message);
                 return false;
             }
             return true;

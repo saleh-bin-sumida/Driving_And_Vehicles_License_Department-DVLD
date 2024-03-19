@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Diagnostics;
 namespace DVLD_DataAccessLayer
 {
-    internal static class clsDataAccessSettings
+    public static class clsDataAccessSettings
     {
         public static string ConnectionString = "Server=.;Database=DVLD; Integrated Security =True;";
+
+        public static void LogError(string message)
+        {
+            string SourceName = "DVLD";
+            if (!EventLog.SourceExists(SourceName))
+            {
+                EventLog.CreateEventSource(SourceName, "Applications");
+            }
+
+            EventLog.WriteEntry(SourceName ,message,EventLogEntryType.Error);
+        }
     }
+
 }
