@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace DVLD
 {
-    public partial class frmAddUpdate_NewLDLApplication : Form
+    public partial class frmAddUpdate_LDLApplication : Form
     {
         enum Mode { Addnew = 1, Update =2};
         Mode mode;
@@ -13,7 +13,7 @@ namespace DVLD
         cls_LDLapplication _LDLapp;
 
         int _LDLappID;
-        public frmAddUpdate_NewLDLApplication(int LDLapp)
+        public frmAddUpdate_LDLApplication(int LDLapp)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

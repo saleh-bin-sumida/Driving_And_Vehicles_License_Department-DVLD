@@ -1,6 +1,6 @@
 ﻿namespace DVLD
 {
-    partial class frmManage_NewLDLApplications
+    partial class frmManage_LDLApplications
     {
         /// <summary>
         /// Required designer variable.

@@ -7,10 +7,10 @@ using DVLD_BusinessLayer;
 
 namespace DVLD
 {
-    public partial class frmManage_NewLDLApplications : frmManageScreen
+    public partial class frmManage_LDLApplications : frmManageScreen
     {
        // private DataTable _dt;
-        public frmManage_NewLDLApplications() : base()
+        public frmManage_LDLApplications() : base()
         {
             InitializeComponent();
             base.DataGridView.CellMouseClick += CellMouseClick_dataGridVeiew;
@@ -32,7 +32,7 @@ namespace DVLD
   
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmAddUpdate_NewLDLApplication frm = new frmAddUpdate_NewLDLApplication(-1);
+            frmAddUpdate_LDLApplication frm = new frmAddUpdate_LDLApplication(-1);
             frm.ShowDialog();
 
             RefreshDataGridView();
@@ -178,7 +178,7 @@ namespace DVLD
                     break;
 
                 case "tsmEdit":
-                    frmAddUpdate_NewLDLApplication EditForm = new frmAddUpdate_NewLDLApplication(ID);
+                    frmAddUpdate_LDLApplication EditForm = new frmAddUpdate_LDLApplication(ID);
                     EditForm.ShowDialog();
                     break;
                 case "tsmScheduleVisionTest":

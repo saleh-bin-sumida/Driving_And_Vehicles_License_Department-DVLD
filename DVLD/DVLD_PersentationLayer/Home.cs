@@ -34,7 +34,7 @@ namespace DVLD
      
         private void tsmNewLocalLicense_Click(object sender, EventArgs e)
         {
-            frmAddUpdate_NewLDLApplication frm = new frmAddUpdate_NewLDLApplication(-1);
+            frmAddUpdate_LDLApplication frm = new frmAddUpdate_LDLApplication(-1);
             frm.ShowDialog();
         }
         private void tsmInternationalLicense_Click(object sender, EventArgs e)
@@ -99,7 +99,7 @@ namespace DVLD
 
         private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManage_NewLDLApplications frm = new frmManage_NewLDLApplications();
+            frmManage_LDLApplications frm = new frmManage_LDLApplications();
             frm.ShowDialog();
         }
 
