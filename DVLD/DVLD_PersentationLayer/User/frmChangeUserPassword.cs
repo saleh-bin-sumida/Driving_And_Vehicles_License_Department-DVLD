@@ -24,7 +24,7 @@ namespace DVLD
             ctrlPersonCard1.LoadData(_User._person);
             ctrlLoginInfo1.LoadData(_User);
             pbxInvalidPassword.Visible = false;
-            txtOldPassword.Text = _User.Password;
+            txtOldPassword.Text = GlobalSettings.CurrentUser.Password;
         }
 
         private void PasswordTextChanged(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace DVLD
                 return;
             }
 
-            _User.Password = txtNewPassword.Text;
+            _User.Password = Util.ComputeHashing(txtNewPassword.Text);
             if (_User.Save())
             {
                 MessageBox.Show("Your Password Update Succesfully", "Updating Password",

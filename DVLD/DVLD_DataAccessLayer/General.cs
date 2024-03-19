@@ -9,9 +9,11 @@ namespace DVLD_DataAccessLayer
         public static void LogErrorMessage(string message)
         {
             string SourceName = "DVLD";
+
             if (!EventLog.SourceExists(SourceName))
             {
-                EventLog.CreateEventSource(SourceName, "Applications");
+                EventLog.CreateEventSource(SourceName,"DVLD Application Log");
+               
             }
 
             EventLog.WriteEntry(SourceName ,message,EventLogEntryType.Error);

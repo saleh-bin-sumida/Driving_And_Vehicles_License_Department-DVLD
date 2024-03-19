@@ -43,8 +43,11 @@ namespace DVLD_BusinessLayer
         {
             int PersonID = 0, UserID = 0;
             bool IsActive = false;
-            
-            if(clsUser_Data.GetUserByUsernameAndPassword(Username, Password, ref UserID, ref PersonID, ref IsActive))
+
+            string HashedPassword = Util.ComputeHashing(Password);
+
+
+            if (clsUser_Data.GetUserByUsernameAndPassword(Username, HashedPassword, ref UserID, ref PersonID, ref IsActive))
             {
                 return new clsUser(UserID, PersonID, Username, Password, IsActive);
             }

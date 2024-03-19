@@ -24,7 +24,7 @@ namespace DVLD.Licenes_Applications
 
         }
 
-        private new void LoadData()
+        private void LoadData()
         {
             lblapplicationDate.Text = App.ApplicationDate.ToString();
             lblapplicationFees.Text = App.PaidFees.ToString();

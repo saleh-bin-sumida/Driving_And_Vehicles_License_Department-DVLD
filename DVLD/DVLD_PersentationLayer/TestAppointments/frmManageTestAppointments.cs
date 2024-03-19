@@ -8,8 +8,7 @@ namespace DVLD.Manage_Screens
 {
     public partial class frmManageTestAppointments : Form
     {
-        enum Mode { Addappoinment, RetakeTestApp};
-        Mode mode;
+ 
 
         cls_LDLapplication LDLapp;
         clsApplication RetakeTestApp;

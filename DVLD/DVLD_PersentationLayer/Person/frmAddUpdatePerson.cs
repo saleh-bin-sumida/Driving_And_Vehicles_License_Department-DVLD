@@ -114,7 +114,7 @@ namespace DVLD
             catch (Exception e)
             {
                 _setDefualtImage();
-                GlobalSettings.LogError(e.Message);
+                Util.LogError(e.Message);
 
             }
             return pictureBox1.Image;
@@ -313,7 +313,7 @@ namespace DVLD
             {
                 pictureBox1.Image = Image.FromFile(_Person.ImagePath);
                 MessageBox.Show("unable to delete picture, Its in use by other process", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                GlobalSettings.LogError(e.Message);
+                Util.LogError(e.Message);
 
             }
         }

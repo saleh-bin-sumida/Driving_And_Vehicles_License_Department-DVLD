@@ -115,7 +115,7 @@ namespace DVLD
             }
             catch (Exception e)
             {
-                GlobalSettings.LogError(e.Message);
+                Util.LogError(e.Message);
                 return false; 
             }
 
@@ -145,7 +145,7 @@ namespace DVLD
             }
             catch ( Exception e)
             {
-                GlobalSettings.LogError(e.Message);
+                Util.LogError(e.Message);
                 return false;
             }
             return true;

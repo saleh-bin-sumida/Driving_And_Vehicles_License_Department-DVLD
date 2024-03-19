@@ -75,7 +75,7 @@ namespace DVLD
                     _pictureBox1.Image = DVLD.Properties.Resources.Male;
                 else
                     _pictureBox1.Image = DVLD.Properties.Resources.Female;
-                GlobalSettings.LogError(e.Message);
+                Util.LogError(e.Message);
 
             }
         }

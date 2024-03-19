@@ -104,7 +104,7 @@ namespace DVLD
 
             _User._person = clsPerson.FindPersonByID(int.Parse(ctrlPersonCardwithFilter1.PersonID));
             _User.Username = txtUsername.Text;
-            _User.Password = txtPassword.Text;
+            _User.Password = Util.ComputeHashing( txtPassword.Text);
             _User.IsActive = chkIsActive.Checked;
 
 

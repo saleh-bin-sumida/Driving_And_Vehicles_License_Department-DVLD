@@ -41,7 +41,7 @@ namespace DVLD.MyControls
             {
                 _ = (person.Gender == 1 ? pbxLicensePhoto.Image = Properties.Resources.Male :
                     pbxLicensePhoto.Image = Properties.Resources.Female);
-                GlobalSettings.LogError(e.Message);
+                Util.LogError(e.Message);
             }
         }
 
