@@ -5,8 +5,7 @@ The Driving & Vehicle License Department (DVLD) system is designed to manage the
 
 ## Project Details
 - **Framework**: Windows Forms (built on .NET Framework 4.8)
-- **Version**: v0.1.0
-- [**Downlaod Version**: v0.1.0](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v0.1.0.zip)
+- [**Version**: v0.1.0](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v0.1.0.zip)
 
 ## Services Offered
 - **Issuance of First-Time License**: A service for applicants to obtain a driving license for the first time.
