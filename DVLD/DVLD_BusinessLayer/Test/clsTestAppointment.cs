@@ -9,7 +9,7 @@ namespace DVLD_BusinessLayer.Test
     {
         enum Mode { Addnew = 1 , Update =2 }
         Mode mode;
-        public int TestAppointmentID { get; set; }
+        public int TestAppointmentID { get; set; } = 0;
         public int TestTypeID { get; set; }
         public int LDL_ApplicationID { get; set; }
         public DateTime AppointmentDate { get; set; }

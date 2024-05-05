@@ -24,6 +24,7 @@ namespace DVLD.AddUpdate_Screens
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             _RetakeTestApp = RetakeTestApp;
+    
             
             _LDLapp = cls_LDLapplication.Find(LDLappID);
         
@@ -95,11 +96,12 @@ namespace DVLD.AddUpdate_Screens
         {
 
             _TestAppointment.AppointmentDate = dtpAppointmentDate.Value;
-            _TestAppointment.RetakeTestApplicationID = _RetakeTestApp.ApplicationID;
-            
+
+
 
             if (_RetakeTestApp != null)
             {
+               _TestAppointment.RetakeTestApplicationID =  _RetakeTestApp.ApplicationID;
                 _RetakeTestApp.Save();
                 lblR_testAppID.Text = _RetakeTestApp.ApplicationID.ToString();
             }

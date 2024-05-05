@@ -140,7 +140,7 @@ namespace DVLD_DataAccessLayer.Tests_Data
 
             if (RetakeTestApplicationID == -1)
             {
-                command.Parameters.AddWithValue("@RetakeTestAppID", DBNull.Value);
+                command.Parameters.AddWithValue("@RetakeTestApplicationID", DBNull.Value);
             }
             else
             {
