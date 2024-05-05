@@ -9,13 +9,19 @@ namespace DVLD_BusinessLayer
     {
         public static void LogError(string ErrorMessage)
         {
-            string SourceName = "DVLD";
-            if (!EventLog.SourceExists(SourceName))
+                string SourceName = "DVLD";
+            try
             {
-                EventLog.CreateEventSource(SourceName, "Applications");
-            }
+                if (!EventLog.SourceExists(SourceName))
+                {
+                    EventLog.CreateEventSource(SourceName, "Applications");
+                }
 
-            EventLog.WriteEntry(SourceName, ErrorMessage, EventLogEntryType.Error);
+                EventLog.WriteEntry(SourceName, ErrorMessage, EventLogEntryType.Error);
+
+            }
+            catch { }
+       
         }
 
 

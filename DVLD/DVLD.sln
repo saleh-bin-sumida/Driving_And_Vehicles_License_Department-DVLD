@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DVLD_DataAccessLayer", "DVL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLD_BusinessLayer", "DVLD_BusinessLayer\DVLD_BusinessLayer.csproj", "{B501B531-5AAD-4431-B2A0-AE9EE1AFB6EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLD_PersentaionLayer", "DVLD_PersentaionLayer\DVLD_PersentaionLayer.csproj", "{C9671DC1-31F5-4ABC-A7E7-6CDEDA62DE99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B501B531-5AAD-4431-B2A0-AE9EE1AFB6EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B501B531-5AAD-4431-B2A0-AE9EE1AFB6EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B501B531-5AAD-4431-B2A0-AE9EE1AFB6EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9671DC1-31F5-4ABC-A7E7-6CDEDA62DE99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9671DC1-31F5-4ABC-A7E7-6CDEDA62DE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9671DC1-31F5-4ABC-A7E7-6CDEDA62DE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9671DC1-31F5-4ABC-A7E7-6CDEDA62DE99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
