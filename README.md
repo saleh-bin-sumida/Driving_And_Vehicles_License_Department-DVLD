@@ -3,6 +3,8 @@
 ## Overview
 The Driving & Vehicle License Department (DVLD) system is designed to manage the issuance and administration of driving licenses. It encompasses a range of services to ensure the provision of safe drivers on the roads.
 
+
+
 ## Installation
 
 1. Database Setup:
@@ -15,6 +17,8 @@ The Driving & Vehicle License Department (DVLD) system is designed to manage the
 3. Access the Login Screen:
    - Once the project is running, the login screen will appear.
    - Enter the username as 'admin' and the password as '1234' to log in.
+
+
 
 ### Technical Details
 - **Framework**: WindForm (built on **.Net 8**)
