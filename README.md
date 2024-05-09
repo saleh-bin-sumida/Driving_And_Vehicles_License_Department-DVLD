@@ -6,17 +6,11 @@ The Driving & Vehicle License Department (DVLD) system is designed to manage the
 
 
 ## Installation
-
-1. Database Setup:
-   - Locate the "DVLD.bak" file in the "Database" folder and restore it to your preferred DBMS.
-
-2. Download:
-   - Download the project from the repository.
-   - Extract the downloaded files to your computer and Run the Project.
-
-3. Access the Login Screen:
-   - Once the project is running, the login screen will appear.
-   - Enter the username as 'admin' and the password as '1234' to log in.
+- Locate the "DVLD.bak" file in the "Database" folder and restore it to your preferred DBMS.
+- Download the project from the repository.
+- Extract the downloaded files to your computer and Run the Project.
+- Once the project is running, the login screen will appear.
+- Enter the username as 'admin' and the password as '1234' to log in.
 
 
 
@@ -30,6 +24,7 @@ The Driving & Vehicle License Department (DVLD) system is designed to manage the
 - [**Version**: v1.5.1](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v1.5.1.zip)
 - [**Version**: v2.0.0 **.NET 8**](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v2.0.0.zip)
   
+
 
 ## Services Offered
 - **Issuance of First-Time License**: A service for applicants to obtain a driving license for the first time.
