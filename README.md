@@ -4,8 +4,17 @@
 The Driving & Vehicle License Department (DVLD) system is designed to manage the issuance and administration of driving licenses. It encompasses a range of services to ensure the provision of safe drivers on the roads.
 
 ## Installation
-- Restore the DVLD.bak file inside Database folder to SqlServer or any DBMS you have.
-- Once you download the version you want, run the project and write the username 'admin' and password '1234'
+
+1. Database Setup:
+   - Locate the "DVLD.bak" file in the "Database" folder and restore it to your preferred DBMS.
+
+2. Download:
+   - Download the project from the repository.
+   - Extract the downloaded files to your computer and Run the Project.
+
+3. Access the Login Screen:
+   - Once the project is running, the login screen will appear.
+   - Enter the username as 'admin' and the password as '1234' to log in.
 
 ### Technical Details
 - **Framework**: WindForm (built on **.Net 8**)
@@ -15,6 +24,7 @@ The Driving & Vehicle License Department (DVLD) system is designed to manage the
 - **Error logging** is implemented in the event viewer for better tracking and debugging of any issues.
 - [**Version**: v1.0.0](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v0.1.0.zip)
 - [**Version**: v1.5.1](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v1.5.1.zip)
+- [**Version**: v2.0.0 **.NET 8**](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v2.0.0.zip)
   
 
 ## Services Offered
