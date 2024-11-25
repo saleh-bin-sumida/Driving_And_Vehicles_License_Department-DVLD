@@ -1,27 +1,33 @@
-﻿using System;
-using DVLD_BusinessLayer;
-using System.Windows.Forms;
-using System.Drawing;
+﻿using DVLD_BusinessLayer;
+using System.ComponentModel;
 
 namespace DVLD
 {
     public partial class ctrlPersonCard : UserControl
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string PersonID { get { return _PersonIDValue.Text; } private set { this._PersonIDValue.Text = value.ToString(); } }
-        public string NationalNo { get { return _NationalNo.Text; }private set { this._NationalNo.Text = value; } }
-        public string FullName { get { return _FullName.Text; }private set { this._FullName.Text = value; } }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string NationalNo { get { return _NationalNo.Text; } private set { this._NationalNo.Text = value; } }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string Gender { get { return _Gender.Text; } private set { this._Gender.Text = value; } }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string FullName { get { return _FullName.Text; } private set { this._FullName.Text = value; } }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string DateOfBirth { get { return _DateOfBirth.Text; } private set { this._DateOfBirth.Text = value; } }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string Phone { get { return _Phone.Text; } private set { this._Phone.Text = value; } }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string Email { get { return _Email.Text; } private set { this._Email.Text = value; } }
 
-        public string Gender { get { return _Gender.Text; }private set { this._Gender.Text = value; } }
-        public string DateOfBirth { get { return _DateOfBirth.Text; }private set { this._DateOfBirth.Text = value; } }
-        public string Phone { get { return _Phone.Text; }private set { this._Phone.Text = value; } }
-        public string Email { get { return _Email.Text; }private set { this._Email.Text = value; } }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string Country { get { return _Country.Text; } private set { this._Country.Text = value; } }
 
-        public string Country { get { return _Country.Text; }private set { this._Country.Text = value; } }
-
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Address { get { return _Address.Text; } private set { this._Address.Text = value; } }
 
-        
+
 
         public ctrlPersonCard()
         {
@@ -39,7 +45,7 @@ namespace DVLD
             Email = "";
             Address = "";
             Country = "";
-         //   this._pictureBox1.Image = Properties.Resources.Male;
+            //   this._pictureBox1.Image = Properties.Resources.Male;
         }
 
         public void LoadData(clsPerson Person)
@@ -51,7 +57,7 @@ namespace DVLD
             }
 
             PersonID = Person.PersonID.ToString();
-            FullName = Person.FirstName +" "+ Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
+            FullName = Person.FirstName + " " + Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
             NationalNo = Person.NationalNo;
             if (Person.Gender == 1)
                 Gender = "Male";
@@ -61,14 +67,14 @@ namespace DVLD
             Address = Person.Address;
             DateOfBirth = Person.DateOfBirth.ToString();
             Phone = Person.Phone;
-            Country = clsCountry.GetCountryNameByID( Person.NationalityCountryID);
+            Country = clsCountry.GetCountryNameByID(Person.NationalityCountryID);
 
             try
             {
 
                 this._pictureBox1.Image = Image.FromFile(Person.ImagePath);
             }
-            catch (Exception e  )
+            catch (Exception e)
             {
 
                 if (this.Gender == "Male")
@@ -94,11 +100,11 @@ namespace DVLD
             frmAddUpdatePerson frm = new frmAddUpdatePerson(personID);
             frm.SendDataBack += _LoadDataByPersonID;
             frm.ShowDialog();
-            
+
         }
 
 
 
-     
+
     }
 }

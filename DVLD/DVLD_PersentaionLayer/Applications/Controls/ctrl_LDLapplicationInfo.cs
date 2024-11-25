@@ -1,20 +1,21 @@
 ﻿using DVLD.ShowInfo_Screens;
 using DVLD_BusinessLayer;
 using DVLD_BusinessLayer.Application;
-using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace DVLD
 {
     public partial class ctrl_LDLapplicationInfo : UserControl
     {
         cls_LDLapplication _LDLapp;
-        public int DLAppID 
-        { 
-            get { return int.Parse(lbl_LDLappID.Text); } 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int DLAppID
+        {
+            get { return int.Parse(lbl_LDLappID.Text); }
             private set { lbl_LDLappID.Text = value.ToString(); }
         }
 
-       
+
         public ctrl_LDLapplicationInfo()
         {
             InitializeComponent();

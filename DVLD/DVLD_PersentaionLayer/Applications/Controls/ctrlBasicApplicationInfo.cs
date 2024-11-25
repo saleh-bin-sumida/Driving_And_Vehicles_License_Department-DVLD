@@ -1,28 +1,28 @@
 ﻿using DVLD_BusinessLayer;
-using System;
-using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace DVLD.MyControls
 {
     public partial class ctrlBasicApplicationInfo : UserControl
     {
         clsApplication _App;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int ID
         {
             get { return int.Parse(lblID.Text); }
             private set { lblID.Text = value.ToString(); }
         }
 
-      //  public int ApplicantPersonID;
+        //  public int ApplicantPersonID;
 
-        public ctrlBasicApplicationInfo( )
+        public ctrlBasicApplicationInfo()
         {
             InitializeComponent();
-         
+
         }
 
-       
-      
+
+
 
         public void LoadData(int AppID)
         {
