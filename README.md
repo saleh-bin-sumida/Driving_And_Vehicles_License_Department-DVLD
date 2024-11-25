@@ -23,6 +23,7 @@ The Driving & Vehicle License Department (DVLD) system is designed to manage the
 - [**Version**: v1.0.0](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v0.1.0.zip)
 - [**Version**: v1.5.1](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v1.5.1.zip)
 - [**Version**: v2.0.0 **.NET 8**](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v2.0.0.zip)
+- [**Version**: v3.0.0 **.NET 9**](https://github.com/saleh-bin-sumida/Driving_And_Vehicles_License_Department-DVLD/archive/refs/tags/v3.0.0.zip)
   
 
 
